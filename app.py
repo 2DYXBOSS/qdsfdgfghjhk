@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import render_template , redirect , request,url_for,flash,Response
 from flask import render_template , redirect , request,url_for,flash,session ,Response
 from werkzeug.utils import secure_filename
-
+from flask_mail import Mail, Message
 import os
 
 
@@ -13,11 +13,33 @@ app.debug = True
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-# app.secret_key = "secret key"
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['SECRET_KEY'] = 'BONJOUR'
 
+# debut
+
+# configuration of mail 
+# app.config['MAIL_SERVER']='smtp.gmail.com'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = 'pirateavie225@gmail.com'
+# app.config['MAIL_PASSWORD'] = 'Lapharmacie225'
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True
+ 
+app.config['SECRET_KEY'] = 'sdfgghjklhkj'
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'pythonanywhere225@gmail.com'
+app.config['MAIL_PASSWORD'] = 'tdqn cklm uvjd aonn'
+app.config['MAIL_DEFAULT_SENDER'] = 'pythonanywhere225@gmail.com'
+
+# Clé secrète pour sécuriser l'application
+app.secret_key = os.urandom(24)
+mail = Mail(app)
+# fin
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
@@ -211,17 +233,18 @@ def Payement() :
     data = Userpaniere.query.all()
     zee = Connecter.query.get(1)   
     frr = []
-   
+    ut = []
     
     for i in data : 
         if i.mail == zee.last_name :
             frr.append(i)
+            ut.append([i.nom,i.prix])
     pri = 0
-    for i in data :
+    for i in frr :
         pri += i.prix
     
     az = len(frr)
-    er =[az,user,pri]
+    er =[az,user,pri,ut]
  
 
     return render_template('payement.html',ae = er)
@@ -276,7 +299,7 @@ def panieruserk():
     # ert = [frr,imm]
     
     pri = 0
-    for i in data :
+    for i in frr :
         pri += i.prix
     az = len(frr)
     er =[az,user,pri]
@@ -664,6 +687,191 @@ def upload_image():
 def display_image(filename):
     #print('display_image filename: ' + filename)
     return redirect(url_for('static', filename = 'uploads/' + filename), code=301)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from flask import Flask, render_template, request, redirect, url_for, flash
+# from flask_mail import Mail, Message
+# import os
+
+# app = Flask(__name__)
+
+# # Configuration pour Flask-Mail (utilisez vos propres informations)
+# app.config['SECRET_KEY'] = 'sdfgghjklhkj'
+# app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+# app.config['MAIL_PORT'] = 587
+# app.config['MAIL_USE_TLS'] = True
+# app.config['MAIL_USERNAME'] = 'pythonanywhere225@gmail.com'
+# app.config['MAIL_PASSWORD'] = 'tdqn cklm uvjd aonn'
+# app.config['MAIL_DEFAULT_SENDER'] = 'pythonanywhere225@gmail.com'
+
+# # Clé secrète pour sécuriser l'application
+# app.secret_key = os.urandom(24)
+# # import secrets
+
+# # # Générer une clé secrète aléatoire de 24 caractères
+# # app.secret_key = secrets.token_hex(24)
+# mail = Mail(app)
+
+# @app.route('/')
+# def index():
+#     return render_template('email.html')
+
+@app.route('/envoyer_email', methods=['POST'])
+def envoyer_email():
+    if request.method == 'POST':
+        # destinataire = request.form['destinataire']
+        destinataire = "2dyxboss225@gmail.com"
+        # sujet = request.form['sujet']
+        tre = Connecter.query.get(1)
+        dfggh = tre.last_name
+        sujet = dfggh
+        contenu = request.form['contenu']
+
+        msg = Message(sujet, recipients=[destinataire])
+        msg.body = contenu
+       
+        try:
+            mail.send(msg)
+            flash('E-mail envoyé avec succès', 'success')
+        except Exception as e:
+            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+        return redirect("/home")
+@app.route('/commande', methods=['POST'])
+def commande():
+    if request.method == 'POST':
+        # destinataire = request.form['destinataire']
+        destinataire = "2dyxboss225@gmail.com"
+        # sujet = request.form['sujet']
+        user = Connecter.query.all()
+        data = Userpaniere.query.all()
+        zee = Connecter.query.get(1)   
+        frr = []
+        ut = []
+        
+        for i in data : 
+            if i.mail == zee.last_name :
+                frr.append(i)
+                ut.append([i.nom,i.prix])
+        pri = 0
+        for i in frr :
+            pri += i.prix
+        
+        az = len(frr)
+        er =[az,user,pri,ut]
+    
+
+        # return render_template('payement.html',ae = er)
+        tre = Connecter.query.get(1)
+        dfggh = tre.last_name
+        sujet = dfggh
+        contenu = f"je veux acheter ces {az} articles : {ut} pour un montant de {pri} FCFA"
+
+        msg = Message(sujet, recipients=[destinataire])
+        msg.body = contenu
+
+        try:
+            mail.send(msg)
+            flash('E-mail envoyé avec succès', 'success')
+        except Exception as e:
+            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+        return redirect("/Payement")
+
+# from flask import Flask, render_template, request, redirect, url_for, flash
+# from flask_mail import Mail, Message
+
+# app = Flask(__name__)
+
+# # Configuration pour Flask-Mail (utilisez vos propres informations)
+# app.config['MAIL_SERVER'] = 'smtp.example.com'
+# app.config['MAIL_PORT'] = 587
+# app.config['MAIL_USE_TLS'] = True
+# app.config['MAIL_USERNAME'] = 'votre_email@example.com'
+# app.config['MAIL_PASSWORD'] = 'votre_mot_de_passe'
+# app.config['MAIL_DEFAULT_SENDER'] = 'votre_email@example.com'
+
+# mail = Mail(app)
+
+# @app.route('/envoyer_email')
+# def index():
+#     return render_template('maail.html')
+
+# @app.route('/envoyer_email', methods=['POST'])
+# def envoyer_email():
+#     if request.method == 'POST':
+#         destinataire = request.form['destinataire']
+#         sujet = request.form['sujet']
+#         contenu = request.form['contenu']
+
+#         msg = Message(sujet, recipients=[destinataire])
+#         msg.body = contenu
+
+#         try:
+#             mail.send(msg)
+#             flash('E-mail envoyé avec succès', 'success')
+#         except Exception as e:
+#             flash('Une erreur s\'est produite lors de l\'envoi de l\'e-mail', 'danger')
+
+#         return redirect(url_for('index'))
+
+
+
+
+
+
+
+# importing libraries 
+
+
+# # message object mapped to a particular URL ‘/’ 
+# @app.route("/mail") 
+# def index(): 
+#     msg = Message( 
+#                     'Hello', 
+#                     sender ='pirateavie225@gmail.com', 
+#                     recipients = ['2dyxboss225@gmail.com'] 
+#                 ) 
+#     msg.body = 'Hello Flask message sent from Flask-Mail'
+#     mail.send(msg) 
+#     return 'Sent'
+
 
 
 if __name__ == '__main__' :

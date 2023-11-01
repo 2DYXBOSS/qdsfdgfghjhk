@@ -63,14 +63,18 @@
             <div class="dfgh1" style="padding-left: 50px;">
                 <!-- 1 / cli le payement de votre article , merci bien pour la comprehension. -->
             </div>
-            <a href="" >JE VEUX ACHETER</a>
+            <form action="/commande" method="post">
+                <!-- <a href="" type="submit">JE VEUX ACHETER</a> -->
+                <input type="submit"  style="padding: 15px 25px;color: white;background-color: rgb(90, 7, 163);border: none;" value="COMMANDER MAINTENANT" placeholder="JE VEUX ACHETER">
+            </form>
+            
         </div>
         <div class="payem1">
             <div class="dfggh">
                 <img src="{{url_for('static', filename='IMAGES/sac1.jpg')}}" width="100%" height="100%" alt="">
             </div>
-            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">NOM</h1>
-            <p style="color: gray;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas explicabo, enim temporibus consequuntur blandi doloremque alias.</p>
+            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">TOTAL</h1>
+            <p style="color: gray;">Avertissement Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
             {% if ae%}
             <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">{{ae[2]}} FCFA</h1>
             {% endif %}
