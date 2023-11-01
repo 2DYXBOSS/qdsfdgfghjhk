@@ -1,0 +1,184 @@
+
+
+
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/CSS/achat.css">
+
+</head>
+<body>
+    
+
+
+    <div class="fixe">
+        <div class="lofo">
+            <strong><p style="color: rgba(162, 117, 204, 0.555);"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: white">B</span>lay Library</p></strong>
+
+        </div>
+        <div class="lofo1">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/home">Acceuil</a>
+                    </li>
+                    <li>
+                        <a href="/achat" style="font-weight: bolder;">Nos produits</a>
+                    </li>
+                    <li>
+                        <a href="/">Nos produits</a>
+                    </li>
+                    <li>
+                        <a href="/deconnexion">Deconnexion</a>
+                    </li>
+                    <li>
+                        <a href="/panieruser">Mes articles</a>
+                    </li>
+                    <li>
+                        <a style="padding: 15px 20px;background-color: white;color: orange;border-radius: 10px;" href="/useprid">Compte</a>
+                        
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+    <div class="hre">
+        <a style="padding: 25px 25px;background-color: white;color: rgb(245, 167, 0);border-radius: 5px;border: 1px solid rgb(245, 167, 0);" href="/add_data">INSCRIPTION</a>
+        <a style="padding: 25px 25px;background-color: white;color: rgb(245, 167, 0);border-radius: 5px;border: 1px solid rgb(245, 167, 0)" href="/pre">CONNEXION</a> 
+        {% for data in aer %}
+            <div class="livre1">
+                <div class="livr1">
+                    <img src="{{url_for('static', filename='uploads/{{data.image}}')}}" width="100%" height="50%" alt=""> 
+                    <img src="{{url_for('static', filename='uploads/' + data.image)}}" width="100%" height="100%" alt="">
+                    <img src="{{url_for('static', filename='IMAGES/{{data.image}}')}}" width="100%" height="50%" alt=""> 
+                </div>
+                
+                <div class="livr12">
+                    
+                    <h1 style="font-size: 0.8rem;text-align: start;color: #8b00fc;">{{data.nom}}</h1>
+                    <p style="font-size:0.5rem;">{{data.description}}</p>
+                    <h1 style="font-size: 1rem;">{{data.prix}} FCFA</h1>
+                </div>
+                <div class="livr123">
+                    <form action="/new" method="post" style="background-color: #8b00fc;display: grid;">
+                        <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
+                        <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
+                        <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
+                        <button type="submit" style="background-color: rgb(173, 130, 214);border: none;color: white;padding: 5px 10px;">acheter</button>
+                    </form>
+                     <a href="/delete/{{data.id}}" class="achat">acheter</a> 
+                    <a href="">
+                        <img src="../image/panierr.png" width="30px" style="padding-bottom: 10px;padding-right: 5px;" alt="">
+                    </a>
+                </div>
+            </div>
+            
+            {% endfor %}
+    </div>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/CSS/achat.css">
+</head>
+<body>
+    <div class="fixe">
+        <div class="lofo" style="padding-left: 45px;padding-top: 10px;">
+            <strong><p style="color: rgba(162, 117, 204, 0.555);"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: white">B</span>lay Library</p></strong>
+
+        </div>
+        <div class="lofo1">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/home" style="color: white;">Acceuil</a>
+                    </li>
+                    <li>
+                        <a href="/achat" style="color: white;">Nos publications</a>
+                    </li>
+                    <li>
+                        <a href="/home#apeo" style="color: white;">A propos de nous</a>
+                    </li>
+                    
+                    <li>
+                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: white;border-radius: 10px;" href="/useprid">Compte</a>
+                        
+                       
+                        
+                        
+                    </li>
+                    <li>
+                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert(24%) sepia(50%) saturate(3691%) hue-rotate(260deg) brightness(95%) contrast(92%);" alt="" height="30px" width="30px">
+                            {% if ae%}
+                            <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 2rem;">{{ae[0]}}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+    
+    <div class="hre">
+        <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">LES ARTICLES</h1>
+        {% for data in ae[1] %}
+        <div class="nkqekj">
+            <div class="retyu2">
+                <img src="{{url_for('static', filename='uploads/' + data.image)}}" height="300px" width="250px" alt="">
+            </div>
+            <div class="retyu1">
+                <p style="color: rgb(105, 105, 105);">Faites plaisir a vos proches avec cet article</p>
+                
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 2rem;text-transform: uppercase;">{{data.nom}}</h1>
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 2rem;text-transform: uppercase;">{{data.prix}} FCFA</h1>
+                <p style="margin-bottom: 20px;">{{data.description}}</p>
+                <form action="/new" method="post" style="background-color: white;display: flex;justify-content: start;">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{data.image}}">
+                    <button type="submit" >AJOUTER AU PANIER</button>
+                    <a  href="Payement">ACHETER</a>
+                </form>
+               
+                <!-- <a style="padding: 10px 10px;background-color: white;color: rgb(140, 58, 216);border-radius: 5px;border: 1px solid rgb(140, 58, 216);margin-bottom: 200px;" href="">PANIER</a> -->
+            </div>
+           
+        </div>
+        {% endfor %}
+       
+
+    </div>
+</body>
+</html>
