@@ -11,12 +11,71 @@
 </head>
 <body>
     <div class="fixe">
-        <div class="lofo" style="padding-left: 45px;padding-top: 10px;">
+        <div class="lofo" >
             <strong><p style="color: rgba(162, 117, 204, 0.555);"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: rgb(140, 58, 216)">B</span>lay Library</p></strong>
 
         </div>
         <div class="lofo1">
+
+            <div class="dfghj">
+                <input type="checkbox" style="display: none;" name="" id="checkboxjh">
+                <label for="checkboxjh">
+                    <img src="static/IMAGES/me.png" alt="">
+                </label>
+                <div class="zeyrze" >
+                    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: rgb(90, 7, 163);padding-top: 10px;padding-left: 20px;padding-bottom: 50px;">MENU</h1>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/home-removebg-preview.png" style="filter: invert(15%) sepia(59%) saturate(7268%) hue-rotate(272deg) brightness(63%) contrast(111%);height: 20px;"  alt="">
+                        <a href="">
+                            <p style="color: rgb(90, 7, 163);padding-left: 5px;">Acceuil</p>
+                        </a>
+                        
+
+                    </div>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/modi.png" style="filter: invert(15%) sepia(59%) saturate(7268%) hue-rotate(272deg) brightness(63%) contrast(111%);height: 20px;"  alt="">
+                        <a href="/achat">
+                            <p style="color: rgb(90, 7, 163);padding-left: 5px;">Nos publications</p>
+                        </a>
+                        
+
+                    </div>
+                    
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/contac-removebg-preview.png" style="filter: invert(15%) sepia(59%) saturate(7268%) hue-rotate(272deg) brightness(63%) contrast(111%);height: 20px;"  alt="">
+                        <a href="/home#apeo">
+                            <p style="color: rgb(90, 7, 163);padding-left: 5px;">A propos de nouss</p>
+                        </a>
+                        
+
+                    </div>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/charrete.png" style="filter: invert(15%) sepia(59%) saturate(7268%) hue-rotate(272deg) brightness(63%) contrast(111%);height: 20px;"  alt="">
+                        <a href="/panieruser">
+                            <p style="color: rgb(90, 7, 163);padding-left: 5px;">Panier</p>
+                        </a>
+                        
+
+                    </div>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/pay.png" style="filter: invert(15%) sepia(59%) saturate(7268%) hue-rotate(272deg) brightness(63%) contrast(111%);height: 20px;"  alt="">
+                        <a href="/useprid">
+                            <p style="color: rgb(90, 7, 163);padding-left: 5px;">Compte</p>
+                        </a>
+                        
+
+                    </div>
+                    
+                </div>
+            </div>
+
             <nav>
+
                 <ul>
                     <li>
                         <a href="" style="color: rgb(116, 116, 116);">Acceuil</a>
@@ -58,8 +117,8 @@
 
     </div>
     <div class="hre">
-        <div class="retyu2" style="width:40%;">
-            <img src="{{ url_for('static', filename='IMAGES/20945446.jpg')}}" height="450px" width="90%" alt="" >
+        <div class="retyu2" style="width:40%;" id="fgsqhj">
+            <img src="{{ url_for('static', filename='IMAGES/20945446.jpg')}}"  height="450px" width="90%" alt="" >
         </div>
         <div class="retyu1" >
             <p style="color: rgb(116, 116, 116);">Tout savoir sur nous en meme temps hien !</p>
@@ -77,10 +136,10 @@
     </div>
     <div class="footer">
      
-            <form action="/envoyer_email" method="post" class="imp">
-                <input type="text" class="te" name="contenu" placeholder="Ecrivez - nous maintenant s'il vous avez un probleme!">
-                <input type="submit" class="sr" value="">
-            </form>
+        <form action="/envoyer_email" method="post" class="imp">
+            <input type="text" class="te" name="contenu" placeholder="Ecrivez - nous maintenant s'il vous avez un probleme!">
+            <input type="submit" class="sr" value="">
+        </form>
       
     </div>
 </body>

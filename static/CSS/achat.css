@@ -5,12 +5,81 @@
     font-family: 'Poppins', sans-serif;
     
 }
+
 @media (min-width:10px) and (max-width:1000px) {
-    .lofo1 {
+    .lofo1 nav {
         display: none;
     }
+    .lofo1{
+        padding-right: 20px;
+        
+    }
+    .lofo1 img{
+        top: 0px;
+        right: 0px;
+        padding-right: 30px;
+    }
+    .dfghj {
+        height: 500px;
+        width: 300px;
+        position: fixed;
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        flex-direction: column;
+        right: 0px;
+        top: 10px;
+       
+        
+
+    }
+    #checkboxjh:checked ~ .zeyrze {
+        visibility: visible;
+        height: 500px;
+        width: 300px;
+        
+        background-color: rgb(90, 7, 163);
+        margin-top: 15px;
+        right: 0px;
+        top: 10px;
+    }
+    .feukj {
+        width: 80%;
+        height: 80%;
+        background-color: aqua;
+       
+    }
+    .zeyrze {
+        height: 500px;
+        width: 300px;
+        visibility: hidden;
+        /* display: none; */
+        margin-top: 30px;
+        right: 0px;
+        top: 10px;
+
+    }
+    .poqsd {
+        padding-left: 20px;
+        width: 100%;
+        height: 50px;
+        /* background-color: white; */
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+    
+    /* .zeyrze img {
+        height: 15px;
+        width: 15px;
+        filter: invert();
+    } */
 }
 @media (min-width:1000px) {
+    .dfghj {
+        display: none;
+
+    }
     .lofo1 {
         display: flex;
         align-items: center;
@@ -20,6 +89,9 @@
         height: 100%;
         background-color: rgb(90, 7, 163);
     
+    }
+    .lofo1 img{
+        display: none;        
     }
     .lofo1 nav ul li{
         list-style-type: none;
