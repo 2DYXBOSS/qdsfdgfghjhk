@@ -13,21 +13,21 @@
 <body>
     <div class="fixe">
         <div class="lofo" style="padding-left: 45px;padding-top: 10px;">
-            <strong><p style="color: rgba(162, 117, 204, 0.555);"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: white">B</span>lay Library</p></strong>
+            <strong><p style="color: #a275cc8e;"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: #ffffff">B</span>lay Library</p></strong>
 
         </div>
         <div class="lofo1">
             <div class="dfghj">
                 <input type="checkbox" style="display: none;" name="" id="checkboxjh">
                 <label for="checkboxjh">
-                    <img src="static/IMAGES/me.png" style="filter: invert();" alt="">
+                    <img id="img" src="static/IMAGES/me.png" style="filter: invert();" alt="">
                 </label>
                 <div class="zeyrze" >
                     <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;padding-top: 10px;padding-left: 20px;padding-bottom: 50px;">MENU</h1>
                     <div class="poqsd" >
 
                         <img src="static/IMAGES/home-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
-                        <a href="">
+                        <a href="/home">
                             <p style="color: white;padding-left: 5px;">Acceuil</p>
                         </a>
                         
@@ -56,7 +56,7 @@
 
                         <img src="static/IMAGES/charrete.png" style="filter: invert();height: 20px;"  alt="">
                         <a href="/panieruser">
-                            <p style="color: white;padding-left: 5px;">Panier</p>
+                            <p style="color: white;padding-left: 5px;">Mon panier</p>
                         </a>
                         
 
@@ -65,7 +65,16 @@
 
                         <img src="static/IMAGES/pay.png" style="filter: invert();height: 20px;"  alt="">
                         <a href="/useprid">
-                            <p style="color: white;padding-left: 5px;">Compte</p>
+                            <p style="color: white;padding-left: 5px;">Mon compte</p>
+                        </a>
+                        
+
+                    </div>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/dec-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
+                        <a href="/sprome">
+                            <p style="color: white;padding-left: 5px;">Deconnexion</p>
                         </a>
                         
 
@@ -86,11 +95,11 @@
                     </li>
                     
                     <li>
-                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: white;border-radius: 10px;" href="/useprid">Compte</a>
+                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: blueviolet;border-radius: 10px;" href="/useprid">Mon compte</a>
                         
                     </li>
                     <li>
-                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert(24%) sepia(50%) saturate(3691%) hue-rotate(260deg) brightness(95%) contrast(92%);" alt="" height="30px" width="30px">
+                        <a style="padding: 15px 20px;color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="static/IMAGES/charrete.png" style="filter: invert(76%) sepia(41%) saturate(5129%) hue-rotate(217deg) brightness(89%) contrast(92%);" alt="" height="30px" width="30px">
                             {% if ae%}
                             <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 2rem;">{{ae[0]}}</span>
                             {% endif %}
@@ -111,6 +120,16 @@
         </div>
         <a href="" >JE VEUX ACHETER</a>
     </div> -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul style="text-align: center;">
+            {% for message in messages %}
+            <li style="color: green;list-style-type: none;font-size: 0.8rem;padding-bottom: 20px;"><h1 style="color: green;text-align: center;">{{ message }}</h1></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    <!-- <h1 style="color: green;text-align: center;">COMMANDE VALIDEE AVEC SUCCES</h1> -->
     <div class="ertqsfy">
         <div class="payem">
             <div class="dfgh">
@@ -121,7 +140,7 @@
             </div>
             <form action="/commande" method="post">
                 <!-- <a href="" type="submit">JE VEUX ACHETER</a> -->
-                <input type="submit"  style="padding: 15px 25px;color: white;background-color: rgb(90, 7, 163);border: none;" value="COMMANDER MAINTENANT" placeholder="JE VEUX ACHETER">
+                <input type="submit"  value="COMMANDER MAINTENANT" placeholder="JE VEUX ACHETER">
             </form>
             
         </div>
@@ -129,8 +148,8 @@
             <div class="dfggh">
                 <img src="{{url_for('static', filename='IMAGES/sac1.jpg')}}" width="100%" height="100%" alt="">
             </div>
-            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">TOTAL</h1>
-            <p style="color: gray;">Avertissement Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163)">PRIX TOTAL</h1>
+            <p style="color: gray;padding-top: 10px;padding-bottom: 20px;"><span style="color: red;font-weight: bolder;">Avertissement</span>  ! Vous scanner ce <span style="color: blueviolet;font-weight: bolder;">code QR</span> pour <span style="color: blueviolet;font-weight: bolder;">payer</span> si et seulement si vous avez recu le <span style="color: blueviolet;font-weight: bolder;">produits commandé .</span></p>
             {% if ae%}
             <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">{{ae[2]}} FCFA</h1>
             {% endif %}

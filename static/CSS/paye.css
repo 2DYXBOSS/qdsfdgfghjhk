@@ -5,6 +5,18 @@
     font-family: 'Poppins', sans-serif;
     
 }
+.payem input {
+    padding: 15px 25px;
+    color: white;
+    background-color: rgb(90, 7, 163);
+    border: none;
+}
+.payem input:hover{
+    padding: 15px 25px;
+    color: rgb(90, 7, 163);
+    background-color: white;
+    border: 1px solid rgb(90, 7, 163);
+}
 @media (min-width:10px) and (max-width:1000px) {
     .lofo1 nav {
         display: none;
@@ -27,7 +39,7 @@
         justify-content: end;
         flex-direction: column;
         right: 0px;
-        top: 10px;
+        top: 18px;
        
         
 
@@ -89,7 +101,7 @@
         background-color: rgb(90, 7, 163);
     
     }
-    .lofo1 img{
+    #img{
         display: none;        
     }
     .lofo1 nav ul li{
@@ -238,7 +250,8 @@ a {
     
     /* display: flex; */
     padding-top: 10px;
-    padding-left: 50px;
+    padding-right: 30px;
+    padding-left: 30px;
     /* flex-direction: column;
     align-items: center;
     justify-content: start;

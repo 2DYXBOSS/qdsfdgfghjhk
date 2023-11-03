@@ -5,7 +5,48 @@
     font-family: 'Poppins', sans-serif;
     
 }
-
+.dfgj a{
+    padding: 15px 25px;
+    background-color:  white;
+    color: rgb(90, 7, 163);
+    border-radius: 5px;
+    border: 1px solid rgb(90, 7, 163)
+}
+.dfgj a:hover{
+    padding: 15px 25px;
+    background-color: rgb(90, 7, 163);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(90, 7, 163);
+}
+.ghj {
+    background-color: white;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+.fghxzd label{
+    height: 100px;
+    width: 300px;
+    
+}
+.fghxzd {
+   
+    padding: 10px;
+    box-shadow: 2px 2px 10px 1.2px rgb(140, 58, 216);
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.fghxzd h1{
+   
+    font-size: 0.5rem;
+    width: 100%;
+}
 @media (min-width:10px) and (max-width:1000px) {
     .lofo1 nav {
         display: none;
@@ -28,7 +69,7 @@
         justify-content: end;
         flex-direction: column;
         right: 0px;
-        top: 10px;
+        top: 18px;
        
         
 
@@ -46,7 +87,7 @@
     .feukj {
         width: 80%;
         height: 80%;
-        background-color: aqua;
+       
        
     }
     .zeyrze {
@@ -90,7 +131,7 @@
         background-color: rgb(90, 7, 163);
     
     }
-    .lofo1 img{
+    #img{
         display: none;        
     }
     .lofo1 nav ul li{
@@ -155,17 +196,17 @@ box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
 .nkqekj a, button{
     padding: 10px 10px;
     background-color: white;
-    color: rgb(140, 58, 216);
+    color: rgb(90, 7, 163);
     border-radius: 5px;
-    border: 1px solid rgb(140, 58, 216);
+    border: 1px solid rgb(90, 7, 163);
     margin-right: 10px;
 }
 .nkqekj a:hover, button:hover {
     padding: 10px 10px;
-    background-color: rgb(140, 58, 216);
+    background-color: rgb(90, 7, 163);
     color: white;
     border-radius: 5px;
-    border: 1px solid rgb(140, 58, 216);
+    border: 1px solid rgb(90, 7, 163);
 }
 
 li{

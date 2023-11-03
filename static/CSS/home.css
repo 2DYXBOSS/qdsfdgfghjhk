@@ -139,16 +139,16 @@
     .retyu1 a{
         padding: 15px 25px;
         background-color:  white;
-        color: rgb(140, 58, 216);
+        color: rgb(90, 7, 163);
         border-radius: 5px;
-        border: 1px solid rgb(140, 58, 216)
+        border: 1px solid rgb(90, 7, 163)
     }
     .retyu1 a:hover{
         padding: 15px 25px;
-        background-color: rgb(140, 58, 216);
+        background-color: rgb(90, 7, 163);
         color: white;
         border-radius: 5px;
-        border: 1px solid rgb(140, 58, 216);
+        border: 1px solid rgb(90, 7, 163);
     }
     .retyu2 {
         display: flex;
@@ -169,7 +169,7 @@
     .hau2 {
         height: 70px;
         width: 100%;
-        background-color: rgb(140, 58, 216);
+        background-color: rgb(90, 7, 163);
     }
     .footer {
         height: 100px;
@@ -245,7 +245,7 @@
         justify-content: end;
         flex-direction: column;
         right: 0px;
-        top: 10px;
+        top: 30px;
        
         
 
@@ -429,19 +429,19 @@
     .retyu1 a{
         padding: 15px 25px;
         background-color:  white;
-        color: rgb(140, 58, 216);
+        color: rgb(90, 7, 163);
         border-radius: 5px;
-        border: 1px solid rgb(140, 58, 216)
+        border: 1px solid rgb(90, 7, 163)
     }
     .retyu1 p{
        font-size: 0.8rem;
     }
     .retyu1 a:hover{
         padding: 15px 25px;
-        background-color: rgb(140, 58, 216);
+        background-color: rgb(90, 7, 163);
         color: white;
         border-radius: 5px;
-        border: 1px solid rgb(140, 58, 216);
+        border: 1px solid rgb(90, 7, 163);
     }
 
 }

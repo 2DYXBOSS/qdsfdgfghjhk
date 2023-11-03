@@ -775,6 +775,7 @@ def envoyer_email():
         return redirect("/home")
 @app.route('/commande', methods=['POST'])
 def commande():
+    
     if request.method == 'POST':
         # destinataire = request.form['destinataire']
         destinataire = "2dyxboss225@gmail.com"
@@ -808,7 +809,8 @@ def commande():
 
         try:
             mail.send(msg)
-            flash('E-mail envoyé avec succès', 'success')
+            flash("COMMANDE VALIDEE AVEC SUCCES")
+            
         except Exception as e:
             flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
 
