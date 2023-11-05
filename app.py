@@ -61,7 +61,43 @@ with app.app_context() :
         db.create_all()
     except Exception as e:
         print("error de creation de la table")
+
+
+with app.app_context() :
+    try :
+        db.create_all()
+    except Exception as e:
+        print("error de creation de la table")
+class Notife(db.Model):
+
+    id = db.Column(db.Integer, primary_key = True)
     
+    quantite = db.Column(db.Integer,nullable = False)
+    prix = db.Column(db.Integer,nullable = False)
+    image = db.Column(db.String(100), unique = False , nullable = False)
+    
+
+   
+    def __init__(self,prix,quantite,image):
+        
+        self.prix = prix
+        self.quantite = quantite
+        self.image = image
+        
+
+    # db.init_app(app)
+    # with app.app_context() :
+    #     db.create_all()
+
+    def __repr__(self):
+        
+        return {
+            
+            "prix": self.prix,
+            "quantite": self.quantite,
+            "image": self.image,
+            
+        }
 # creation de ma table dans la base de donnée 
 
 class Profil(db.Model):
@@ -203,6 +239,7 @@ class Userpaniere(db.Model):
             "image": self.image,
             
         }
+
 # <<<<<<< HEAD
 # =======
 
@@ -229,24 +266,33 @@ with app.app_context() :
 
 @app.route('/Payement')
 def Payement() :
-    user = Connecter.query.all()
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    # user = Connecter.query.all()
     data = Userpaniere.query.all()
-    zee = Connecter.query.get(1)   
+    # zee = Connecter.query.get(1)   
     frr = []
     ut = []
+    etr = []
     
     for i in data : 
-        if i.mail == zee.last_name :
+        if i.mail == user.last_name :
             frr.append(i)
+            
             ut.append([i.nom,i.prix])
     pri = 0
     for i in frr :
         pri += i.prix
     
     az = len(frr)
-    er =[az,user,pri,ut]
+    for i in frr :
+        etr.append(i.image)
+    po = 'a.jpeg'
+    er =[az,user,pri,ut,frr]
  
-
+    print(f"{etr[0]}")
     return render_template('payement.html',ae = er)
     
 
@@ -255,7 +301,11 @@ def Payement() :
 @app.route('/new',methods = ["POST"])
 def new():
     zee = Connecter.query.get(1)
-    user = Profil.query.filter_by(last_name = zee.last_name).first()
+    if 'utilisateur_id' in session:
+        useru = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    user = Profil.query.filter_by(last_name = useru.last_name).first()
     nom = request.form.get("nom")
     desc = request.form.get("desc")
     image = request.form.get("image")
@@ -275,16 +325,20 @@ def new():
 # le panier
 @app.route('/panieruser')
 def panieruserk():
+    if 'utilisateur_id' in session:
+        useru = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     data = Userpaniere.query.all()
     Panier = Panierz.query.all()
-    zee = Connecter.query.get(1)
-    user = Userpaniere.query.filter_by(mail = zee.last_name).first()
+    # zee = Connecter.query.get(1)
+    user = Userpaniere.query.filter_by(mail = useru.last_name).first()
     
     frr = []
     imm = []
     
     for i in data : 
-        if i.mail == zee.last_name :
+        if i.mail == useru.last_name :
             frr.append(i)
     # for i in Panier : 
     #     if i.nom == zee.first_name :
@@ -352,14 +406,18 @@ def suppanier() :
 
 @app.route('/achat')
 def achl():
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     aer = Panierz.query.all()
     data = Userpaniere.query.all()
-    zee = Connecter.query.get(1)   
+    # zee = Connecter.query.get(1)   
     frr = []
 
     
     for i in data : 
-        if i.mail == zee.last_name :
+        if i.mail == user.last_name :
             frr.append(i)
    
     
@@ -382,17 +440,25 @@ def objet():
         
         db.session.add(pani)
         db.session.commit()
-        return redirect("/profil")
+        return redirect("/admining")
     except :
         return render_template("/boutique.html")
     
 # redirection vers la page admin pour voirs les articles ajouter
-@app.route('/profil')
-def profil() :
-    profil = Panierz.query.all()
-    return render_template('profil.html',profil = profil)
+# @app.route('/profil')
+# def profil() :
+#     profil = Panierz.query.all()
+#     return render_template('profil.html',profil = profil)
 
 # Supprimer un arcticles depuis la base Admin
+@app.route('/deletenotif/<int:id>')
+def deletenotif(id) :
+
+
+    data = Notife.query.get(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect("/useprid")
 @app.route('/deletearticles/<int:id>')
 def ecraseart(id) :
 
@@ -400,29 +466,45 @@ def ecraseart(id) :
     data = Panierz.query.get(id)
     db.session.delete(data)
     db.session.commit()
-    return redirect("/profil")
+    return redirect("/admining")
 
 @app.route('/useprid')
 def useprid():
-    user = Connecter.query.all()
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    # user = Connecter.query.all()
     data = Userpaniere.query.all()
-    zee = Connecter.query.get(1)   
+    # zee = Connecter.query.get(1)
+       
     frr = []
 
     
     for i in data : 
-        if i.mail == zee.last_name :
+        if i.mail == user.last_name :
             frr.append(i)
    
     
     az = len(frr)
-    er =[az,user]
+    notif = Notife.query.all()
+    er =[az,user,notif]
  
 
     return render_template('useprid.html',ae = er)
-
+# @app.route('/profil')
+# def profil():
+#     if 'utilisateur_id' in session:
+#         user = User.query.get(session['utilisateur_id'])
+#         return render_template('profil.html', user=user)
+#     else:
+#         return redirect(url_for('connexion'))
 @app.route('/home')
 def home():
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     # user = Connecter.query.all()
     return render_template('home.html')
 @app.route('/autre/<int:id>')
@@ -436,6 +518,10 @@ def join(id):
 # creation de ma fonction pour INSCRIRE un USER dans la base de donnée
 @app.route('/add_data')
 def add_data():
+    # if 'utilisateur_id' in session:
+    #     user = Profil.query.get(session['utilisateur_id'])
+    # else:
+    #     return redirect('/pre')
     return render_template("add_profile.html")
 
 @app.route('/add',methods = ["POST"])
@@ -482,7 +568,32 @@ def profile() :
 
 
 # Connexion utlisateur et admin
+# @app.route('/connexion', methods=['GET', 'POST'])
+# def connexion():
+#     if request.method == 'POST':
+#         username = request.form['username']
+#         password = request.form['password']
+#         user = User.query.filter_by(username=username).first()
+#         if user and bcrypt.check_password_hash(user.password, password):
+#             session['utilisateur_id'] = user.id
+#             flash('Vous êtes connecté', 'success')
+#             return redirect(url_for('profil'))
+#         else:
+#             flash('La connexion a échoué. Vérifiez votre nom d\'utilisateur et votre mot de passe.', 'danger')
+#     return render_template('connexion.html')
 
+@app.route('/deconnexion')
+def deconnexion():
+    session.pop('utilisateur_id', None)
+    return redirect('/pre')
+
+# @app.route('/profil')
+# def profil():
+#     if 'utilisateur_id' in session:
+#         user = User.query.get(session['utilisateur_id'])
+#         return render_template('profil.html', user=user)
+#     else:
+#         return redirect(url_for('connexion'))
 
 
 @app.route('/pre')
@@ -491,24 +602,31 @@ def pree():
 @app.route('/sprome',methods = ["GET","POST"])
 def sprome() :
     
-    eude = Profil.query.all()
-
+    eudeu = Profil.query.all()
+    profilp = Panierz.query.all()
+    eude = [eudeu,profilp]
     user = Profil.query.filter_by(last_name = request.form.get("last_name"),age = request.form.get("age")).first()
    
     if user :
+        # if session['utilisateur_id'] != user.id:
+        #     return redirect('/pre')
+        # if 'utilisateur_id' in session:
+        #     user = Profil.query.get(session['utilisateur_id'])
+        #     return redirect('/pre')
         
-
         datae = Profil.query.get(user.id)
         
         print(f"vous etes connecter{user.first_name}{user.id}")
         # return redirect(url_for('home', user=user.id))
 
-        tre = Connecter.query.get(1)
-        profi = Connecter.query.all()
-        tre.first_name = user.first_name
-        tre.last_name = user.last_name
-        tre.age = user.age 
-        db.session.commit()
+        # tre = Connecter.query.get(1)
+        # profi = Connecter.query.all()
+        # tre.first_name = user.first_name
+        # tre.last_name = user.last_name
+        # tre.age = user.age 
+        # db.session.commit()
+
+        session['utilisateur_id'] = user.id
         return redirect('/home')
     
         # az = Profil.query.get(user.id)
@@ -516,7 +634,7 @@ def sprome() :
 
     elif request.form.get("last_name") == "admin@gmail.com" and request.form.get("age") == "admin" :
 
-        return render_template('index.html',profiles = eude)
+        return redirect('/admining')
     else :
 
         flash("Email ou Mot de passe invalide")
@@ -528,12 +646,21 @@ def sprome() :
 @app.route('/admining')
 # @login_requiered
 def index() :
-    profiles = Profil.query.all()
+    profil = Panierz.query.all()
+    profile = Profil.query.all()
+    # for i in profile :
+      
+    #     i.last_name = i.last_name[:9:1]
+    #     return profile
+            
+
+
+    profiles = [profil , profile]
     return render_template('index.html', profiles = profiles)
-@app.route('/admining')
-def ghdc() :
+# @app.route('/admining')
+# def ghdc() :
     
-    return render_template('add_profile.html')
+#     return render_template('add_profile.html')
 # Supprimer un utilisteur 
 @app.route('/delete/<int:id>')
 def erase(id) :
@@ -654,6 +781,10 @@ def allowed_file(filename):
 # redirection vers la page ajouter des nouveaux produits
 @app.route('/add_objet')
 def add_objet():
+    # if 'utilisateur_id' in session:
+    #     user = Profil.query.get(session['utilisateur_id'])
+    # else:
+    #     return redirect('/pre')
     return render_template("boutique.html")
 @app.route('/')
 def page():
@@ -754,12 +885,20 @@ def display_image(filename):
 
 @app.route('/envoyer_email', methods=['POST'])
 def envoyer_email():
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     if request.method == 'POST':
         # destinataire = request.form['destinataire']
         destinataire = "2dyxboss225@gmail.com"
         # sujet = request.form['sujet']
-        tre = Connecter.query.get(1)
-        dfggh = tre.last_name
+        # tre = Connecter.query.get(1)
+        if 'utilisateur_id' in session:
+            user = Profil.query.get(session['utilisateur_id'])
+        else:
+            return redirect('/pre')
+        dfggh = user.last_name
         sujet = dfggh
         contenu = request.form['contenu']
 
@@ -777,17 +916,31 @@ def envoyer_email():
 def commande():
     
     if request.method == 'POST':
+        prix = request.form['prix']
+        image = request.form['image']
+        quantite = request.form['quantite']
+        notif = Notife(prix = prix, image = image, quantite = quantite)
+        # pani = Panier(nom = nom, description = description , prix = prix)
+        
+        db.session.add(notif)
+        db.session.commit()
+        # return redirect("/admining")
+        
         # destinataire = request.form['destinataire']
         destinataire = "2dyxboss225@gmail.com"
         # sujet = request.form['sujet']
-        user = Connecter.query.all()
+        # user = Connecter.query.all()
+        if 'utilisateur_id' in session:
+            user = Profil.query.get(session['utilisateur_id'])
+        else:
+            return redirect('/pre')
         data = Userpaniere.query.all()
-        zee = Connecter.query.get(1)   
+        # zee = Connecter.query.get(1)   
         frr = []
         ut = []
         
         for i in data : 
-            if i.mail == zee.last_name :
+            if i.mail == user.last_name :
                 frr.append(i)
                 ut.append([i.nom,i.prix])
         pri = 0
@@ -799,8 +952,8 @@ def commande():
     
 
         # return render_template('payement.html',ae = er)
-        tre = Connecter.query.get(1)
-        dfggh = tre.last_name
+        # tre = Connecter.query.get(1)
+        dfggh = user.last_name
         sujet = dfggh
         contenu = f"je veux acheter ces {az} articles : {ut} pour un montant de {pri} FCFA"
 

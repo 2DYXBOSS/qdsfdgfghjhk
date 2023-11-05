@@ -239,7 +239,7 @@
 
                         <img src="static/IMAGES/pay.png" style="filter: invert();height: 20px;"  alt="">
                         <a href="/useprid">
-                            <p style="color: white;padding-left: 5px;">Mon compte</p>
+                            <p style="color: rgb(156, 9, 224);padding-left: 5px;">Mon compte</p>
                         </a>
                         
 
@@ -247,7 +247,7 @@
                     <div class="poqsd" >
 
                         <img src="static/IMAGES/dec-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
-                        <a href="/sprome">
+                        <a href="/deconnexion">
                             <p style="color: white;padding-left: 5px;">Deconnexion</p>
                         </a>
                         
@@ -269,7 +269,7 @@
                     </li>
                     
                     <li>
-                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: white;border-radius: 10px;" href="/useprid">Mon compte</a>
+                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(156, 9, 224);border-radius: 10px;color: rgb(156, 9, 224);" href="/useprid">Mon compte</a>
                         
                     </li>
                     
@@ -287,41 +287,49 @@
         </div>
     </div>
     <div class="hre">
-        <!-- <div class="liv" style="background-color: rgb(90, 7, 163);" >
-
-
-            {% for data in ae[1] %}
-            <h1 style="text-align: center;color: white;font-size: 1.5rem;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> <span>Nom & Prénom</span> <br> {{data.first_name}}</h1>
-
-
-            <h1 style="text-align: center;color: white;font-size: 1.5rem;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><span>E-mail</span> <br>{{data.last_name}}</h1>
-
-
-            <h1 style="text-align: center;color: white;font-size: 1.5rem;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><span >Mot de passe</span> <br>{{data.age}}</h1>
-            {% endfor %}
-
-            <a href="">EDITER</a>
-
-        </div> -->
+        
         
     </div>
+   
     <div class="ghj">
         <div class="fghxzd">
-            {% for data in ae[1] %}
-            <label for="">Nom & Prenom<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 1.5rem;color: rgb(140, 58, 216)">{{data.first_name}}</h1></label>
-            
-            <label for="">E-mail<p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 1.5rem;color: rgb(140, 58, 216)">{{data.last_name}}</p></label>
-            
-            <label for="">Mot de passe<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 1rem;color: rgb(140, 58, 216)">********</h1></label>
+            <div class="ronedte">
+                
+            </div>
+            <div class="ronedte1">
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;text-align: center;text-transform: uppercase;">{{ae[1].first_name}}</h1>
+                <p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: center;color: gray;">{{ae[1].last_name}}</p>
+            </div>
+            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;text-align: center;color: rgb(90, 7, 163)">NOTIFICATIONS</h1>
+            {% for i in ae[2] %}
+            <div class="notiffq">
+                <div class="supeyujd">
+                    <div class="hdjks">
+                        
+                        <a href="/deletenotif/{{i.id}}">
+                            <img src="{{url_for('static', filename='IMAGES/poubelele.png')}}" alt="" style="filter: invert(100%) sepia(0%) saturate(751%) hue-rotate(178deg) brightness(112%) contrast(105%);">
+                        </a>
+                    </div>
+                </div>
+                <div class="supeyujd1">
+                    <div class="fcdghjhk">
+                        <img src="{{url_for('static', filename='uploads/' + i.image)}}" width="150px" height="70%" alt="">
+                        <h5 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;padding-top: 20px;color: rgb(90, 7, 163);text-align: center;">{{i.prix}} FCFA</h5>
+                    </div>
+                    <div class="fcdghjhk1">
+                        <h5 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: green;font-size: 1rem;">COMMANDE EFFECTUEE AVEC SUCCES</h5>
+                        <p style="color: gray;">Vous avez commandez <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: green;font-size: 1.5rem;font-weight: bolder;" >{{i.quantite}}</span> article(s) au prix de  <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: green;font-size: 1.5rem;font-weight: bolder;" >{{i.prix}} FCFA</span> Chez <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);font-size: 1.5rem;font-weight: bolder;" >BLAY LIBRARY</span>  </p>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-            <div class="dfgj">
-                <!-- <a href="">Modifier</a> -->
-                <a href="/sprome">Deconnexion</a>
+            
+            <div class="erjkz">
+
+                <a href="/deconnexion" style="text-align: center;height: 60px;width: 180px;background-color: rgb(90, 7, 163);color: white;padding-top: 15px;" >Deconnexion</a>
             </div>
         </div>
-        
     </div>
-    
 </body>
 </html>
 

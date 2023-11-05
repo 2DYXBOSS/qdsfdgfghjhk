@@ -73,7 +73,7 @@
                     <div class="poqsd" >
 
                         <img src="static/IMAGES/dec-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
-                        <a href="/sprome">
+                        <a href="/deconnexion">
                             <p style="color: white;padding-left: 5px;">Deconnexion</p>
                         </a>
                         
@@ -140,14 +140,30 @@
             </div>
             <form action="/commande" method="post">
                 <!-- <a href="" type="submit">JE VEUX ACHETER</a> -->
+                
+                
+                {% if ae%}
+                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="quantite" value="{{ae[0]}}">
+                {% endif %}
+                {% if ae%}
+                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{ae[2]}}">
+                {% endif %}
+                {% for i in ae[4]%}
+                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{i.image}}">
+                {% endfor %}
                 <input type="submit"  value="COMMANDER MAINTENANT" placeholder="JE VEUX ACHETER">
             </form>
             
         </div>
         <div class="payem1">
+            
             <div class="dfggh">
-                <img src="{{url_for('static', filename='IMAGES/sac1.jpg')}}" width="100%" height="100%" alt="">
+               
+                {% for i in ae[4]%}
+                <img src="{{url_for('static', filename='uploads/' + i.image )}}" width="70px" height="70px" alt="">
+                {% endfor %}
             </div>
+            
             <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163)">PRIX TOTAL</h1>
             <p style="color: gray;padding-top: 10px;padding-bottom: 20px;"><span style="color: red;font-weight: bolder;">Avertissement</span>  ! Vous scanner ce <span style="color: blueviolet;font-weight: bolder;">code QR</span> pour <span style="color: blueviolet;font-weight: bolder;">payer</span> si et seulement si vous avez recu le <span style="color: blueviolet;font-weight: bolder;">produits commandé .</span></p>
             {% if ae%}
