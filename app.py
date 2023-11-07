@@ -884,17 +884,40 @@ def updater(id):
 
 
 # SUPPRIMER DU PANIER{} 
+# @app.route('/suppanier',methods = ["POST"])
+# def suppanier() :
+
+#     nom = request.form.get("nom")
+#     description = request.form.get("description")
+#     mail = request.form.get("mail")
+    
+#     user = Userpaniere.query.filter_by(nom = nom,description = description).first()
+#     zerre = Userpaniere.query.get(user.id)
+#     db.session.delete(zerre)
+#     db.session.commit()
+#     return redirect("/panieruser")
 @app.route('/suppanier',methods = ["POST"])
 def suppanier() :
 
     nom = request.form.get("nom")
     description = request.form.get("description")
     mail = request.form.get("mail")
+   
+    zerr = Userpaniere.query.all()
     
-    user = Userpaniere.query.filter_by(nom = nom,description = description).first()
-    zerre = Userpaniere.query.get(user.id)
-    db.session.delete(zerre)
-    db.session.commit()
+    recy =[]
+    for i in zerr :
+        
+        if i.mail == mail :
+            if i.nom == nom and i.description == description :
+                user = Userpaniere.query.filter_by(nom = nom, description = description , mail = mail).first()
+
+                print(i.description,i.id,i.mail,i.nom)
+                zerre = Userpaniere.query.get(i.id)
+                db.session.delete(zerre)
+                db.session.commit()
+                return redirect("/panieruser")
+            
     return redirect("/panieruser")
 # FIN SUPPRIMER DU PANIER{} 
 
@@ -933,4 +956,4 @@ def ecraseart(id) :
 # FIN SUPPRIMER ARTICLES{} 
 
 if __name__ == '__main__' :
-    app.run(debug=True,port=5000)
+    app.run(debug=True,port=5004)
