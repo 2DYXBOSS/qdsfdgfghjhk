@@ -18,23 +18,14 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.config['SECRET_KEY'] = 'BONJOUR'
 
-# debut
 
-# configuration of mail 
-# app.config['MAIL_SERVER']='smtp.gmail.com'
-# app.config['MAIL_PORT'] = 465
-# app.config['MAIL_USERNAME'] = 'pirateavie225@gmail.com'
-# app.config['MAIL_PASSWORD'] = 'Lapharmacie225'
-# app.config['MAIL_USE_TLS'] = False
-# app.config['MAIL_USE_SSL'] = True
- 
 app.config['SECRET_KEY'] = 'sdfgghjklhkj'
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'pythonanywhere225@gmail.com'
-app.config['MAIL_PASSWORD'] = 'tdqn cklm uvjd aonn'
-app.config['MAIL_DEFAULT_SENDER'] = 'pythonanywhere225@gmail.com'
+app.config['MAIL_USERNAME'] = '0streamblay@gmail.com'
+app.config['MAIL_PASSWORD'] = 'vgux fpjq qyqr nxem'
+app.config['MAIL_DEFAULT_SENDER'] = '0streamblay@gmail.com'
 
 # Clé secrète pour sécuriser l'application
 app.secret_key = os.urandom(24)
@@ -45,11 +36,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 
 db = SQLAlchemy(app)
-# <<<<<<< HEAD
 
-# =======
-# # migrate = Migrate(app,db)
-# >>>>>>> 45fe0891c21594bba082ad5726a93354d788fd09
 
 
 debug = True
@@ -197,10 +184,6 @@ class Panierz(db.Model):
         }
     
 
-# <<<<<<< HEAD
-
-# =======
-# >>>>>>> 45fe0891c21594bba082ad5726a93354d788fd09
 with app.app_context() :
     try :
         db.create_all()
@@ -240,11 +223,7 @@ class Userpaniere(db.Model):
             
         }
 
-# <<<<<<< HEAD
-# =======
 
-
-# >>>>>>> 45fe0891c21594bba082ad5726a93354d788fd09
 with app.app_context() :
     try :
         db.create_all()
@@ -264,6 +243,9 @@ with app.app_context() :
 
 
 
+
+
+# PAYEMENT {}
 @app.route('/Payement')
 def Payement() :
     if 'utilisateur_id' in session:
@@ -294,35 +276,11 @@ def Payement() :
  
     print(f"{etr[0]}")
     return render_template('payement.html',ae = er)
-    
+# FIN PAYEMENT {}
 
-# Ajouter au panier
-
-@app.route('/new',methods = ["POST"])
-def new():
-    zee = Connecter.query.get(1)
-    if 'utilisateur_id' in session:
-        useru = Profil.query.get(session['utilisateur_id'])
-    else:
-        return redirect('/pre')
-    user = Profil.query.filter_by(last_name = useru.last_name).first()
-    nom = request.form.get("nom")
-    desc = request.form.get("desc")
-    image = request.form.get("image")
-    prix = request.form.get("prix")
-    mail = user.last_name
-    user = Userpaniere.query.filter_by(nom = nom, description = desc , prix = prix, mail = mail).first()
-    if user:
-        
-        return redirect("/achat")
-    prix = Userpaniere(nom = nom, description = desc , prix = prix, mail = mail,image=image)
-    db.session.add(prix)
-    db.session.commit()
-    return redirect("/achat")
- 
    
 
-# le panier
+# PANIER {}
 @app.route('/panieruser')
 def panieruserk():
     if 'utilisateur_id' in session:
@@ -340,17 +298,7 @@ def panieruserk():
     for i in data : 
         if i.mail == useru.last_name :
             frr.append(i)
-    # for i in Panier : 
-    #     if i.nom == zee.first_name :
-    #         imm.append(i.image)
-    # imm = Panierz.query.filter_by(mail = frr.last_name).first()
-    # for i in Panierz :
-    #     if i.nom == frr.last_name :
-    #         imm.append(i.image)
-    # autre = [frr,imm]
-    # if autre :
-    #     print(f"{autre}") 
-    # ert = [frr,imm]
+    
     
     pri = 0
     for i in frr :
@@ -361,49 +309,10 @@ def panieruserk():
     er =[az,frr,pri]
     return render_template('panieruser.html',user = er)
     # return render_template('panieruser.html',user = [user])
+# FIN PANIER {}
 
 
-# supprimer du panier < inacheve > sa supprime tout
-@app.route('/suppanier',methods = ["POST"])
-def suppanier() :
-
-    nom = request.form.get("nom")
-    description = request.form.get("description")
-    mail = request.form.get("mail")
-    
-    user = Userpaniere.query.filter_by(nom = nom,description = description).first()
-    zerre = Userpaniere.query.get(user.id)
-    db.session.delete(zerre)
-    db.session.commit()
-    return redirect("/panieruser")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# @app.route('/panieruser')
-# def achl():
-#     aer = Panier.query.all()
-#     return render_template('achat.html',aer = aer)
-
-
-
-
-
-
+# PUBLICATION {}
 @app.route('/achat')
 def achl():
     if 'utilisateur_id' in session:
@@ -424,9 +333,336 @@ def achl():
     az = len(frr)
     er =[az,aer]
     return render_template('achat.html',ae = er)
+# FIN PUBLICATION {}
+
+
+# PROFIL USER {}
+@app.route('/useprid')
+def useprid():
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    data = Userpaniere.query.all()
+    
+       
+    frr = []
+
+    
+    for i in data : 
+        if i.mail == user.last_name :
+            frr.append(i)
+   
+    
+    az = len(frr)
+    notif = Notife.query.all()
+    er =[az,user,notif]
+ 
+
+    return render_template('useprid.html',ae = er)
+# FIN PROFIL USER {}
+
+# PAGE ACCEUIL AVANT CONNEXION {}
+@app.route('/')
+def page():
+    return render_template("page.html")
+# FIN PAGE ACCEUIL AVANT CONNEXION {}
+
+
+# PAGE ACCEUIL APRES CONNEXION {}
+@app.route('/home')
+def home():
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    # user = Connecter.query.all()
+    return render_template('home.html')
+@app.route('/autre/<int:id>')
+def join(id):
+    user = Profil.query.filter_by(id=id).first()
+    return render_template('miseajour.html')
+# FIN PAGE ACCEUIL APRES CONNEXION {}
+
+
+# DECONNEXION ADMIN {}
+@app.route('/deconnexionad')
+def deconnexionad():
+    session.pop('admining_id', None)
+    return redirect('/pre')
+# FIN DECONNEXION ADMIN{}
+
+
+# DECONNEXION {}
+@app.route('/deconnexion')
+def deconnexion():
+    session.pop('utilisateur_id', None)
+    return redirect('/pre')
+# FIN DECONNEXION {}
+
+
+# CONNEXION {}
+@app.route('/pre')
+def pree():
+    return render_template('connexion.html')
+@app.route('/sprome',methods = ["GET","POST"])
+def sprome() :
+    compte = 0
+    eudeu = Profil.query.all()
+    profilp = Panierz.query.all()
+    eude = [eudeu,profilp]
+    user = Profil.query.filter_by(last_name = request.form.get("last_name"),age = request.form.get("age")).first()
+    userr = Connecter.query.filter_by(last_name = request.form.get("last_name"),age = request.form.get("age")).first()
+
+    if user :
+        
+        datae = Profil.query.get(user.id)
+        
+        print(f"vous etes connecter{user.first_name}{user.id}")
+        
+
+        session['utilisateur_id'] = user.id
+        return redirect('/home')
+
+    elif userr :
+        session['admining_id'] = userr.id
+        return redirect('/admining')
+    else :
+
+        flash("Email ou Mot de passe invalide")
+        return redirect("/pre")
+# FIN CONNEXION {}
 
 
 
+
+# ADMIN{}
+@app.route('/admining')
+# @login_requiered
+def index() :
+    if 'admining_id' in session:
+        userr = Connecter.query.get(session['admining_id'])
+    else:
+        return redirect('/pre')
+    
+ 
+        
+        
+    profil = Panierz.query.all()
+    profile = Profil.query.all()
+    
+    profiles = [profil , profile]
+    return render_template('index.html', profiles = profiles)
+   
+# FIN ADMIN{}
+
+
+
+
+# AJOUTER DES IMAGES PAR UN KV
+@app.route('/upload',methods = ["POST"])
+def upload():
+    pic = request.files['pic']
+    filename = secure_filename(pic.filename)
+    mimetype = pic.mimetype
+    img = Img(img = pic.read(),name = filename,mimetype = mimetype)
+    print(img)
+    db.session.add(img)
+    db.session.commit()
+    return redirect("/recup")
+
+@app.route('/recup')
+def recup():
+    data = Img.query.get(Img.id)
+    return redirect('recu.html',Response(data.name, mimetype=data.mimetype))
+
+# @app.route('/ee/<int:id>')
+# def ee(id):
+#     data = Img.query.get(id)
+#     return redirect(url_for('ee', id=id),Response(data.img, mimetype=data.mimetype))
+
+
+# def conver_image_into_binary(filename):
+#     with open(filename, 'rb') as file:
+#         photo_image = file.read()
+#     return photo_image
+
+
+# comment recuperer une image de la base de donnée
+# @app.route('/img/<int:id>')
+# def img(id):
+#     data = Img.query.get(id)
+#     return Response(data.img, mimetype=data.mimetype)
+
+# FIN AJOUTER DES IMAGES PAR UN KV
+
+
+
+
+
+
+# ENVOYER MAIL
+@app.route('/envoyer_email', methods=['POST'])
+def envoyer_email():
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    if request.method == 'POST':
+        # destinataire = request.form['destinataire']
+        destinataire = "0streamblay@gmail.com"
+        # sujet = request.form['sujet']
+        # tre = Connecter.query.get(1)
+        if 'utilisateur_id' in session:
+            user = Profil.query.get(session['utilisateur_id'])
+        else:
+            return redirect('/pre')
+        dfggh = user.last_name
+        sujet = dfggh
+        contenu = request.form['contenu']
+
+        msg = Message(sujet, recipients=[destinataire])
+        msg.body = contenu
+       
+        try:
+            mail.send(msg)
+            
+        except Exception as e:
+            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+        return redirect("/home")
+# FIN ENVOYER MAIL
+
+
+# COMMANDER
+@app.route('/commande', methods=['POST'])
+def commande():
+    utilisateur_id = Profil.query.get(session['utilisateur_id'])
+    oiuy = utilisateur_id.first_name
+    if request.method == 'POST':
+        prix = request.form['prix']
+        image = request.form['image']
+        quantite = request.form['quantite']
+        notif = Notife(prix = prix, image = image, quantite = quantite)
+        # pani = Panier(nom = nom, description = description , prix = prix)
+        
+        db.session.add(notif)
+        db.session.commit()
+        # return redirect("/admining")
+        
+        # destinataire = request.form['destinataire']
+        destinataire = "0streamblay@gmail.com"
+        # sujet = request.form['sujet']
+        # user = Connecter.query.all()
+        if 'utilisateur_id' in session:
+            user = Profil.query.get(session['utilisateur_id'])
+        else:
+            return redirect('/pre')
+        data = Userpaniere.query.all()
+        # zee = Connecter.query.get(1)   
+        frr = []
+        ut = []
+        
+        for i in data : 
+            if i.mail == user.last_name :
+                frr.append(i)
+                ut.append([str(i.nom) ,str(i.prix) + " FCFA"])
+        pri = 0
+        for i in frr :
+            pri += i.prix
+        
+        az = len(frr)
+        er =[az,user,pri,ut]
+    
+
+        # return render_template('payement.html',ae = er)
+        # tre = Connecter.query.get(1)
+        dfggh = user.last_name
+        sujet = dfggh
+        numero = request.form['numero']
+        lieux = request.form['lieux']
+        recu = []
+        lo = "\n"
+        for i in ut :
+            recu.append(" : ".join(i))
+        contenu = f"COMMANDE DE MR/MME \n{oiuy} \n{dfggh} \n\n\nNOMBRE D'ARTICLES : {az} \n\n{lo.join(recu)} \n\nPRIX : {pri} FCFA \n\nNUMERO : {numero} \n\nLOCALISATION : {lieux} "
+        
+        
+        # names = [['Adam',str(25)], ['Bob',str(58)], ['Cyril',str(32)]]
+        # recu = []
+        # # nl = '\n'
+        # # text = f"Winners are:{nl}{''.join(names)}"
+        # for i in names :
+        #     recu.append(",".join(i))
+        # print( '\n'.join(recu))
+        
+        
+        # names = ['Adam', 'Bob', 'Cyril']
+        # text = f"Winners are:\n{'\n'.join(names)}"
+        # print(text)
+        
+        # names = ['Adam', 'Bob', 'Cyril']
+        # nl = '\n'
+        # text = f"Winners are:{nl}{nl.join(names)}"
+        # print(text)
+        msg = Message(sujet, recipients=[destinataire])
+        msg.body = contenu
+
+        try:
+            mail.send(msg)
+            flash("COMMANDE VALIDEE AVEC SUCCES")
+            
+        except Exception as e:
+            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+        
+    
+    if request.method == 'POST':
+        # destinataire = request.form['destinataire']
+        destinataire = dfggh
+        # sujet = request.form['sujet']
+        # tre = Connecter.query.get(1)
+        
+        sujet = "Votre commande sur BLAY LIBRARY"
+        contenu = f"NOMBRE D'ARTICLES : {az} \n\n{lo.join(recu)} \n\nPRIX : {pri} FCFA \n\nNUMERO : {numero} \n\nLOCALISATION : {lieux} "
+
+
+        msg = Message(sujet, recipients=[destinataire])
+        msg.body = contenu
+       
+        try:
+            mail.send(msg)
+          
+        except Exception as e:
+            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+        return redirect("/Payement")
+# FIN COMMANDER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# PARTIE AJOUTER
+
+
+# PARTIE AJOUTER DES ARTICLES{}
 @app.route('/objet',methods = ["POST"])
 def objet(): 
     
@@ -444,84 +680,52 @@ def objet():
     except :
         return render_template("/boutique.html")
     
-# redirection vers la page admin pour voirs les articles ajouter
-# @app.route('/profil')
-# def profil() :
-#     profil = Panierz.query.all()
-#     return render_template('profil.html',profil = profil)
 
-# Supprimer un arcticles depuis la base Admin
-@app.route('/deletenotif/<int:id>')
-def deletenotif(id) :
-
-
-    data = Notife.query.get(id)
-    db.session.delete(data)
-    db.session.commit()
-    return redirect("/useprid")
-@app.route('/deletearticles/<int:id>')
-def ecraseart(id) :
-
-
-    data = Panierz.query.get(id)
-    db.session.delete(data)
-    db.session.commit()
-    return redirect("/admining")
-
-@app.route('/useprid')
-def useprid():
-    if 'utilisateur_id' in session:
-        user = Profil.query.get(session['utilisateur_id'])
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+@app.route('/add_objet')
+def add_objet():
+    if 'admining_id' in session:
+        useru = Profil.query.get(session['admining_id'])
     else:
         return redirect('/pre')
-    # user = Connecter.query.all()
-    data = Userpaniere.query.all()
-    # zee = Connecter.query.get(1)
-       
-    frr = []
+    return render_template("boutique.html")
 
-    
-    for i in data : 
-        if i.mail == user.last_name :
-            frr.append(i)
-   
-    
-    az = len(frr)
-    notif = Notife.query.all()
-    er =[az,user,notif]
+@app.route('/add_objet', methods=['POST'])
+def upload_image():
+    try :
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        print(file.filename)
+        if file.filename == '':
+            flash('Aucune image sélectionnée pour le téléchargement')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #print('upload_image filename: ' + filename)
+            flash('Image téléchargée avec succès et affichée ci-dessous')
+            return render_template('boutique.html', filename=file.filename)
+            # return render_template('boutique.html', filename=filename)
+    except:
+        flash('Les types dimages autorisés sont - png, jpg, jpeg, gif')
+        return redirect(request.url)
+
+        # uploads.image
  
-
-    return render_template('useprid.html',ae = er)
-# @app.route('/profil')
-# def profil():
-#     if 'utilisateur_id' in session:
-#         user = User.query.get(session['utilisateur_id'])
-#         return render_template('profil.html', user=user)
-#     else:
-#         return redirect(url_for('connexion'))
-@app.route('/home')
-def home():
-    if 'utilisateur_id' in session:
-        user = Profil.query.get(session['utilisateur_id'])
-    else:
-        return redirect('/pre')
-    # user = Connecter.query.all()
-    return render_template('home.html')
-@app.route('/autre/<int:id>')
-def join(id):
-    user = Profil.query.filter_by(id=id).first()
-    return render_template('miseajour.html')
+@app.route('/display/<filename>')
+def display_image(filename):
+    #print('display_image filename: ' + filename)
+    return redirect(url_for('static', filename = 'uploads/' + filename), code=301)
+# FIN AJOUTER DES ARTICLES{}
 
 
-# redirection vers la boutique
-
-# creation de ma fonction pour INSCRIRE un USER dans la base de donnée
+# AJOUTER DES USER{}
 @app.route('/add_data')
 def add_data():
-    # if 'utilisateur_id' in session:
-    #     user = Profil.query.get(session['utilisateur_id'])
-    # else:
-    #     return redirect('/pre')
+    
     return render_template("add_profile.html")
 
 @app.route('/add',methods = ["POST"])
@@ -565,117 +769,38 @@ def profile() :
         else :
             return redirect("/add_data")
         
+# FIN AJOUTER DES USER{} 
 
 
-# Connexion utlisateur et admin
-# @app.route('/connexion', methods=['GET', 'POST'])
-# def connexion():
-#     if request.method == 'POST':
-#         username = request.form['username']
-#         password = request.form['password']
-#         user = User.query.filter_by(username=username).first()
-#         if user and bcrypt.check_password_hash(user.password, password):
-#             session['utilisateur_id'] = user.id
-#             flash('Vous êtes connecté', 'success')
-#             return redirect(url_for('profil'))
-#         else:
-#             flash('La connexion a échoué. Vérifiez votre nom d\'utilisateur et votre mot de passe.', 'danger')
-#     return render_template('connexion.html')
-
-@app.route('/deconnexion')
-def deconnexion():
-    session.pop('utilisateur_id', None)
-    return redirect('/pre')
-
-# @app.route('/profil')
-# def profil():
-#     if 'utilisateur_id' in session:
-#         user = User.query.get(session['utilisateur_id'])
-#         return render_template('profil.html', user=user)
-#     else:
-#         return redirect(url_for('connexion'))
-
-
-@app.route('/pre')
-def pree():
-    return render_template('connexion.html')
-@app.route('/sprome',methods = ["GET","POST"])
-def sprome() :
-    
-    eudeu = Profil.query.all()
-    profilp = Panierz.query.all()
-    eude = [eudeu,profilp]
-    user = Profil.query.filter_by(last_name = request.form.get("last_name"),age = request.form.get("age")).first()
-   
-    if user :
-        # if session['utilisateur_id'] != user.id:
-        #     return redirect('/pre')
-        # if 'utilisateur_id' in session:
-        #     user = Profil.query.get(session['utilisateur_id'])
-        #     return redirect('/pre')
+# AJOUTER DES PANIER{}
+@app.route('/new',methods = ["POST"])
+def new():
+    zee = Connecter.query.get(1)
+    if 'utilisateur_id' in session:
+        useru = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    user = Profil.query.filter_by(last_name = useru.last_name).first()
+    nom = request.form.get("nom")
+    desc = request.form.get("desc")
+    image = request.form.get("image")
+    prix = request.form.get("prix")
+    mail = user.last_name
+    user = Userpaniere.query.filter_by(nom = nom, description = desc , prix = prix, mail = mail).first()
+    if user:
         
-        datae = Profil.query.get(user.id)
-        
-        print(f"vous etes connecter{user.first_name}{user.id}")
-        # return redirect(url_for('home', user=user.id))
-
-        # tre = Connecter.query.get(1)
-        # profi = Connecter.query.all()
-        # tre.first_name = user.first_name
-        # tre.last_name = user.last_name
-        # tre.age = user.age 
-        # db.session.commit()
-
-        session['utilisateur_id'] = user.id
-        return redirect('/home')
-    
-        # az = Profil.query.get(user.id)
-        
-
-    elif request.form.get("last_name") == "admin@gmail.com" and request.form.get("age") == "admin" :
-
-        return redirect('/admining')
-    else :
-
-        flash("Email ou Mot de passe invalide")
-        return redirect("/pre")
-
-
-# redirection vers la page admin pour voirs les personnes inscrites
-
-@app.route('/admining')
-# @login_requiered
-def index() :
-    profil = Panierz.query.all()
-    profile = Profil.query.all()
-    # for i in profile :
-      
-    #     i.last_name = i.last_name[:9:1]
-    #     return profile
-            
-
-
-    profiles = [profil , profile]
-    return render_template('index.html', profiles = profiles)
-# @app.route('/admining')
-# def ghdc() :
-    
-#     return render_template('add_profile.html')
-# Supprimer un utilisteur 
-@app.route('/delete/<int:id>')
-def erase(id) :
-
-    data = Profil.query.get(id)
-    db.session.delete(data)
+        return redirect("/achat")
+    prix = Userpaniere(nom = nom, description = desc , prix = prix, mail = mail,image=image)
+    db.session.add(prix)
     db.session.commit()
-    return redirect('/admining')
+    return redirect("/achat")
+# FIN AJOUTER DES PANIER{} 
 
 
+# PARTIE MODIFIER
 
 
-
-
-# modifier les informations dun utilisateur
+# MODIFIER USER{}
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
     user = Profil.query.get(id)
@@ -712,322 +837,100 @@ def update(id):
            
     flash("Email ou Mot de passe invalide")
     return render_template('miseajour.html', user=user)
+# FIN MODIFIER USER{}
 
 
 
-
-
-
-
-
-
-
-# def conver_image_into_binary(filename):
-#     with open(filename, 'rb') as file:
-#         photo_image = file.read()
-#     return photo_image
-
-
-
-
-# comment recuperer une image de la base de donnée
-# @app.route('/img/<int:id>')
-# def img(id):
-#     data = Img.query.get(id)
-#     return Response(data.img, mimetype=data.mimetype)
-
-
-
-
-@app.route('/recup')
-def recup():
-    data = Img.query.get(Img.id)
-    return redirect('recu.html',Response(data.name, mimetype=data.mimetype))
-
-# @app.route('/ee/<int:id>')
-# def ee(id):
-#     data = Img.query.get(id)
-#     return redirect(url_for('ee', id=id),Response(data.img, mimetype=data.mimetype))
-
-
-@app.route('/upload',methods = ["POST"])
-def upload():
-    pic = request.files['pic']
-    filename = secure_filename(pic.filename)
-    mimetype = pic.mimetype
-    img = Img(img = pic.read(),name = filename,mimetype = mimetype)
-    print(img)
-    db.session.add(img)
-    db.session.commit()
-    return redirect("/recup")
-
-
-
-
-
-
-
-
-
-
- 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-     
- 
-# @app.route(/admining)
-# def home():
-#     return render_template('boutique.html')
-# redirection vers la page ajouter des nouveaux produits
-@app.route('/add_objet')
-def add_objet():
-    # if 'utilisateur_id' in session:
-    #     user = Profil.query.get(session['utilisateur_id'])
-    # else:
-    #     return redirect('/pre')
-    return render_template("boutique.html")
-@app.route('/')
-def page():
-    return render_template("page.html")
- 
-@app.route('/add_objet', methods=['POST'])
-def upload_image():
-    try :
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        print(file.filename)
-        if file.filename == '':
-            flash('Aucune image sélectionnée pour le téléchargement')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #print('upload_image filename: ' + filename)
-            flash('Image téléchargée avec succès et affichée ci-dessous')
-            return render_template('boutique.html', filename=file.filename)
-            # return render_template('boutique.html', filename=filename)
-    except:
-        flash('Les types dimages autorisés sont - png, jpg, jpeg, gif')
-        return redirect(request.url)
-
-        # uploads.image
- 
-@app.route('/display/<filename>')
-def display_image(filename):
-    #print('display_image filename: ' + filename)
-    return redirect(url_for('static', filename = 'uploads/' + filename), code=301)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# from flask import Flask, render_template, request, redirect, url_for, flash
-# from flask_mail import Mail, Message
-# import os
-
-# app = Flask(__name__)
-
-# # Configuration pour Flask-Mail (utilisez vos propres informations)
-# app.config['SECRET_KEY'] = 'sdfgghjklhkj'
-# app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-# app.config['MAIL_PORT'] = 587
-# app.config['MAIL_USE_TLS'] = True
-# app.config['MAIL_USERNAME'] = 'pythonanywhere225@gmail.com'
-# app.config['MAIL_PASSWORD'] = 'tdqn cklm uvjd aonn'
-# app.config['MAIL_DEFAULT_SENDER'] = 'pythonanywhere225@gmail.com'
-
-# # Clé secrète pour sécuriser l'application
-# app.secret_key = os.urandom(24)
-# # import secrets
-
-# # # Générer une clé secrète aléatoire de 24 caractères
-# # app.secret_key = secrets.token_hex(24)
-# mail = Mail(app)
-
-# @app.route('/')
-# def index():
-#     return render_template('email.html')
-
-@app.route('/envoyer_email', methods=['POST'])
-def envoyer_email():
-    if 'utilisateur_id' in session:
-        user = Profil.query.get(session['utilisateur_id'])
-    else:
-        return redirect('/pre')
+# MODIFIER MOIMEN{}
+@app.route('/updater/<int:id>', methods=['GET', 'POST'])
+def updater(id):
+    user = Profil.query.get(id)
+    eude = Profil.query.all()
     if request.method == 'POST':
-        # destinataire = request.form['destinataire']
-        destinataire = "2dyxboss225@gmail.com"
-        # sujet = request.form['sujet']
-        # tre = Connecter.query.get(1)
-        if 'utilisateur_id' in session:
-            user = Profil.query.get(session['utilisateur_id'])
-        else:
-            return redirect('/pre')
-        dfggh = user.last_name
-        sujet = dfggh
-        contenu = request.form['contenu']
-
-        msg = Message(sujet, recipients=[destinataire])
-        msg.body = contenu
-       
-        try:
-            mail.send(msg)
-            flash('E-mail envoyé avec succès', 'success')
-        except Exception as e:
-            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
-
-        return redirect("/home")
-@app.route('/commande', methods=['POST'])
-def commande():
-    
-    if request.method == 'POST':
-        prix = request.form['prix']
-        image = request.form['image']
-        quantite = request.form['quantite']
-        notif = Notife(prix = prix, image = image, quantite = quantite)
-        # pani = Panier(nom = nom, description = description , prix = prix)
-        
-        db.session.add(notif)
-        db.session.commit()
-        # return redirect("/admining")
-        
-        # destinataire = request.form['destinataire']
-        destinataire = "2dyxboss225@gmail.com"
-        # sujet = request.form['sujet']
-        # user = Connecter.query.all()
-        if 'utilisateur_id' in session:
-            user = Profil.query.get(session['utilisateur_id'])
-        else:
-            return redirect('/pre')
-        data = Userpaniere.query.all()
-        # zee = Connecter.query.get(1)   
-        frr = []
-        ut = []
-        
-        for i in data : 
-            if i.mail == user.last_name :
-                frr.append(i)
-                ut.append([i.nom,i.prix])
-        pri = 0
-        for i in frr :
-            pri += i.prix
-        
-        az = len(frr)
-        er =[az,user,pri,ut]
-    
-
-        # return render_template('payement.html',ae = er)
-        # tre = Connecter.query.get(1)
-        dfggh = user.last_name
-        sujet = dfggh
-        contenu = f"je veux acheter ces {az} articles : {ut} pour un montant de {pri} FCFA"
-
-        msg = Message(sujet, recipients=[destinataire])
-        msg.body = contenu
-
-        try:
-            mail.send(msg)
-            flash("COMMANDE VALIDEE AVEC SUCCES")
+        user.first_name = request.form['first_name']
+        user.last_name = user.last_name
+        user.age = request.form['age']
+        for i in eude :
+            if i == user :
+                continue
+            if i.last_name == user.last_name :
+                
+                return redirect(url_for('update', id=id))
+            else :
             
-        except Exception as e:
-            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+                for i in range (len(user.last_name)) :
 
-        return redirect("/Payement")
+                    if user.last_name[i] == "@" :
+                        
+                        if "moc.liamg" == user.last_name[:i:-1] and len(user.age)== 8 :
 
-# from flask import Flask, render_template, request, redirect, url_for, flash
-# from flask_mail import Mail, Message
+                            db.session.commit()
+                            return redirect(url_for('useprid',id=id))
+                        
+                        else :
 
-# app = Flask(__name__)
-
-# # Configuration pour Flask-Mail (utilisez vos propres informations)
-# app.config['MAIL_SERVER'] = 'smtp.example.com'
-# app.config['MAIL_PORT'] = 587
-# app.config['MAIL_USE_TLS'] = True
-# app.config['MAIL_USERNAME'] = 'votre_email@example.com'
-# app.config['MAIL_PASSWORD'] = 'votre_mot_de_passe'
-# app.config['MAIL_DEFAULT_SENDER'] = 'votre_email@example.com'
-
-# mail = Mail(app)
-
-# @app.route('/envoyer_email')
-# def index():
-#     return render_template('maail.html')
-
-# @app.route('/envoyer_email', methods=['POST'])
-# def envoyer_email():
-#     if request.method == 'POST':
-#         destinataire = request.form['destinataire']
-#         sujet = request.form['sujet']
-#         contenu = request.form['contenu']
-
-#         msg = Message(sujet, recipients=[destinataire])
-#         msg.body = contenu
-
-#         try:
-#             mail.send(msg)
-#             flash('E-mail envoyé avec succès', 'success')
-#         except Exception as e:
-#             flash('Une erreur s\'est produite lors de l\'envoi de l\'e-mail', 'danger')
-
-#         return redirect(url_for('index'))
+                            return redirect(url_for('updater', id=id))
+                   
+                        
+ 
+            
+           
+   
+    return render_template('updatpro.html', user=user)
+# FIN MODIFIER MOIMEN{}
 
 
+# PARTIE SUPPRIMER
 
 
+# SUPPRIMER DU PANIER{} 
+@app.route('/suppanier',methods = ["POST"])
+def suppanier() :
+
+    nom = request.form.get("nom")
+    description = request.form.get("description")
+    mail = request.form.get("mail")
+    
+    user = Userpaniere.query.filter_by(nom = nom,description = description).first()
+    zerre = Userpaniere.query.get(user.id)
+    db.session.delete(zerre)
+    db.session.commit()
+    return redirect("/panieruser")
+# FIN SUPPRIMER DU PANIER{} 
 
 
+# SUPPRIMER USER{} 
+@app.route('/delete/<int:id>')
+def erase(id) :
 
-# importing libraries 
+    data = Profil.query.get(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect('/admining')
+
+# FIN SUPPRIMER USER{} 
+
+# SUPPRIMER NOTIFICATION{} 
+@app.route('/deletenotif/<int:id>')
+def deletenotif(id) :
 
 
-# # message object mapped to a particular URL ‘/’ 
-# @app.route("/mail") 
-# def index(): 
-#     msg = Message( 
-#                     'Hello', 
-#                     sender ='pirateavie225@gmail.com', 
-#                     recipients = ['2dyxboss225@gmail.com'] 
-#                 ) 
-#     msg.body = 'Hello Flask message sent from Flask-Mail'
-#     mail.send(msg) 
-#     return 'Sent'
+    data = Notife.query.get(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect("/useprid")
+# FIN SUPPRIMER NOTIFICATION{} 
+
+# SUPPRIMER ARTICLES{} 
+@app.route('/deletearticles/<int:id>')
+def ecraseart(id) :
 
 
+    data = Panierz.query.get(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect("/admining")
+# FIN SUPPRIMER ARTICLES{} 
 
 if __name__ == '__main__' :
     app.run(debug=True,port=5000)

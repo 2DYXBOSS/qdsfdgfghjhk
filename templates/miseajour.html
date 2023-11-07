@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css')}}">
+    <title>Modifier - Blay Library</title>
+    <link rel="shortcut icon" href="static/IMAGES/blaye.jpeg">    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
                     <a href="/admining"><strong><p style="color: rgba(162, 117, 204, 0.555);"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: rgb(90, 7, 163);">B</span>lay Library</p></strong></a>
                 </div>
                 <div class="hea2">
-                    <h2 style="color: rgb(90, 7, 163);font-size: 1rem;margin-bottom: 10px;">MODIFICATION DES INFORMATIONS</h2>
+                    <h2 style="color: rgb(90, 7, 163);font-size: 1rem;margin-bottom: 10px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">MODIFICATION DES INFORMATIONS</h2>
                 </div>
                 <form action="{{url_for('update', id = user.id)}}" method="post" class="formulaire">
                     <label >Modifier le Nom et le Prenom</label>
@@ -41,7 +41,7 @@
                     
                     <a href="/pre" style="font-size: 0.5rem;color: black;padding-top: 10px;margin-bottom: 50px;">Se connecter plutot</a>
                     
-                    <button type="submit">soumettre</button>
+                    <button type="submit">Modifier</button>
                 </form>
 
             </div>

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Payement - Blay Library</title>
+    <link rel="shortcut icon" href="static/IMAGES/blaye.jpeg">    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/CSS/paye.css">
@@ -47,7 +47,7 @@
 
                         <img src="static/IMAGES/contac-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
                         <a href="/home#apeo">
-                            <p style="color: white;padding-left: 5px;">A propos de nouss</p>
+                            <p style="color: white;padding-left: 5px;">À propos de nous</p>
                         </a>
                         
 
@@ -74,7 +74,7 @@
 
                         <img src="static/IMAGES/dec-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
                         <a href="/deconnexion">
-                            <p style="color: white;padding-left: 5px;">Deconnexion</p>
+                            <p style="color: white;padding-left: 5px;">Déconnexion</p>
                         </a>
                         
 
@@ -91,7 +91,7 @@
                         <a href="/achat" style="color: white;">Nos publications</a>
                     </li>
                     <li>
-                        <a href="/home#apeo" style="color: white;">A propos de nous</a>
+                        <a href="/home#apeo" style="color: white;">À propos de nous</a>
                     </li>
                     
                     <li>
@@ -132,12 +132,11 @@
     <!-- <h1 style="color: green;text-align: center;">COMMANDE VALIDEE AVEC SUCCES</h1> -->
     <div class="ertqsfy">
         <div class="payem">
+            
             <div class="dfgh">
-                <img src="{{url_for('static', filename='IMAGES/cde.jpeg')}}" width="100%" height="100%" alt="">
+                <img src="{{url_for('static', filename='IMAGES/cde.jpeg')}}" width="85%" height="90%" alt="">
             </div>
-            <div class="dfgh1" style="padding-left: 50px;">
-                <!-- 1 / cli le payement de votre article , merci bien pour la comprehension. -->
-            </div>
+           
             <form action="/commande" method="post">
                 <!-- <a href="" type="submit">JE VEUX ACHETER</a> -->
                 
@@ -151,7 +150,12 @@
                 {% for i in ae[4]%}
                 <input style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{i.image}}">
                 {% endfor %}
-                <input type="submit"  value="COMMANDER MAINTENANT" placeholder="JE VEUX ACHETER">
+                <p style="text-align: start;padding-left: 45px;color: rgb(90, 7, 163);">Numero de telephone</p>
+                <input style="border: 1px solid rgb(90, 7, 163);width: 70%;height: 20px;background-color: rgba(204, 185, 185, 0.397);border-radius: 5px;outline: none;"  type="text" name="numero" >
+                <p style="text-align: start;padding-left: 45px;color: rgb(90, 7, 163);">Lieu de livraison</p>
+                <input style="border: 1px solid rgb(90, 7, 163);width: 70%;height: 20px;background-color: rgba(204, 185, 185, 0.397);border-radius: 5px;outline: none;"  type="text" name="lieux" >
+
+                <input type="submit" style="margin-top: 20px;border-radius: 5px;"  value="COMMANDER MAINTENANT" placeholder="JE VEUX ACHETER">
             </form>
             
         </div>
@@ -163,12 +167,15 @@
                 <img src="{{url_for('static', filename='uploads/' + i.image )}}" width="70px" height="70px" alt="">
                 {% endfor %}
             </div>
+            <div class="dfggho">
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-top: 50px;">PRIX TOTAL</h1>
+                <p style="color: gray;padding-top: 10px;padding-bottom: 20px;"><span style="color: red;font-weight: bolder;">Avertissement</span>  ! Vous scannez ce <span style="color: blueviolet;font-weight: bolder;">code QR</span> pour <span style="color: blueviolet;font-weight: bolder;">payer</span> si et seulement si vous avez reçu le <span style="color: blueviolet;font-weight: bolder;"> produit commandé .</span></p>
+                {% if ae%}
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">{{ae[2]}} FCFA</h1>
+                {% endif %}
+            </div>
             
-            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163)">PRIX TOTAL</h1>
-            <p style="color: gray;padding-top: 10px;padding-bottom: 20px;"><span style="color: red;font-weight: bolder;">Avertissement</span>  ! Vous scanner ce <span style="color: blueviolet;font-weight: bolder;">code QR</span> pour <span style="color: blueviolet;font-weight: bolder;">payer</span> si et seulement si vous avez recu le <span style="color: blueviolet;font-weight: bolder;">produits commandé .</span></p>
-            {% if ae%}
-            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">{{ae[2]}} FCFA</h1>
-            {% endif %}
+            
         </div>
     </div>
 </body>

@@ -173,8 +173,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Mon profil - Blay Library</title>
+    <link rel="shortcut icon" href="static/IMAGES/blaye.jpeg">    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/CSS/achat.css">
@@ -221,7 +221,7 @@
 
                         <img src="static/IMAGES/contac-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
                         <a href="/home#apeo">
-                            <p style="color: white;padding-left: 5px;">A propos de nouss</p>
+                            <p style="color: white;padding-left: 5px;">À propos de nous</p>
                         </a>
                         
 
@@ -248,7 +248,7 @@
 
                         <img src="static/IMAGES/dec-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
                         <a href="/deconnexion">
-                            <p style="color: white;padding-left: 5px;">Deconnexion</p>
+                            <p style="color: white;padding-left: 5px;">Déconnexion</p>
                         </a>
                         
 
@@ -265,7 +265,7 @@
                         <a href="/achat" style="color: white;">Nos publications</a>
                     </li>
                     <li>
-                        <a href="/home#apeo" style="color: white;">A propos de nous</a>
+                        <a href="/home#apeo" style="color: white;">À propos de nous</a>
                     </li>
                     
                     <li>
@@ -300,6 +300,10 @@
                 <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;text-align: center;text-transform: uppercase;">{{ae[1].first_name}}</h1>
                 <p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: center;color: gray;">{{ae[1].last_name}}</p>
             </div>
+            <div class="erjkz">
+
+                <a href="/updater/{{ae[1].id}}" style="text-align: center;height: 60px;width: 300px;background-color: rgb(90, 7, 163);color: white;padding-top: 15px;" >Mise a jour de mes informations</a>
+            </div>
             <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;text-align: center;color: rgb(90, 7, 163)">NOTIFICATIONS</h1>
             {% for i in ae[2] %}
             <div class="notiffq">
@@ -317,8 +321,9 @@
                         <h5 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;padding-top: 20px;color: rgb(90, 7, 163);text-align: center;">{{i.prix}} FCFA</h5>
                     </div>
                     <div class="fcdghjhk1">
-                        <h5 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: green;font-size: 1rem;">COMMANDE EFFECTUEE AVEC SUCCES</h5>
-                        <p style="color: gray;">Vous avez commandez <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: green;font-size: 1.5rem;font-weight: bolder;" >{{i.quantite}}</span> article(s) au prix de  <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: green;font-size: 1.5rem;font-weight: bolder;" >{{i.prix}} FCFA</span> Chez <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);font-size: 1.5rem;font-weight: bolder;" >BLAY LIBRARY</span>  </p>
+                        <h5 style="color: rgb(90, 7, 163);font-size: 1.2rem;">NOUVELLE COMMANDE</h5>
+                        <p style="color: gray;">Vous avez commandez <br> <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgba(90, 7, 163, 0.616);font-size: 1.5rem;font-weight: bolder;" >{{i.quantite}}</span> article(s) au prix de <br> <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgba(90, 7, 163, 0.616);font-size: 1.5rem;font-weight: bolder;" >{{i.prix}} FCFA</span> Chez <br> <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);font-size: 1.5rem;font-weight: bolder;" >BLAY LIBRARY .</span> <br> Merci bien pour la confiance.</p>
+                        
                     </div>
                 </div>
             </div>
@@ -326,7 +331,7 @@
             
             <div class="erjkz">
 
-                <a href="/deconnexion" style="text-align: center;height: 60px;width: 180px;background-color: rgb(90, 7, 163);color: white;padding-top: 15px;" >Deconnexion</a>
+                <a href="/deconnexion" style="text-align: center;height: 60px;width: 180px;background-color: rgb(90, 7, 163);color: white;padding-top: 15px;" >Déconnexion</a>
             </div>
         </div>
     </div>
