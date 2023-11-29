@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    
+    scroll-behavior: smooth;
 }
 #gh {
     padding: 15px 25px;
@@ -16,6 +16,13 @@
     color: rgb(90, 7, 163);
     background-color: white;
     border: 0.5px solid rgb(90, 7, 163);
+}
+#gh img{
+    margin-left: 10px;
+    filter: invert();
+}
+#gh:hover img{
+    filter: invert(24%) sepia(50%) saturate(3691%) hue-rotate(260deg) brightness(95%) contrast(92%);
 }
 @media (min-width:10px) and (max-width:1000px) {
     .lofo1 nav {
@@ -131,7 +138,7 @@
 body {
     width: 100%;
     padding-top: 100px;
-    background-color: white;
+    background-color: rgb(248, 248, 248);
     height: 1100px;
    
 }
@@ -139,7 +146,6 @@ body {
 padding-top: 100px;
 height: 100%;
 width: 100%;
-background-color: white;
 display: flex;
 align-items: center;
 flex-direction: column;
@@ -231,3 +237,38 @@ a {
     justify-content: center;
     background-color: white;
 }
+
+
+#pansup img{
+    filter: invert(50%);
+}
+#pansup:hover img{
+    filter: invert();
+}
+
+#pansup{
+    padding: 10px 10px;
+    background-color: white;
+    color: rgb(140, 58, 216);
+    border-radius: 5px;
+    border: 1px solid red;
+    margin-right: 10px;
+}
+#pansup:hover {
+    padding: 10px 10px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid red;
+}
+/* /* #pansup:hover img{
+    text-align: center;
+    height: 60px;
+    width: 215px;
+    background-color: red;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}  */

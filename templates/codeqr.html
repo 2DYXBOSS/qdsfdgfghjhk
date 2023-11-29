@@ -123,15 +123,7 @@
         </div>
         <a href="" >JE VEUX ACHETER</a>
     </div> -->
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul style="text-align: center;">
-            {% for message in messages %}
-            <li style="color: green;list-style-type: none;font-size: 0.8rem;padding-bottom: 20px;"><h1 style="color: green;text-align: center;">{{ message }}</h1></li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
+    
     <!-- <h1 style="color: green;text-align: center;">COMMANDE VALIDEE AVEC SUCCES</h1> -->
     <div class="ertqsfy">
         <div class="payem">
@@ -140,102 +132,49 @@
                 <img src="{{url_for('static', filename='IMAGES/cde.jpeg')}}" width="85%" height="90%" alt="">
             </div> -->
             <div class="dfgh">
-                <!-- <img src="{{url_for('static', filename='IMAGES/pub.jpg')}}" width="85%" height="90%" alt=""> -->
-                {% for i in ae[5]%}
-                <img src="{{url_for('static', filename='uploads/' + i.image )}}" width="100%" height="100%" alt="">
-                {% endfor %}
+                <img src="{{url_for('static', filename='IMAGES/pub.jpg')}}" width="85%" height="90%" alt="">
             </div>
-            <!-- <input type="submit" style="margin-top: 20px;border-radius: 5px;"  value="COMMANDER MAINTENANT" placeholder="JE VEUX ACHETER" id="commander"> -->
-            <div class="plm" id="commander" style="width: 50px;height: 50px;margin-top: 100px;">
-                <img src="{{url_for('static', filename='IMAGES/cde.jpeg')}}" width="100%" height="100%" alt="">
-            </div>
-            <p></p>
-            <!-- <form action="/commande" method="post">
+           
+            <form action="/commande" method="post">
+                <!-- <a href="" type="submit">JE VEUX ACHETER</a> -->
                 
                 
-                {% if ae%}
-                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="quantite" value="{{ae[0]}}">
-                {% endif %}
-                {% if ae%}
-                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{ae[2]}}">
-                {% endif %}
-                {% for i in ae[4]%}
-                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{i.image}}">
-                {% endfor %}
-                {% if ae%}
-                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="maill" value="{{ae[1].last_name}}">
-                {% endif %}
-                <p style="text-align: start;padding-left: 45px;color: rgb(90, 7, 163);">Numero de telephone</p>
-                <input style="width: 70%;height: 20px;background-color: rgba(204, 185, 185, 0.397);border-radius: 5px;outline: none;box-shadow: inset 0px 0px 5px rgb(90, 7, 163);" type="text" name="numero" >
-                <p style="text-align: start;padding-left: 45px;color: rgb(90, 7, 163);">Lieu de livraison</p>
-                <input style="width: 70%;height: 20px;background-color: rgba(204, 185, 185, 0.397);border-radius: 5px;outline: none;box-shadow: inset 0px 0px 5px rgb(90, 7, 163);"  type="text" name="lieux" >
-
                 
                 <input type="submit" style="margin-top: 20px;border-radius: 5px;"  value="COMMANDER MAINTENANT" placeholder="JE VEUX ACHETER" id="commander">
 
                 
-
-                
-            </form> -->
+            </form>
             <!-- <a href="#"  id="commander">commander</a> -->
-            <div class="codrq" >
-                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(81, 24, 134);padding-bottom: 20px;text-align: center;" >SCANNER LE CODE QR </h1>
-                <div class="reqrep">
-                    <img src="{{url_for('static', filename='IMAGES/cde.jpeg')}}" width="100%" height="100%" alt="">
-        
-                </div>
-                
-            </div>
+
             
         </div>
         <div class="payem1">
             
             <div class="dfggh">
                
-                {% for i in ae[6]%}
+                {% for i in ae[4]%}
                 <img src="{{url_for('static', filename='uploads/' + i.image )}}" width="70px" height="70px" alt="">
                 {% endfor %}
             </div>
             <div class="dfggho">
                 <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-top: 50px;">PRIX TOTAL</h1>
-                <p style="color: gray;padding-top: 10px;padding-bottom: 20px;"><span style="color: red;font-weight: bolder;">Avertissement</span>  ! Vous cliquez ce <span style="color: blueviolet;font-weight: bolder;">code QR</span> pour scanner afin de  <span style="color: blueviolet;font-weight: bolder;">payer</span> si et seulement si vous avez reçu le <span style="color: blueviolet;font-weight: bolder;"> produit commandé .</span></p>
+                <p style="color: gray;padding-top: 10px;padding-bottom: 20px;"><span style="color: red;font-weight: bolder;">Avertissement</span>  ! Vous scannez ce <span style="color: blueviolet;font-weight: bolder;">code QR</span> pour <span style="color: blueviolet;font-weight: bolder;">payer</span> si et seulement si vous avez reçu le <span style="color: blueviolet;font-weight: bolder;"> produit commandé .</span></p>
                 {% if ae%}
                 <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">{{ae[2]}} FCFA</h1>
                 {% endif %}
             </div>
             
-            <form action="/commande" method="post">
-                <!-- <a href="" type="submit">JE VEUX ACHETER</a> -->
-                
-                
-                {% if ae%}
-                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="quantite" value="{{ae[0]}}">
-                {% endif %}
-                {% if ae%}
-                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{ae[2]}}">
-                {% endif %}
-                {% for i in ae[4]%}
-                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{i.image}}">
-                {% endfor %}
-                {% if ae%}
-                <input style="opacity: 0;height: 0;width: 0;"  type="text" name="maill" value="{{ae[1].last_name}}">
-                {% endif %}
-                <!-- <p style="text-align: start;padding-left: 45px;color: rgb(90, 7, 163);">Numero de telephone</p> -->
-                <input style="width: 70%;height: 20px;background-color: rgba(204, 185, 185, 0.397);border-radius: 5px;outline: none;box-shadow: inset 0px 0px 5px rgb(90, 7, 163);opacity: 0;height: 0;width: 0;" type="text" name="numero" >
-                <!-- <p style="text-align: start;padding-left: 45px;color: rgb(90, 7, 163);">Lieu de livraison</p> -->
-                <input style="width: 70%;height: 20px;background-color: rgba(204, 185, 185, 0.397);border-radius: 5px;outline: none;box-shadow: inset 0px 0px 5px rgb(90, 7, 163);opacity: 0;height: 0;width: 0;"  type="text" name="lieux" >
-
-                
-                <input type="submit" style="border-radius: 5px;"  value="COMMANDER MAINTENANT" placeholder="JE VEUX ACHETER" >
-
-                
-
-                
-            </form>
+            
         </div>
     </div>
 
-    
+    <div class="codrq">
+        
+        <div class="reqrep">
+            <img src="{{url_for('static', filename='IMAGES/cde.jpeg')}}" width="100%" height="100%" alt="">
+
+        </div>
+    </div>
     <script src="static/CSS/scripts.js"></script>
 
 </body>

@@ -52,6 +52,15 @@
                         
 
                     </div>
+                    <!-- <div class="poqsd" >
+
+                        <img src="static/IMAGES/contac-removebg-preview.png" style="filter: invert(15%) sepia(59%) saturate(7268%) hue-rotate(272deg) brightness(63%) contrast(111%);height: 20px;"  alt="">
+                        <a href="/home#Contactez">
+                            <p style="color: rgb(90, 7, 163);padding-left: 5px;">Contactez - nous</p>
+                        </a>
+                        
+
+                    </div> -->
                     <div class="poqsd" >
 
                         <img src="static/IMAGES/charrete.png" style="filter: invert(15%) sepia(59%) saturate(7268%) hue-rotate(272deg) brightness(63%) contrast(111%);height: 20px;"  alt="">
@@ -87,13 +96,16 @@
 
                 <ul>
                     <li>
-                        <a href="" style="color: rgb(116, 116, 116);">Acceuil</a>
+                        <a href="#acc" style="color: rgb(116, 116, 116);">Acceuil</a>
                     </li>
                     <li>
                         <a href="/achat" style="color: rgb(116, 116, 116);">Nos publications</a>
                     </li>
                     <li>
                         <a href="#apeo" style="color: rgb(116, 116, 116);">À propos de nous</a>
+                    </li>
+                    <li>
+                        <a href="#Contactez" style="color: rgb(116, 116, 116);">Contactez - nous</a>
                     </li>
                     <li>
                         <a style="padding: 15px 20px;background-color: white;color: rgb(90, 7, 163);border-radius: 10px;" href="/useprid">Mon compte</a>
@@ -104,7 +116,7 @@
 
         </div>
     </div>
-    <div class="hre">
+    <div class="hre" id="acc">
         <div class="retyu1">
             <p style="color: rgb(116, 116, 116);">Bienvenue sur notre page de vente en ligne</p>
             <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;">LA LIBRAIRIE <span style="color: rgb(90, 7, 163);font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">BLAY</span></h1>
@@ -143,7 +155,25 @@
         <a style="padding: 25px 25px;background-color: white;color: rgb(90, 7, 163);border-radius: 5px;border: 1px solid rgb(90, 7, 163)" href="">CONNEXION</a> -->
 
     </div>
-    <div class="footer">
+    <div class="hre">
+        <div class="retyu2" style="width:40%;" id="fgsqhj">
+            <img src="{{ url_for('static', filename='IMAGES/ilust.jpg')}}"  height="450px" width="90%" alt="" >
+        </div>
+        <div class="retyu1" >
+            <p style="color: rgb(116, 116, 116);">Que voulez-vous savoir ?</p>
+            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;">LA LIBRAIRIE <span style="color: rgb(90, 7, 163);font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">BLAY</span></h1>
+            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1.5rem;">POURQUOI NOUS CHOISIR ?</h1>
+            <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;">BON MARCHE</h1>
+            <p style="color: rgb(116, 116, 116);margin-bottom: 50px;">BLAY LIBRARY vous offres une plus grande visibilite dans le marche mondial , avec un systeme tres pratique le : <span style="color:rgb(90, 7, 163) ;font-weight: bolder;">ONE-PUB By BLAY BUSINESS</span> . C'est un programme qui consiste a elever vos chiffres d'affaire de facons rapide et pratique , tout en etant investir sur la promotion de votre projet .</p>
+            <a  href="/achat">VOIR LES PUBLICATIONS</a>
+            
+        </div>
+        
+        <!-- <a style="padding: 25px 25px;background-color: white;color: rgb(90, 7, 163);border-radius: 5px;border: 1px solid rgb(90, 7, 163);" href="">INSCRIPTION</a>
+        <a style="padding: 25px 25px;background-color: white;color: rgb(90, 7, 163);border-radius: 5px;border: 1px solid rgb(90, 7, 163)" href="">CONNEXION</a> -->
+
+    </div>
+    <div class="footer" id="Contactez">
      
         <form action="/envoyer_email" method="post" class="imp">
             <input type="text" class="te" name="contenu" placeholder="Ecrivez - nous maintenant s'il vous avez un probleme!">

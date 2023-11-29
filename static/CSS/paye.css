@@ -3,7 +3,52 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+.codrq {
+    width: 100%;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    left: 0%;
+    flex-direction: column;
+    justify-content: center;
+    top: 11%;
+    display: none;
+}
+.codrq.active {
+    width: 100%;
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.678);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 11%;
+    animation: codrq 15s infinite;
     
+}
+
+.reqrep {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(119, 119, 45);
+    box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
+    animation: codrqe 0.5s ease-in-out;
+
+}
+@keyframes codrqe {
+    0%{
+        /* visibility: hidden; */
+        transform: scale(0);
+
+    }
+    /* 100%{
+        transform: scale(5);
+
+    } */
 }
 .payem input {
     padding: 15px 25px;
@@ -12,6 +57,18 @@
     border: none;
 }
 .payem input:hover{
+    padding: 15px 25px;
+    color: rgb(90, 7, 163);
+    background-color: white;
+    border: 1px solid rgb(90, 7, 163);
+}
+.payem1 input {
+    padding: 15px 25px;
+    color: white;
+    background-color: rgb(90, 7, 163);
+    border: none;
+}
+.payem1 input:hover{
     padding: 15px 25px;
     color: rgb(90, 7, 163);
     background-color: white;
@@ -131,7 +188,8 @@
 body {
     width: 100%;
     padding-top: 130px;
-    background-color: white;
+    background-color: rgba(240, 223, 255, 0.486);
+    /* filter: invert(24%) sepia(50%) saturate(3691%) hue-rotate(260deg) brightness(95%) contrast(92%); */
     height: 1100px;
 }
 .hre {
@@ -275,8 +333,8 @@ a {
     border: 2px solid rgb(90, 7, 163);
 }
 .dfgh {
-    width: 250px;
-    height: 250px;
+    width: 90%;
+    height: 70%;
     background-color: white;
     display: flex;
     align-items: center;

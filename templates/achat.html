@@ -196,6 +196,9 @@
                     <li>
                         <a href="/home#apeo" style="color: white;">A propos de nous</a>
                     </li>
+                    <li>
+                        <a href="/home#Contactez" style="color: white;">Contactez - nous</a>
+                    </li>
                     
                     <li>
                         <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: white;border-radius: 10px;" href="/useprid">Mon compte</a>
@@ -204,7 +207,7 @@
                     
                     
                     <li>
-                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert(24%) sepia(50%) saturate(3691%) hue-rotate(260deg) brightness(95%) contrast(92%);" alt="" height="30px" width="30px">
+                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px">
                             {% if ae%}
                             <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 2rem;">{{ae[0]}}</span>
                             {% endif %}
@@ -215,8 +218,110 @@
 
         </div>
     </div>
+    <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;">LES ARTICLES</h1>
     
+    
+    <div class="sact" style="height: 50px;width: 100%;text-align: start;">
+        
+        <div class="dactrs" style="height: 50px;width: 100%;text-align: center;background-color: rgba(168, 136, 201, 0.11);padding-top: 8px;padding-left: 20px;">
+            <h2 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;text-align: start;">LES VETEMENTS</h2>
+        </div>
+    </div>
+    {% if not ae[1] %}
+    <h3 style="text-align: center;color: rgb(211, 205, 205);margin-bottom: 100px;">Aucun produits disponibles pour le moments .</h3>
+    <div class="imoer">
+        
+    </div>
+    {% endif %}
     <div class="hre">
+        {% for data in ae[3] %}
+        <div class="imoer1">
+            <div class="imoaeImage">
+                <img src="{{url_for('static', filename='uploads/' + data.image)}}" height="130px" width="150px" alt="">
+            </div>
+            <div class="imoaeInfo">
+                
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1rem;text-transform: uppercase;">{{data.nom}}</h1>
+                
+                <p style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
+
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;">{{data.prix}} FCFA</h1>
+            </div>
+            <div class="imoaeBout">
+                <form action="/new" method="post" style="background-color: white;display: flex;justify-content: start;">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{data.image}}">
+                    <button type="submit" id="addpa" ><img src="{{url_for('static', filename='IMAGES/charrete.png')}}"  alt="" >
+                    </button>
+                    
+                </form>
+                <!-- <img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px" id="addpa"> -->
+                <!-- <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px" id="addpa">
+                    {% if ae%}
+                    <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 2rem;">{{ae[0]}}</span>
+                    {% endif %}
+                </a> -->
+            </div> 
+        </div>
+        {% endfor %}
+        
+        
+       
+
+    </div>
+    <div class="sact" style="height: 50px;width: 100%;text-align: start;">
+       
+        <div class="dactrs" style="height: 50px;width: 100%;text-align: center;background-color: rgba(168, 136, 201, 0.11);padding-top: 8px;padding-left: 20px;">
+            <h2 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;text-align: start;">LES SACS</h2>
+        </div>
+    </div>
+    {% if not ae[1] %}
+    <h3 style="text-align: center;color: rgb(211, 205, 205);margin-bottom: 100px;">Aucun produits disponibles pour le moments .</h3>
+    <div class="imoer">
+        
+    </div>
+    {% endif %}
+    <div class="hre">
+        {% for data in ae[2] %}
+        <div class="imoer1">
+            <div class="imoaeImage">
+                <img src="{{url_for('static', filename='uploads/' + data.image)}}" height="130px" width="150px" alt="">
+            </div>
+            <div class="imoaeInfo">
+                
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1rem;text-transform: uppercase;">{{data.nom}}</h1>
+                
+                <p style="margin-bottom: 10px;color: rgb(184, 184, 184);font-size: 0.7rem;">{{data.description}}</p>
+
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;">{{data.prix}} FCFA</h1>
+            </div>
+            <div class="imoaeBout">
+                <form action="/new" method="post" style="background-color: white;display: flex;justify-content: start;">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{data.image}}">
+                    <button type="submit" id="addpa" ><img src="{{url_for('static', filename='IMAGES/charrete.png')}}"  alt="" >
+                    </button>
+                    
+                </form>
+                <!-- <img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px" id="addpa"> -->
+                <!-- <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px" id="addpa">
+                    {% if ae%}
+                    <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 2rem;">{{ae[0]}}</span>
+                    {% endif %}
+                </a> -->
+            </div> 
+        </div>
+        {% endfor %}
+        
+        
+       
+
+    </div>
+    <!-- <div class="hre">
         <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);">LES ARTICLES</h1>
         {% for data in ae[1] %}
         <div class="nkqekj">
@@ -235,16 +340,15 @@
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{data.image}}">
                     <button type="submit" >AJOUTER AU PANIER</button>
-                    <!-- <a  href="Payement">ACHETER</a> -->
                 </form>
                
-                <!-- <a style="padding: 10px 10px;background-color: white;color: rgb(140, 58, 216);border-radius: 5px;border: 1px solid rgb(140, 58, 216);margin-bottom: 200px;" href="">PANIER</a> -->
+               
             </div>
            
         </div>
         {% endfor %}
        
 
-    </div>
+    </div> -->
 </body>
 </html>

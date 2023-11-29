@@ -55,27 +55,31 @@ with app.app_context() :
         db.create_all()
     except Exception as e:
         print("error de creation de la table")
-class Notife(db.Model):
+class Notifica(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     
     quantite = db.Column(db.Integer,nullable = False)
     prix = db.Column(db.Integer,nullable = False)
     image = db.Column(db.String(100), unique = False , nullable = False)
+    mail = db.Column(db.String(100), unique = False , nullable = False)
     
 
    
-    def __init__(self,prix,quantite,image):
+    def __init__(self,prix,quantite,image,mail):
         
         self.prix = prix
         self.quantite = quantite
         self.image = image
+        self.mail = mail
         
 
     # db.init_app(app)
     # with app.app_context() :
     #     db.create_all()
-
+    # def __str__(self):
+    #     # Renvoie une chaîne de caractères représentant l'objet
+    #     return f"Person(prix: {self.prix}, quantite: {self.quantite}, image: {self.image}, mail: {self.mail})"
     def __repr__(self):
         
         return {
@@ -83,6 +87,7 @@ class Notife(db.Model):
             "prix": self.prix,
             "quantite": self.quantite,
             "image": self.image,
+            "mail": self.mail
             
         }
 # creation de ma table dans la base de donnée 
@@ -103,7 +108,9 @@ class Profil(db.Model):
     # db.init_app(app)
     # with app.app_context() :
     #     db.create_all()
-
+    # def __str__(self):
+    #     # Renvoie une chaîne de caractères représentant l'objet
+    #     return f"Person(first_name: {self.first_name}, last_name: {self.last_name}, age: {self.age})"
     def __repr__(self):
         
         return {
@@ -172,8 +179,10 @@ class Panierz(db.Model):
 
     # db.init_app(app)
     # with app.app_context() :
-    #     db.create_all()
-
+    # #     db.create_all()
+    # def __str__(self):
+    #     # Renvoie une chaîne de caractères représentant l'objet
+    #     return f"Person(nom: {self.nom}, description: {self.description}, age: {self.age})"
     def __repr__(self):
         
         return {
@@ -181,6 +190,50 @@ class Panierz(db.Model):
             "description": self.description,
             "prix": self.prix,
             "image": self.image
+        }
+with app.app_context() :
+    try :
+        db.create_all()
+    except Exception as e:
+        print("error de creation de la table")
+
+    
+with app.app_context() :
+    try :
+        db.create_all()
+    except Exception as e:
+        print("error de creation de la table")
+class Boutiquez(db.Model):
+
+    id = db.Column(db.Integer, primary_key = True)
+    nom = db.Column(db.String(100), unique = False , nullable = False)
+    description = db.Column(db.String(100), unique = True , nullable = False)
+    prix = db.Column(db.Integer,nullable = False)
+    image = db.Column(db.String(100), unique = True , nullable = False)
+    categorie = db.Column(db.String(100), unique = False , nullable = False)
+   
+    def __init__(self,nom,description,prix,image,categorie):
+        self.nom = nom
+        self.description = description
+        self.prix = prix
+        self.image = image
+        self.categorie = categorie
+
+
+    # db.init_app(app)
+    # with app.app_context() :
+    # #     db.create_all()
+    # def __str__(self):
+    #     # Renvoie une chaîne de caractères représentant l'objet
+    #     return f"Person(nom: {self.nom}, description: {self.description}, age: {self.age})"
+    def __repr__(self):
+        
+        return {
+            "nom": self.nom,
+            "description": self.description,
+            "prix": self.prix,
+            "image": self.image,
+            "categorie": self.categorie
         }
     
 
@@ -190,7 +243,7 @@ with app.app_context() :
     except Exception as e:
         print("error de creation de la table")
 class Userpaniere(db.Model):
-
+    
     id = db.Column(db.Integer, primary_key = True)
     nom = db.Column(db.String(100), unique = False , nullable = False)
     description = db.Column(db.String(100), unique = False , nullable = False)
@@ -199,7 +252,7 @@ class Userpaniere(db.Model):
     image = db.Column(db.String(100), unique = False , nullable = False)
     
 
-   
+    
     def __init__(self,nom,description,prix,mail,image):
         self.nom = nom
         self.description = description
@@ -211,7 +264,9 @@ class Userpaniere(db.Model):
     # db.init_app(app)
     # with app.app_context() :
     #     db.create_all()
-
+    # def __str__(self):
+    #     # Renvoie une chaîne de caractères représentant l'objet
+    #     return f"Person(nom: {self.nom}, description: {self.description}, prix: {self.prix}, mail: {self.mail}, image: {self.image})"
     def __repr__(self):
         
         return {
@@ -272,11 +327,39 @@ def Payement() :
     for i in frr :
         etr.append(i.image)
     po = 'a.jpeg'
-    er =[az,user,pri,ut,frr]
+    premier = [frr[0]]
+    
+    image = frr[0:4:1]
+    er =[az,user,pri,ut,frr,premier,image]
  
     print(f"{etr[0]}")
     return render_template('payement.html',ae = er)
 # FIN PAYEMENT {}
+# # QRPAYEMENT {}
+# @app.route('/QrPayement')
+# def QrPayement() :
+#     if 'utilisateur_id' in session:
+#         user = Profil.query.get(session['utilisateur_id'])
+#     else:
+#         return redirect('/pre')
+#     # user = Connecter.query.all()
+#     data = Userpaniere.query.all()
+#     # zee = Connecter.query.get(1)   
+#     frr = []
+    
+    
+#     for i in data : 
+#         if i.mail == user.last_name :
+#             frr.append(i)
+            
+    
+    
+#     az = len(frr)
+    
+#     er =[az]
+ 
+#     return render_template('codeqr.html',ae = er)
+# # FIN QRPAYEMENT {}
 
    
 
@@ -319,19 +402,35 @@ def achl():
         user = Profil.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
-    aer = Panierz.query.all()
+    aer = Boutiquez.query.all()
+    # addsac = []
+    # for i in aer :
+    #     print(i.nom)
+    #     for le in " ".join([i]) :
+
+    #         if 'sac' or 'Sac' or 'SAC':
+    #             addsac.append(i)
+    # for i in addsac :
+    #     print(i)
     data = Userpaniere.query.all()
     # zee = Connecter.query.get(1)   
     frr = []
 
-    
     for i in data : 
         if i.mail == user.last_name :
             frr.append(i)
    
-    
+    sac = []
+    for i in aer:
+        if i.categorie == "Sac" :
+            sac.append(i)
     az = len(frr)
-    er =[az,aer]
+    vetement = []
+    for i in aer:
+        if i.categorie == "Vetement" :
+            vetement.append(i)
+    az = len(frr)
+    er =[az,aer,sac,vetement]
     return render_template('achat.html',ae = er)
 # FIN PUBLICATION {}
 
@@ -355,7 +454,13 @@ def useprid():
    
     
     az = len(frr)
-    notif = Notife.query.all()
+
+    frrno = Notifica.query.all()
+    notif = []
+    for i in frrno : 
+        if i.mail == user.last_name :
+            notif.append(i)
+
     er =[az,user,notif]
  
 
@@ -537,108 +642,330 @@ def envoyer_email():
 # COMMANDER
 @app.route('/commande', methods=['POST'])
 def commande():
-    utilisateur_id = Profil.query.get(session['utilisateur_id'])
-    oiuy = utilisateur_id.first_name
+    # utilisateur_id = Profil.query.get(session['utilisateur_id'])
+    
+    # oiuy = utilisateur_id.first_name
+    if 'utilisateur_id' in session:
+        oiuy = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     if request.method == 'POST':
         prix = request.form['prix']
         image = request.form['image']
         quantite = request.form['quantite']
-        notif = Notife(prix = prix, image = image, quantite = quantite)
-        # pani = Panier(nom = nom, description = description , prix = prix)
+        mail = oiuy.last_name
+        notif = Notifica(prix = prix, quantite = quantite, image = image, mail = mail)
         
         db.session.add(notif)
         db.session.commit()
-        # return redirect("/admining")
-        
-        # destinataire = request.form['destinataire']
-        destinataire = "0streamblay@gmail.com"
-        # sujet = request.form['sujet']
-        # user = Connecter.query.all()
-        if 'utilisateur_id' in session:
-            user = Profil.query.get(session['utilisateur_id'])
-        else:
-            return redirect('/pre')
-        data = Userpaniere.query.all()
-        # zee = Connecter.query.get(1)   
-        frr = []
-        ut = []
-        
-        for i in data : 
-            if i.mail == user.last_name :
-                frr.append(i)
-                ut.append([str(i.nom) ,str(i.prix) + " FCFA"])
-        pri = 0
-        for i in frr :
-            pri += i.prix
-        
-        az = len(frr)
-        er =[az,user,pri,ut]
-    
+        # flash('Commande effectuée avec succes', 'success')
 
-        # return render_template('payement.html',ae = er)
-        # tre = Connecter.query.get(1)
-        dfggh = user.last_name
-        sujet = dfggh
-        numero = request.form['numero']
-        lieux = request.form['lieux']
-        recu = []
-        lo = "\n"
-        for i in ut :
-            recu.append(" : ".join(i))
-        contenu = f"COMMANDE DE MR/MME \n{oiuy} \n{dfggh} \n\n\nNOMBRE D'ARTICLES : {az} \n\n{lo.join(recu)} \n\nPRIX : {pri} FCFA \n\nNUMERO : {numero} \n\nLOCALISATION : {lieux} "
+        # destinataire = "0streamblay@gmail.com"
+        # # sujet = request.form['sujet']
+        # # tre = Connecter.query.get(1)
         
-        
-        # names = [['Adam',str(25)], ['Bob',str(58)], ['Cyril',str(32)]]
-        # recu = []
-        # # nl = '\n'
-        # # text = f"Winners are:{nl}{''.join(names)}"
-        # for i in names :
-        #     recu.append(",".join(i))
-        # print( '\n'.join(recu))
-        
-        
-        # names = ['Adam', 'Bob', 'Cyril']
-        # text = f"Winners are:\n{'\n'.join(names)}"
-        # print(text)
-        
-        # names = ['Adam', 'Bob', 'Cyril']
-        # nl = '\n'
-        # text = f"Winners are:{nl}{nl.join(names)}"
-        # print(text)
-        msg = Message(sujet, recipients=[destinataire])
-        msg.body = contenu
+        # sujet = mail
+        # contenu = "quantite"
 
-        try:
-            mail.send(msg)
-            flash("COMMANDE VALIDEE AVEC SUCCES")
-            
-        except Exception as e:
-            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
-
-        
-    
-    if request.method == 'POST':
-        # destinataire = request.form['destinataire']
-        destinataire = dfggh
-        # sujet = request.form['sujet']
-        # tre = Connecter.query.get(1)
-        
-        sujet = "Votre commande sur BLAY LIBRARY"
-        contenu = f"NOMBRE D'ARTICLES : {az} \n\n{lo.join(recu)} \n\nPRIX : {pri} FCFA \n\nNUMERO : {numero} \n\nLOCALISATION : {lieux} "
-
-
-        msg = Message(sujet, recipients=[destinataire])
-        msg.body = contenu
+        # msg = Message(sujet, recipients=[destinataire])
+        # msg.body = contenu
        
-        try:
-            mail.send(msg)
-          
-        except Exception as e:
-            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+        # try:
+        #     mail.send(msg)
+            
+        # except Exception as e:
+        #     flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+        
+        # destinataire = "0streamblay@gmail.com"
+        
+        # data = Userpaniere.query.all()
+        # frr = []
+        # ut = []
+        
+        # for i in data : 
+        #     if i.mail == oiuy.last_name :
+        #         frr.append(i)
+        #         ut.append([str(i.nom) ,str(i.prix) + " FCFA"])
+        # pri = 0
+        # for i in frr :
+        #     pri += i.prix
+        
+        # az = len(frr)
+        # er =[az,oiuy,pri,ut]
+    
+        # dfggh = oiuy.last_name
+        # sujet = 'dfggh'
+        # numero = request.form['numero']
+        # lieux = request.form['lieux']
+        # recu = []
+        # lo = "\n"
+        # for i in ut :
+        #     recu.append(" : ".join(i))
+        # contenu = f"COMMANDE DE MR/MME \n{oiuy} \n{dfggh} \n\n\nNOMBRE D'ARTICLES : {az} \n\n{lo.join(recu)} \n\nPRIX : {pri} FCFA \n\nNUMERO : {numero} \n\nLOCALISATION : {lieux} "
+        # # contenu = 250
+        
+        # msg = Message(sujet, recipients=[destinataire])
+        # msg.body = contenu
 
-        return redirect("/Payement")
+        # try:
+        #     mail.send(msg)
+        #     flash("COMMANDE VALIDEE AVEC SUCCES")
+            
+        # except Exception as e:
+        #     flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+        
+    # ertp = 5
+
+    # if 'utilisateur_id' in session:
+    #     user = Profil.query.get(session['utilisateur_id'])
+    # else:
+    #     return redirect('/pre')
+    # if request.method == 'POST':
+    #     # numero = request.form['numero']
+    #     # lieux = request.form['lieux']
+    #     # destinataire = request.form['destinataire']
+    #     destinataire = "0streamblay@gmail.com"
+    #     # sujet = request.form['sujet']
+    #     # tre = Connecter.query.get(1)
+    #     if 'utilisateur_id' in session:
+    #         user = Profil.query.get(session['utilisateur_id'])
+    #     else:
+    #         return redirect('/pre')
+    #     dfggh = user.last_name
+    #     sujet = dfggh
+    #     contenu = f"request.form['contenu'{sujet}"
+    #     # contenu = f"request.form['contenu'{sujet} \n{numero} \n{lieux}"
+
+    #     msg = Message(sujet, recipients=[destinataire])
+    #     msg.body = contenu
+       
+    #     try:
+    #         mail.send(msg)
+            
+    #     except Exception as e:
+    #         flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+
+        # prix = request.form['prix']
+        # image = request.form['image']
+        # quantite = request.form['quantite']
+        # mail = request.form['maill']
+        
+        # notif = Notifica(prix = prix, image = image, quantite = quantite, mail = mail)
+        # db.session.add(notif)
+        # db.session.commit()
+        # return redirect("/home")
+
+
+    # if request.method == 'POST':
+
+    #     destinataire = dfggh
+      
+        
+    #     sujet = "Votre commande sur BLAY LIBRARY"
+    #     # contenu = f"NOMBRE D'ARTICLES : {az} \n\n{lo.join(recu)} \n\nPRIX : {pri} FCFA \n\nNUMERO : {numero} \n\nLOCALISATION : {lieux} "
+
+    #     contenu = 'bonjour'
+    #     msg = Message(sujet, recipients=[destinataire])
+    #     msg.body = contenu
+       
+    #     try:
+    #         mail.send(msg)
+          
+    #     except Exception as e:
+    #         flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+    #     return redirect("/Payement")
+    
+        # destinataire = request.form['destinataire']
+    # destinataire = "0streamblay@gmail.com"
+    # # sujet = request.form['sujet']
+    # # tre = Connecter.query.get(1)
+    # if 'utilisateur_id' in session:
+    #     user = Profil.query.get(session['utilisateur_id'])
+    # else:
+    #     return redirect('/pre')
+    # dfggh = user.last_name
+    # sujet = dfggh
+    # contenu = 'request.form['']'
+
+    # msg = Message(sujet, recipients=[destinataire])
+    # msg.body = contenu
+    
+    # try:
+
+    #     mail.send(msg)
+    #     flash("Commande validee avec succes", 'success')
+
+        
+    # except Exception as e:
+    #     flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+    return redirect("/valcommande")
+
+@app.route('/valcommande')
+def valcommande():
+    destinataire = "0streamblay@gmail.com"
+    # sujet = request.form['sujet']
+    # tre = Connecter.query.get(1)
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    dfggh = user.last_name
+    sujet = dfggh
+    contenu = 'request.form['']'
+
+    msg = Message(sujet, recipients=[destinataire])
+    msg.body = contenu
+    
+    try:
+
+        mail.send(msg)
+        flash("Commande validee avec succes", 'success')
+
+        
+    except Exception as e:
+        flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+    return redirect("/Payement")
+
+@app.route('/usercommande')
+def usercommande():
+    
+    # sujet = request.form['sujet']
+    # tre = Connecter.query.get(1)
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    destinataire = "0streamblay@gmail.com"
+    dfggh = "0streamblay@gmail.com"
+    sujet = dfggh
+    contenu = 'request.form['']'
+
+    msg = Message(sujet, recipients=[destinataire])
+    msg.body = contenu
+    
+    try:
+
+        mail.send(msg)
+        flash("Commande validee avec succes", 'success')
+
+        
+    except Exception as e:
+        flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+    return redirect("/Payement")
+    # return render_template("payement.html")
 # FIN COMMANDER
 
+
+# # COMMANDER
+# @app.route('/commande', methods=['POST'])
+# def commande():
+#     utilisateur_id = Profil.query.get(session['utilisateur_id'])
+#     oiuy = utilisateur_id.first_name
+#     if request.method == 'POST':
+#         prix = request.form['prix']
+#         image = request.form['image']
+#         quantite = request.form['quantite']
+#         notif = Notife(prix = prix, image = image, quantite = quantite)
+#         # pani = Panier(nom = nom, description = description , prix = prix)
+        
+#         db.session.add(notif)
+#         db.session.commit()
+#         # return redirect("/admining")
+        
+#         # destinataire = request.form['destinataire']
+#         destinataire = "0streamblay@gmail.com"
+#         # sujet = request.form['sujet']
+#         # user = Connecter.query.all()
+#         if 'utilisateur_id' in session:
+#             user = Profil.query.get(session['utilisateur_id'])
+#         else:
+#             return redirect('/pre')
+#         data = Userpaniere.query.all()
+#         # zee = Connecter.query.get(1)   
+#         frr = []
+#         ut = []
+        
+#         for i in data : 
+#             if i.mail == user.last_name :
+#                 frr.append(i)
+#                 ut.append([str(i.nom) ,str(i.prix) + " FCFA"])
+#         pri = 0
+#         for i in frr :
+#             pri += i.prix
+        
+#         az = len(frr)
+#         er =[az,user,pri,ut]
+    
+
+#         # return render_template('payement.html',ae = er)
+#         # tre = Connecter.query.get(1)
+#         dfggh = user.last_name
+#         sujet = dfggh
+#         numero = request.form['numero']
+#         lieux = request.form['lieux']
+#         recu = []
+#         lo = "\n"
+#         for i in ut :
+#             recu.append(" : ".join(i))
+#         contenu = f"COMMANDE DE MR/MME \n{oiuy} \n{dfggh} \n\n\nNOMBRE D'ARTICLES : {az} \n\n{lo.join(recu)} \n\nPRIX : {pri} FCFA \n\nNUMERO : {numero} \n\nLOCALISATION : {lieux} "
+        
+        
+#         # names = [['Adam',str(25)], ['Bob',str(58)], ['Cyril',str(32)]]
+#         # recu = []
+#         # # nl = '\n'
+#         # # text = f"Winners are:{nl}{''.join(names)}"
+#         # for i in names :
+#         #     recu.append(",".join(i))
+#         # print( '\n'.join(recu))
+        
+        
+#         # names = ['Adam', 'Bob', 'Cyril']
+#         # text = f"Winners are:\n{'\n'.join(names)}"
+#         # print(text)
+        
+#         # names = ['Adam', 'Bob', 'Cyril']
+#         # nl = '\n'
+#         # text = f"Winners are:{nl}{nl.join(names)}"
+#         # print(text)
+#         msg = Message(sujet, recipients=[destinataire])
+#         msg.body = contenu
+
+#         try:
+#             mail.send(msg)
+#             flash("COMMANDE VALIDEE AVEC SUCCES")
+            
+#         except Exception as e:
+#             flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+        
+    
+#     if request.method == 'POST':
+#         # destinataire = request.form['destinataire']
+#         destinataire = dfggh
+#         # sujet = request.form['sujet']
+#         # tre = Connecter.query.get(1)
+        
+#         sujet = "Votre commande sur BLAY LIBRARY"
+#         contenu = f"NOMBRE D'ARTICLES : {az} \n\n{lo.join(recu)} \n\nPRIX : {pri} FCFA \n\nNUMERO : {numero} \n\nLOCALISATION : {lieux} "
+
+
+#         msg = Message(sujet, recipients=[destinataire])
+#         msg.body = contenu
+       
+#         try:
+#             mail.send(msg)
+          
+#         except Exception as e:
+#             flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+#         return redirect("/Payement")
+# # FIN COMMANDER
 
 
 
@@ -670,12 +997,18 @@ def objet():
         nom = request.form.get("nom")
         description = request.form.get("description")
         prix = request.form.get("prix")
-        image = request.form.get("image")
-        pani = Panierz(nom = nom, description = description , prix = prix, image = image)
+        image = request.form.get("image") 
+        print('recu1')      
+        categorie = request.form.get('selectOptione')
+        print('recu2',categorie)      
+
+        pani = Boutiquez(nom = nom, description = description , prix = prix, image = image, categorie = categorie)
         # pani = Panier(nom = nom, description = description , prix = prix)
         
         db.session.add(pani)
         db.session.commit()
+             
+
         return redirect("/admining")
     except :
         return render_template("/boutique.html")
@@ -884,40 +1217,30 @@ def updater(id):
 
 
 # SUPPRIMER DU PANIER{} 
-# @app.route('/suppanier',methods = ["POST"])
-# def suppanier() :
-
-#     nom = request.form.get("nom")
-#     description = request.form.get("description")
-#     mail = request.form.get("mail")
-    
-#     user = Userpaniere.query.filter_by(nom = nom,description = description).first()
-#     zerre = Userpaniere.query.get(user.id)
-#     db.session.delete(zerre)
-#     db.session.commit()
-#     return redirect("/panieruser")
 @app.route('/suppanier',methods = ["POST"])
 def suppanier() :
 
     nom = request.form.get("nom")
     description = request.form.get("description")
     mail = request.form.get("mail")
-   
+    prix = request.form.get("prix")
     zerr = Userpaniere.query.all()
     
+    print(mail,nom,description,prix)
     recy =[]
     for i in zerr :
         
         if i.mail == mail :
             if i.nom == nom and i.description == description :
-                user = Userpaniere.query.filter_by(nom = nom, description = description , mail = mail).first()
+                user = Userpaniere.query.filter_by(nom = nom, description = description , prix = prix, mail = mail).first()
 
-                print(i.description,i.id,i.mail,i.nom)
+                print(i.description,i.id,i.mail,i.nom,i.prix)
                 zerre = Userpaniere.query.get(i.id)
                 db.session.delete(zerre)
                 db.session.commit()
                 return redirect("/panieruser")
-            
+
+        
     return redirect("/panieruser")
 # FIN SUPPRIMER DU PANIER{} 
 
@@ -933,16 +1256,58 @@ def erase(id) :
 
 # FIN SUPPRIMER USER{} 
 
-# SUPPRIMER NOTIFICATION{} 
+# SUPPRIMER TOUTES LES  NOTIFICATIONS{} 
+@app.route('/toutsu')
+def toutsu() :
+
+    if 'utilisateur_id' in session:
+        useru = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    data = Notifica.query.all()
+    for i in range(len(data)):
+        if data[i].mail == useru.last_name :
+            db.session.delete(data[i])
+            db.session.commit()
+        
+    
+            
+    return redirect("/useprid")
+# FIN SUPPRIMER NotificaATION{} 
+# SUPPRIMER NotificaATION{} 
 @app.route('/deletenotif/<int:id>')
 def deletenotif(id) :
 
 
-    data = Notife.query.get(id)
+    data = Notifica.query.get(id)
     db.session.delete(data)
     db.session.commit()
+    
+
+
+    # nom = request.form.get("nom")
+    # description = request.form.get("description")
+    # mail = request.form.get("mail")
+    # prix = request.form.get("prix")
+    # zerr = Notifica.query.all()
+    
+    # print(mail,nom,description,prix)
+    # recy =[]
+    # for i in zerr :
+        
+    #     if i.mail == mail :
+    #         if i.nom == nom and i.description == description :
+    #             user = Userpaniere.query.filter_by(nom = nom, description = description , prix = prix, mail = mail).first()
+
+    #             print(i.description,i.id,i.mail,i.nom,i.prix)
+    #             zerre = Userpaniere.query.get(i.id)
+    #             db.session.delete(zerre)
+    #             db.session.commit()
+    #             return redirect("/useprid")
+
+            
     return redirect("/useprid")
-# FIN SUPPRIMER NOTIFICATION{} 
+# FIN SUPPRIMER NotificaATION{} 
 
 # SUPPRIMER ARTICLES{} 
 @app.route('/deletearticles/<int:id>')
@@ -956,4 +1321,4 @@ def ecraseart(id) :
 # FIN SUPPRIMER ARTICLES{} 
 
 if __name__ == '__main__' :
-    app.run(debug=True,port=5004)
+    app.run(debug=True,port=5000)
