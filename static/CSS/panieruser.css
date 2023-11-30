@@ -55,7 +55,7 @@
         visibility: visible;
         height: 500px;
         width: 300px;
-        
+
         background-color: rgb(90, 7, 163);
         margin-top: 15px;
         right: 0px;
@@ -240,7 +240,7 @@ a {
 
 
 #pansup img{
-    filter: invert(50%);
+    filter: invert(28%) sepia(78%) saturate(7478%) hue-rotate(354deg) brightness(99%) contrast(123%);
 }
 #pansup:hover img{
     filter: invert();

@@ -330,6 +330,7 @@ def Payement() :
     premier = [frr[0]]
     
     image = frr[0:4:1]
+    
     er =[az,user,pri,ut,frr,premier,image]
  
     print(f"{etr[0]}")
@@ -430,7 +431,14 @@ def achl():
         if i.categorie == "Vetement" :
             vetement.append(i)
     az = len(frr)
-    er =[az,aer,sac,vetement]
+    fourniture = []
+    for i in aer:
+        if i.categorie == "Fourniture" :
+            fourniture.append(i)
+    az = len(frr)
+   
+    er =[az,aer,sac,vetement,fourniture]
+    
     return render_template('achat.html',ae = er)
 # FIN PUBLICATION {}
 
@@ -553,7 +561,7 @@ def index() :
  
         
         
-    profil = Panierz.query.all()
+    profil = Boutiquez.query.all()
     profile = Profil.query.all()
     
     profiles = [profil , profile]
@@ -815,7 +823,73 @@ def valcommande():
         return redirect('/pre')
     dfggh = user.last_name
     sujet = dfggh
-    contenu = 'request.form['']'
+
+    data = Userpaniere.query.all()
+ 
+    
+    frr = []
+    imm = []
+    pop = []
+    calvo = 0
+    for i in data : 
+        if i.mail == user.last_name :
+            frr.append(i)
+            calvo += i.prix 
+            imm.append([str(i.nom),str(i.prix)+" FCFA"])
+    
+    for i in imm :
+        pop.append(" -#- ".join(i))
+             
+
+    mepo = " /---/ ".join(pop)
+    contenu = f"COMMANDE DE {user.last_name} \n\n\n{mepo} \n\n\nCOUT TOTAL : {calvo} FCFA"
+    # contenu = f"bonjour , {user.last_name} \Commnde {envo}"
+
+    msg = Message(sujet, recipients=[destinataire])
+    msg.body = contenu
+    
+    try:
+
+        mail.send(msg)
+
+        
+    except Exception as e:
+        flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+    return redirect("/procomm")
+@app.route('/procomm')
+def procomm():
+    # sujet = request.form['sujet']
+    # tre = Connecter.query.get(1)
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    
+    destinataire = str(user.last_name)
+
+    sujet = "NOUVELLE COMMANDE SUR BLAY LIBRARY"
+
+    data = Userpaniere.query.all()
+ 
+    
+    frr = []
+    imm = []
+    pop = []
+    calvo = 0
+    for i in data : 
+        if i.mail == user.last_name :
+            frr.append(i)
+            calvo += i.prix 
+
+            imm.append([str(i.nom),str(i.prix)+" FCFA"])
+    
+    for i in imm :
+        pop.append(" -#- ".join(i))
+
+    mepo = " /---/ ".join(pop)
+    contenu = f"VOTRE COMMANDE SUR BLAY LIBRARY \n\n\n{mepo} \n\n\nCOUT TOTAL : {calvo} FCFA"
+    # contenu = f"bonjour , {user.last_name} \Commnde {envo}"
 
     msg = Message(sujet, recipients=[destinataire])
     msg.body = contenu
@@ -843,7 +917,7 @@ def usercommande():
     destinataire = "0streamblay@gmail.com"
     dfggh = "0streamblay@gmail.com"
     sujet = dfggh
-    contenu = 'request.form['']'
+    contenu = f"bonjour , {user.last_name}"
 
     msg = Message(sujet, recipients=[destinataire])
     msg.body = contenu
