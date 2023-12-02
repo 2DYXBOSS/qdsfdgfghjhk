@@ -5,6 +5,9 @@
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
 }
+.formatte{
+    display: none;
+}
 .erjkz {
     margin-top: 50px;
     width: 100%;
@@ -18,15 +21,7 @@ text-decoration: none;
 color: white;
 
 }
-body {
-    padding: 50px;
-    width: 100%;
-    padding-top: 200px;
-    background-color: white;
-    display: grid;
-    place-items: center;
-    
-}
+
 .ajoutons {
     width: 80%;
     
@@ -69,13 +64,7 @@ body {
     width: 100%;
     height: 50%;
 }
-table {
-    width: 80%;
-    border: none;
-    overflow: hidden;
-    background-color: rgb(230, 230, 230);
 
-}
 thead {
     width: 100%;
     background-color: white;
@@ -87,23 +76,7 @@ tbody {
     background-color: white;
     
 }
-tbody .suppr{
-    width: 100%;
-    padding: 12px 35px;
-    font-size: 0.5rem;
-    background-color: #a31818;
-    border-radius: 2px;
 
-}
-
-tbody .modif{
-    width: 100%;
-    padding: 12px 35px;
-    font-size: 0.5rem;
-    background-color: rgb(24, 163, 66);
-    border-radius: 2px;
-
-}
 td {
     padding: 10px 12px;
     text-align: center;
@@ -153,6 +126,7 @@ a {
     width: 100%;
     height: 70px;
     top: 0;
+    overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     align-items: end;
@@ -240,7 +214,15 @@ a {
 }
 
 
-@media (min-width:10px) and (max-width:1000px) {
+@media (min-width:350px) and (max-width:1000px) {
+    body {
+        width: 100%;
+        padding-top: 200px;
+        background-color: white;
+        display: grid;
+        place-items: center;
+        
+    }
     .lofo1 nav {
         display: none;
     }
@@ -308,8 +290,84 @@ a {
         width: 15px;
         filter: invert();
     } */
+    table {
+        width: 100%;
+        border: none;
+        overflow: hidden;
+        background-color: rgb(230, 230, 230);
+    
+    }
+    table p {
+        font-size: 0.5rem;
+    }
+    
+    tbody .suppr::before{
+        height: 100%;
+        width: 100%;
+        background-color: #a31818;
+        content: '';
+
+    
+    }
+    .seer{
+        background-color: #a31818;
+
+    }
+    .seer1{
+        background-color: rgb(24, 163, 66);
+
+    }
+    
+    tbody .modif::before{
+        height: 100%;
+        width: 100%;
+        background-color: rgb(24, 163, 66);
+        content: '';
+    
+    }
+    /* tbody .suppr::before{
+        width: 100%;
+        padding: 12px 35px;
+        font-size: 0.5rem;
+        background-color: #a31818;
+        border-radius: 2px;
+        content: 'SUPPRIMER';
+
+    
+    }
+    
+    tbody .modif::before{
+        width: 100%;
+        padding: 12px 35px;
+        font-size: 0.5rem;
+        background-color: rgb(24, 163, 66);
+        border-radius: 2px;
+        content: 'MODIFIER';
+    
+    } */
+    #noadm {
+        font-size: 1.5rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgb(90, 7, 163);
+    }
+    
+
 }
 @media (min-width:1000px) {
+    
+    
+    #noadm {
+        font-size: 3rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgb(90, 7, 163);
+    }
+    body {
+        padding: 50px;
+        width: 100%;
+        padding-top: 200px;
+        background-color: white;
+        display: grid;
+        place-items: center;
+        
+    }
     .dfghj {
         display: none;
 
@@ -341,5 +399,114 @@ a {
         justify-content: center;
         color: white;
     
+    }
+    table {
+        width: 80%;
+        border: none;
+        overflow: hidden;
+        background-color: rgb(230, 230, 230);
+    
+    }
+    tbody .suppr::before{
+        width: 100%;
+        padding: 12px 35px;
+        font-size: 0.5rem;
+        background-color: #a31818;
+        border-radius: 2px;
+        content: 'SUPPRIMER';
+
+    
+    }
+    
+    tbody .modif::before{
+        width: 100%;
+        padding: 12px 35px;
+        font-size: 0.5rem;
+        background-color: rgb(24, 163, 66);
+        border-radius: 2px;
+        content: 'MODIFIER';
+    
+    }
+}
+
+@media (max-width:350px) {
+    body {
+        width: 100%;
+        padding-top: 200px;
+        background-color: white;
+        display: grid;
+        place-items: center;
+        
+    }
+    
+    .erjkz , table ,#noadm ,#mesu{
+        display: none;
+    }
+    .lofo1 nav {
+        display: none;
+    }
+    .lofo1{
+        padding-right: 20px;
+        
+    }
+    .lofo1 img{
+        top: 0px;
+        right: 0px;
+        padding-right: 30px;
+    }
+    .dfghj {
+        height: 500px;
+        width: 300px;
+        position: fixed;
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        flex-direction: column;
+        right: 0px;
+        top: 18px;
+       
+        
+
+    }
+    #checkboxjh:checked ~ .zeyrze {
+        visibility: visible;
+        height: 500px;
+        width: 300px;
+        
+        background-color: rgb(90, 7, 163);
+        margin-top: 15px;
+        right: 0px;
+        top: 10px;
+    }
+    .feukj {
+        width: 80%;
+        height: 80%;
+       
+       
+    }
+    .zeyrze {
+        height: 500px;
+        width: 300px;
+        visibility: hidden;
+        /* display: none; */
+        margin-top: 30px;
+        right: 0px;
+        top: 10px;
+
+    }
+    .poqsd {
+        padding-left: 20px;
+        width: 100%;
+        height: 50px;
+        /* background-color: white; */
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+    
+    .formatte{
+        display: block;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgb(90, 7, 163);
     }
 }

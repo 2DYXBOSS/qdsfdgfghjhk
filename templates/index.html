@@ -66,7 +66,7 @@
 
         </div>
     </div>
-    <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 3rem;color: rgb(90, 7, 163);">ESPACE DE L'ADMINISTRATEUR</h1>
+    <h1 id="noadm" >ESPACE DE L'ADMINISTRATEUR</h1>
    <div class="ajoutons" >
         
         <!-- <div class="sys">
@@ -87,25 +87,26 @@
     
 
 
-    <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 50px;">MES UTILISATEURS</h1>
+    <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 50px;" id="mesu">MES UTILISATEURS</h1>
 
     <table>
      
         <thead>
-            <th>ID</th>
-            <th>NOM & PRENOM</th>
-            <th>E-MAIL</th>
-            <th>MOT DE PASSE</th>
+            <th> <p >ID</p></th>
+            <th> <p>NOM & PRENOM</p></th>
+            <th><p>E-MAIL</p></th>
+            <th><p>MOT DE PASSE</p></th>
             
         </thead>
         {% for data in profiles[1] %}
         <tbody >
-            <td>{{data.id}}</td>
-            <td>{{data.first_name}}</td>
-            <td>{{data.last_name}} </td>
-            <td>{{data.age}}</td>
-            <td><a href="/delete/{{data.id}}" class="suppr">SUPPRIMER</a></td>
-            <td><a href="/update/{{data.id}}" class="modif">MODIFIER</a></td>
+            <td><p>{{data.id}}</p> </td>
+            <td><p>{{data.first_name}}</p></td>
+            <td><p>{{data.last_name}}</p> </td>
+            <td><p>{{data.age}}</p></td>
+            <td class="seer"><a href="/delete/{{data.id}}" class="suppr"></a></td>
+            <td class="seer1"><a href="/update/{{data.id}}" class="modif"></a></td>
+           
             
         </tbody>
         {% endfor %}
@@ -113,24 +114,26 @@
        
     
     </table>
-    <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 50px;">MES PRODUITS</h1>
+    <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 50px;" id="mesu">MES PRODUITS</h1>
 
     <table>
      
         <thead>
-            <th>ID</th>
-            <th>NOM</th>
-            <th>DESCRIPTION DU PRODUIT</th>
-            <th>PRIX</th>
+            
+            <th> <p >ID</p></th>
+            <th> <p>NOM</p></th>
+            <th><p>DESCRIPTION</p></th>
+            <th><p>PRIX</p></th>
             
         </thead>
         {% for data in profiles[0] %}
         <tbody >
-            <td>{{data.id}}</td>
-            <td>{{data.nom}}</td>
-            <td>{{data.description}}</td>
-            <td>{{data.prix}}</td>
-            <td ><a href="/deletearticles/{{data.id}}" class="suppr">SUPPRIMER</a></td>
+           
+            <td><p>{{data.id}}</p> </td>
+            <td><p>{{data.nom}}</p></td>
+            <td><p>{{data.description}}</p> </td>
+            <td><p>{{data.prix}}</p></td>
+            <td class="seer"><a href="/deletearticles/{{data.id}}" class="suppr"></a></td>
             <!-- <td ><a href="/update/{{data.id}}" class="modif">MODIFIER</a></td> -->
             
         </tbody>
@@ -168,6 +171,13 @@
         </tbody>
         {% endfor %}
     </table> -->
+
+    <h1 class="formatte" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgb(90, 7, 163);font-size: 2rem;">FORMAT DE TELEPHONE INAPPROPRIE !</h1>
+    <h3 class="formatte" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgb(90, 7, 163);font-size: 1.3rem;color: rgba(137, 43, 226, 0.322);margin-top: 10px;">Veuillez acheter un telephone de taille moyenne - 350px .<br> Merci bien !</h3>
+    <div class="formatte" style="margin-top: 70px;">
+
+        <a href="/admining" style="text-align: center;height: 60px;width: 180px;background-color: rgb(90, 7, 163);color: white;padding: 15px 20px;" >Acceuil</a>
+    </div>
 </body>
 </html>
 

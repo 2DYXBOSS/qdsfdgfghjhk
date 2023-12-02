@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche</title>
+    <link rel="shortcut icon" href="static/IMAGES/blaye.jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/CSS/achat.css">
+
+</head>
+<body>
+    <div class="fixe">
+        <div class="lofo">
+            <strong><p style="color: rgba(162, 117, 204, 0.555);"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: white">B</span>lay Library</p></strong>
+
+        </div>
+        <div class="lofo1">
+            <div class="dfghj">
+                <input type="checkbox" style="display: none;" name="" id="checkboxjh">
+                <label for="checkboxjh">
+                    <img id="img" src="static/IMAGES/me.png" style="filter: invert();" alt="">
+                   
+                </label>
+                <div class="zeyrze" >
+                    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;padding-top: 10px;padding-left: 20px;padding-bottom: 50px;">MENU</h1>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/home-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
+                        <a href="/home">
+                            <p style="color: white;padding-left: 5px;">Acceuil</p>
+                        </a>
+                        
+
+                    </div>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/modi.png" style="filter: invert();height: 20px;"  alt="">
+                        <a href="/achat">
+                            
+                            <p style="color: rgb(156, 9, 224);padding-left: 5px;">Nos publications</p>
+                        </a>
+                        
+
+                    </div>
+                    
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/contac-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
+                        <a href="/home#apeo">
+                            <p style="color: white;padding-left: 5px;">A propos de nouss</p>
+                        </a>
+                        
+
+                    </div>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/charrete.png" style="filter: invert();height: 20px;"  alt="">
+                        <a href="/panieruser">
+                            <p style="color: white;padding-left: 5px;">Mon panier {% if ae%}
+                                <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1rem;color: rgb(31, 255, 31);width: 20px;width: 20px;border-radius: 100%;">{{ae[0]}}</span>
+                                {% endif %}</p>
+                            
+                        </a>
+                        
+
+                    </div>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/pay.png" style="filter: invert();height: 20px;"  alt="">
+                        <a href="/useprid">
+                            <p style="color: white;padding-left: 5px;">Mon compte</p>
+                        </a>
+                        
+
+                    </div>
+                    <div class="poqsd" >
+
+                        <img src="static/IMAGES/dec-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
+                        <a href="/deconnexion">
+                            <p style="color: white;padding-left: 5px;">Deconnexion</p>
+                        </a>
+                        
+
+                    </div>
+                    
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/home" style="color: white;">Acceuil</a>
+                    </li>
+                    <li>
+                        <a href="/achat" style="color: rgb(156, 9, 224);">Nos publications</a>
+                    </li>
+                    <li>
+                        <a href="/home#apeo" style="color: white;">A propos de nous</a>
+                    </li>
+                    <li>
+                        <a href="/home#Contactez" style="color: white;">Contactez - nous</a>
+                    </li>
+                    
+                    <li>
+                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: white;border-radius: 10px;" href="/useprid">Mon compte</a>
+                        
+                    </li>
+                    
+                    
+                    <li>
+                        <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px">
+                            {% if ae%}
+                            <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 2rem;">{{ae[0]}}</span>
+                            {% endif %}
+
+                            <!-- {% if ae%}
+                                <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1rem;color: rgb(31, 255, 31);width: 20px;width: 20px;border-radius: 100%;">{{ae[0]}}</span>
+                                {% endif %}</p> -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+    <div class="hre">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            
+            <div class="reoip" style="width: 100%;height: 500px;margin: 0 auto;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+                <ul style="text-align: center;">
+                    {% for message in messages %}
+                    <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;"><h1>{{ message }}</h1>  </li>
+                    {% endfor %}
+                </ul>
+                <img src="{{url_for('static', filename='IMAGES/pub.jpg')}}" width="300px" height="300px" alt="">
+                <a href="/achat" style="margin-top: 50px;"><img src="{{url_for('static', filename='IMAGES/refresh.png')}}" width="30px" height="30px" alt="">
+                </a>
+            </div>
+            {% endif %}
+            {% endwith %}
+        {% for data in ae[1] %}
+        <div class="imoer1">
+            <div class="imoaeImage">
+                <img src="{{url_for('static', filename='uploads/' + data.image)}}" height="130px" width="150px" alt="">
+            </div>
+            <div class="imoaeInfo">
+                
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1rem;text-transform: uppercase;">{{data.nom}}</h1>
+                
+                <p style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
+
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;">{{data.prix}} FCFA</h1>
+            </div>
+            <div class="imoaeBout">
+                <form action="/new" method="post" style="background-color: white;display: flex;justify-content: start;">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{data.image}}">
+                    <button type="submit" id="addpa" ><img src="{{url_for('static', filename='IMAGES/charrete.png')}}"  alt="" >
+                    </button>
+                    
+                </form>
+                <!-- <img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px" id="addpa"> -->
+                <!-- <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px" id="addpa">
+                    {% if ae%}
+                    <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 2rem;">{{ae[0]}}</span>
+                    {% endif %}
+                </a> -->
+            </div> 
+        </div>
+        {% endfor %}
+        
+        
+       
+
+    </div>
+   
+</body>
+</html>

@@ -7,9 +7,9 @@
 }
 
 @media (min-width:1000px) {
+
     body {
         width: 100%;
-        overflow: hidden;
         background-color: white;
         height: 1100px;
     }
@@ -122,6 +122,9 @@
 
 
 @media (max-width:1000px) {
+    #intr {
+        display: none;
+    }
     .retyu1 img {
         display: block;
         margin:  0 auto;

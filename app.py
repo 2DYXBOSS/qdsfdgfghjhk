@@ -300,6 +300,57 @@ with app.app_context() :
 
 
 
+# RECHERCHE DANS LA BASE DE DONNEE {}
+@app.route('/recherche',methods = ["POST"])
+def recherche() :
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    
+    if request.method == 'POST':
+        mots = request.form['textenter']
+    mot = (mots.strip()).lower()
+    aer = Boutiquez.query.all()
+    data = Userpaniere.query.all()
+    frr = []
+
+    for i in data : 
+        if i.mail == user.last_name :
+            frr.append(i)
+   
+    
+    az = len(frr)
+    
+    sac = []
+    for i in aer:
+        if i.categorie == "Sac" :
+            sac.append(i)
+    vetement = []
+    for i in aer:
+        if i.categorie == "Vetement" :
+            vetement.append(i)
+    fourniture = []
+    for i in aer:
+        if i.categorie == "Fourniture" :
+            fourniture.append(i)
+
+    recherche = []
+    
+    if mot == 'sacs' or mot == 'sac' or mot == 'sacs à mains' or mot == 'sac à mains' or mot == 'sacs à dos' or mot == 'sac à dos' :
+        recherche=sac
+
+    if mot == 'vêtement' or mot == 'vêtements' or mot == 'vetement' or mot == 'vetements' or mot == 'habits' or mot == 'habit' :
+        recherche=vetement
+
+    if mot == 'fourniture' or mot == 'fournitures' or mot == 'livre' or mot == 'livres' :
+        recherche=fourniture
+
+
+    er =[az,recherche]
+    if len(recherche) <= 0 :
+        flash("CET ARTICLE N'EST PAS DISPONIBLE POUR LE MOMENT !")
+    return render_template('recherc.html',ae = er)
 # PAYEMENT {}
 @app.route('/Payement')
 def Payement() :
@@ -335,6 +386,8 @@ def Payement() :
  
     print(f"{etr[0]}")
     return render_template('payement.html',ae = er)
+
+
 # FIN PAYEMENT {}
 # # QRPAYEMENT {}
 # @app.route('/QrPayement')
