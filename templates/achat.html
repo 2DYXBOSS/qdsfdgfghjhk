@@ -226,17 +226,38 @@
 
         </div>
     </div>
-    <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;">BOUTIQUE</h1>
+    <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;font-size: 3rem;">BOUTIQUE</h1>
 
     <form action="/recherche" method="post" class="reformee">
-        <input type="text" id="recherobjet" name="textenter" placeholder="Rechercher des articles">
-        <button type="submit"><p>Rechercher</p></button>
+        
+        <input type="text" id="recherobjet" name="textenter" placeholder="Rechercher des articles dans la Boutique">
+        <button type="submit"><img src="{{url_for('static', filename='IMAGES/loupe.png')}}" height="20px" width="20px" alt="" ></button>
     </form>
     <div class="annima">
        
     </div>
+    <h1 id="catiood" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;">NOS DIFFERENTES CATEGORIES</h1>
+    <div class="categrs">
+        <a href="#vete">
+            <div class="dacs1">
+                <img src="{{url_for('static', filename='IMAGES/imageN.jpg')}}" height="85%" width="85%"  alt="" >
+            </div>
+        </a>
+       <a href="#sac">
+            <div class="dacs1">
+                <img src="{{url_for('static', filename='IMAGES/photo_5846229185062879345_m.jpg')}}" height="90%" width="90%"  alt="" >
+            </div>
+       </a>
+       <a href="#liv">
+        
+            <div class="dacs1" id="vete">
+                <img src="{{url_for('static', filename='IMAGES/spider.jpg')}}" height="85%" width="85%"  alt="" >
+            </div>
+       </a>
+       
+    </div>
     
-    <div class="sact" style="height: 50px;width: 100%;text-align: start;margin-bottom: 10px;">
+    <div class="sact" style="height: 50px;width: 100%;text-align: start;margin-bottom: 10px;" >
         
         <div class="dactrs" style="height: 50px;width: 100%;text-align: center;background-color: rgba(168, 136, 201, 0.11);padding-top: 8px;padding-left: 40px;">
             <h2 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;text-align: start;">LES VETEMENTS</h2>
@@ -262,7 +283,7 @@
 
                 <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;">{{data.prix}} FCFA</h1>
             </div>
-            <div class="imoaeBout">
+            <div class="imoaeBout" id="sac">
                 <form action="/new" method="post" style="background-color: white;display: flex;justify-content: start;">
                     <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
@@ -286,7 +307,7 @@
        
 
     </div>
-    <div class="sact" style="height: 50px;width: 100%;text-align: start;margin-bottom: 10px;">
+    <div class="sact" style="height: 50px;width: 100%;text-align: start;margin-bottom: 10px;" >
        
         <div class="dactrs" style="height: 50px;width: 100%;text-align: center;background-color: rgba(168, 136, 201, 0.11);padding-top: 8px;padding-left: 40px;">
             <h2 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;text-align: start;">LES SACS</h2>
@@ -312,7 +333,7 @@
 
                 <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;">{{data.prix}} FCFA</h1>
             </div>
-            <div class="imoaeBout">
+            <div class="imoaeBout" >
                 <form action="/new" method="post" style="background-color: white;display: flex;justify-content: start;">
                     <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
@@ -334,9 +355,9 @@
         
         
        
-
+        <p id="liv"></p>
     </div>
-    <div class="sact" style="height: 50px;width: 100%;text-align: start;margin-bottom: 10px;">
+    <div class="sact" style="height: 50px;width: 100%;text-align: start;margin-bottom: 10px;" >
        
         <div class="dactrs" style="height: 50px;width: 100%;text-align: center;background-color: rgba(168, 136, 201, 0.11);padding-top: 8px;padding-left: 40px;">
             <h2 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(90, 7, 163);padding-bottom: 50px;text-align: start;">LES LIVRES</h2>

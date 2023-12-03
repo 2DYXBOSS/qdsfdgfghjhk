@@ -163,46 +163,7 @@ with app.app_context() :
         db.create_all()
     except Exception as e:
         print("error de creation de la table")
-class Panierz(db.Model):
 
-    id = db.Column(db.Integer, primary_key = True)
-    nom = db.Column(db.String(100), unique = False , nullable = False)
-    description = db.Column(db.String(100), unique = True , nullable = False)
-    prix = db.Column(db.Integer,nullable = False)
-    image = db.Column(db.String(100), unique = True , nullable = False)
-   
-    def __init__(self,nom,description,prix,image):
-        self.nom = nom
-        self.description = description
-        self.prix = prix
-        self.image = image
-
-    # db.init_app(app)
-    # with app.app_context() :
-    # #     db.create_all()
-    # def __str__(self):
-    #     # Renvoie une chaîne de caractères représentant l'objet
-    #     return f"Person(nom: {self.nom}, description: {self.description}, age: {self.age})"
-    def __repr__(self):
-        
-        return {
-            "nom": self.nom,
-            "description": self.description,
-            "prix": self.prix,
-            "image": self.image
-        }
-with app.app_context() :
-    try :
-        db.create_all()
-    except Exception as e:
-        print("error de creation de la table")
-
-    
-with app.app_context() :
-    try :
-        db.create_all()
-    except Exception as e:
-        print("error de creation de la table")
 class Boutiquez(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
@@ -425,7 +386,7 @@ def panieruserk():
     else:
         return redirect('/pre')
     data = Userpaniere.query.all()
-    Panier = Panierz.query.all()
+    Panier = Boutiquez.query.all()
     # zee = Connecter.query.get(1)
     user = Userpaniere.query.filter_by(mail = useru.last_name).first()
     
@@ -575,7 +536,7 @@ def pree():
 def sprome() :
     compte = 0
     eudeu = Profil.query.all()
-    profilp = Panierz.query.all()
+    profilp = Boutiquez.query.all()
     eude = [eudeu,profilp]
     user = Profil.query.filter_by(last_name = request.form.get("last_name"),age = request.form.get("age")).first()
     userr = Connecter.query.filter_by(last_name = request.form.get("last_name"),age = request.form.get("age")).first()
@@ -1441,7 +1402,7 @@ def deletenotif(id) :
 def ecraseart(id) :
 
 
-    data = Panierz.query.get(id)
+    data = Boutiquez.query.get(id)
     db.session.delete(data)
     db.session.commit()
     return redirect("/admining")
