@@ -313,6 +313,9 @@ def recherche() :
         flash("CET ARTICLE N'EST PAS DISPONIBLE POUR LE MOMENT !")
     return render_template('recherc.html',ae = er)
 # PAYEMENT {}
+@app.route('/payeffectue')
+def payeffectue() :
+    return render_template('afipay.html')
 @app.route('/Payement')
 def Payement() :
     if 'utilisateur_id' in session:

@@ -14,42 +14,52 @@
 </head>
 <body>
     
+    
     <div class="fixe">
-        <div class="lofo">
-            <strong><p style="color: rgba(162, 117, 204, 0.555);"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: white">B</span>lay Library</p></strong>
+        <div class="lofo" style="padding-left: 20px;">
+            <strong><p style="color: #a275cc8e;"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: #ffffff">B</span>lay Library</p></strong>
 
         </div>
         <div class="lofo1">
-            <div class="dfghj">
-                <input type="checkbox" style="display: none;" name="" id="checkboxjh">
-                <label for="checkboxjh">
-                    <img id="img" src="static/IMAGES/me.png" style="filter: invert();" alt="">
-                </label>
-                <div class="zeyrze" >
-                    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;padding-top: 10px;padding-left: 20px;padding-bottom: 50px;">MENU</h1>
-                    
-                    <div class="poqsd" >
+            <input type="checkbox" style="display: none;" name="" id="checkboxjh">
+            <label for="checkboxjh">
+                <img id="img" src="static/IMAGES/me.png" style="filter: invert();" alt="">
+                
+            </label>
+            <div class="zeyrze" >
+                <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;padding-top: 10px;padding-left: 20px;padding-bottom: 50px;">MENU</h1>
+                
+                
+               
+                <div class="poqsd" >
 
-                        <img src="static/IMAGES/modi.png" style="filter: invert();height: 20px;"  alt="">
-                        <a href="/add_objet">
-                            <p style="color: white;padding-left: 5px;">Ajouter un produit</p>
-                        </a>
-                        
-
-                    </div>
+                    <img src="static/IMAGES/modi.png" style="filter: invert();height: 20px;"  alt="">
+                    <a href="/add_objet">
+                        <p style="color: white;padding-left: 5px;">Ajouter un produit</p>
+                    </a>
                     
-                    <div class="poqsd" >
 
-                        <img src="static/IMAGES/contac-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
-                        <a href="/add_data">
-                            <p style="color: white;padding-left: 5px;">Ajouter un utilisateur</p>
-                        </a>
-                        
-
-                    </div>
-                    
-                    
                 </div>
+                
+                <div class="poqsd" >
+
+                    <img src="static/IMAGES/contac-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
+                    <a href="/add_data">
+                        <p style="color: white;padding-left: 5px;">Ajouter un utilisateur</p>
+                    </a>
+                    
+
+                </div>
+                <div class="poqsd" >
+                    <img src="static/IMAGES/dec-removebg-preview.png" style="filter: invert();height: 20px;"  alt="">
+                    <a href="/deconnexionad">
+                        <p style="color: white;padding-left: 5px;">Déconnexion</p>
+                    </a>
+                    
+
+                </div>
+                
+                
             </div>
             <nav>
                 <ul>
@@ -59,14 +69,16 @@
                     <li>
                         <a href="/add_data" style="color: white;">Ajouter un utilisateur</a>
                     </li>
-                    
-                   
+                    <li>
+                        <a href="/deconnexionad" style="color: white;">deconnexion</a>
+                    </li>
                 </ul>
             </nav>
 
         </div>
     </div>
     <h1 id="noadm" >ESPACE DE L'ADMINISTRATEUR</h1>
+
    <div class="ajoutons" >
         
         <!-- <div class="sys">
@@ -104,8 +116,8 @@
             <td><p>{{data.first_name}}</p></td>
             <td><p>{{data.last_name}}</p> </td>
             <td><p>{{data.age}}</p></td>
-            <td class="seer"><a href="/delete/{{data.id}}" class="suppr"></a></td>
-            <td class="seer1"><a href="/update/{{data.id}}" class="modif"></a></td>
+            <td class="seer"><a href="/delete/{{data.id}}" class="suppr" ><p id="nutr" style="background-color: red;">.....</p></a></td>
+            <td class="seer1"><a href="/update/{{data.id}}" class="modif" ><p id="nutr" style="background-color: green;">.....</p></a></td>
            
             
         </tbody>
@@ -133,7 +145,7 @@
             <td><p>{{data.nom}}</p></td>
             <td><p>{{data.description}}</p> </td>
             <td><p>{{data.prix}}</p></td>
-            <td class="seer"><a href="/deletearticles/{{data.id}}" class="suppr"></a></td>
+            <td class="seer"><a href="/deletearticles/{{data.id}}" class="suppr" ><p id="nutr" style="background-color: red;">.....</p></a></td>
             <!-- <td ><a href="/update/{{data.id}}" class="modif">MODIFIER</a></td> -->
             
         </tbody>

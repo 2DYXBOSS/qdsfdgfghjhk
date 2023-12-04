@@ -5,6 +5,20 @@
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
 }
+.fixe {
+    width: 100%;
+    height: 70px;
+    top: 0;
+    display: flex;
+    /* flex-wrap: wrap; */
+    z-index: 9999;
+
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    position: fixed;
+    background-color: rgb(90, 7, 163);
+}
 #gh {
     padding: 15px 25px;
     color: white;
@@ -25,48 +39,48 @@
     filter: invert(24%) sepia(50%) saturate(3691%) hue-rotate(260deg) brightness(95%) contrast(92%);
 }
 @media (min-width:10px) and (max-width:1000px) {
+    
+    .lofo {
+        width: 200px;
+        padding-left: 20px;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+        display: flex;
+        align-items: start;
+        justify-content: start;
+    }
+    .lofo1 {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 80%;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+    
+    }
     .lofo1 nav {
         display: none;
     }
-    .lofo1{
-        padding-right: 20px;
-        
-    }
+    
+    
     .lofo1 img{
         top: 0px;
         right: 0px;
         padding-right: 30px;
     }
-    .dfghj {
-        height: 500px;
-        width: 300px;
-        position: fixed;
-        display: flex;
-        align-items: end;
-        justify-content: end;
-        flex-direction: column;
-        right: 0px;
-        top: 18px;
-       
-        
-
-    }
+    
     #checkboxjh:checked ~ .zeyrze {
         visibility: visible;
         height: 500px;
         width: 300px;
-
-        background-color: rgb(90, 7, 163);
-        margin-top: 15px;
+        margin-top: 30px;
         right: 0px;
         top: 10px;
+        background-color: rgb(90, 7, 163);
+        position: fixed;
+        top: 40px;
     }
-    .feukj {
-        width: 80%;
-        height: 80%;
-        background-color: aqua;
-       
-    }
+    
     .zeyrze {
         height: 500px;
         width: 300px;
@@ -75,6 +89,10 @@
         margin-top: 30px;
         right: 0px;
         top: 10px;
+        background-color: rgb(90, 7, 163);
+        position: fixed;
+        top: 100px;
+        right: 10px;
 
     }
     .poqsd {
@@ -85,7 +103,15 @@
         display: flex;
         align-items: center;
         justify-content: start;
+    } 
+    .feukj {
+        width: 80%;
+        height: 80%;
+        background-color: aqua;
+       
     }
+    
+    
     
     /* .zeyrze img {
         height: 15px;
@@ -94,9 +120,18 @@
     } */
 }
 @media (min-width:1000px) {
-    .dfghj {
+    #checkboxjh , .lofo1 label , .zeyrze {
         display: none;
 
+    }
+    .lofo {
+        width: 200px;
+        padding-left: 20px;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+        display: flex;
+        align-items: start;
+        justify-content: start;
     }
     .lofo1 {
         display: flex;
@@ -126,6 +161,7 @@
         color: white;
     
     }
+    
 }
 /* .paeh {
     position: fixed;
@@ -197,23 +233,6 @@ li{
 a {
     text-decoration: none;
     color: black;
-}
-.fixe {
-    width: 100%;
-    height: 70px;
-    top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    justify-content: space-between;
-    position: fixed;
-    background-color: rgb(90, 7, 163);}
-
-.lofo {
-    width: 200px;
-    padding-left: 20px;
-    height: 100%;
-    background-color: rgb(90, 7, 163);
 }
 
 

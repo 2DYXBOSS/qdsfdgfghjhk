@@ -436,7 +436,8 @@ a {
     align-items: end;
     justify-content: space-between;
     position: fixed;
-    z-index: 3;
+    z-index: 9999;
+
     background-color: rgb(90, 7, 163);
 }
 

@@ -6,12 +6,34 @@
     scroll-behavior: smooth;
 }
 
+.fixe {
+    width: 100%;
+    height: 70px;
+    top: 0;
+    display: flex;
+    /* flex-wrap: wrap; */
+    z-index: 9999;
 
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    position: fixed;
+    background-color: white;
+}
 
 @media (min-width:1000px) {
-    .dfghj {
+    #checkboxjh , .lofo1 label , .zeyrze {
         display: none;
 
+    }
+    .lofo {
+        width: 200px;
+        padding-left: 20px;
+        height: 100%;
+        background-color: white;
+        display: flex;
+        align-items: start;
+        justify-content: start;
     }
     .lofo1 {
         display: flex;
@@ -23,7 +45,7 @@
         background-color: white;
     
     }
-    .lofo1 img{
+    #img{
         display: none;        
     }
     .lofo1 nav ul li{
@@ -76,54 +98,7 @@
         text-decoration: none;
         color: black;
     }
-    .fixe {
-        width: 100%;
-        height: 70px;
-        top: 0;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: end;
-        justify-content: space-between;
-        position: fixed;
-        background-color: white;
-    }
     
-    .lofo {
-        width: 200px;
-        height: 100%;
-        padding-left: 45px;
-        padding-top: 10px;
-    }
-    .lofo1 {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        width: 70%;
-        padding-right: 100px;
-        height: 100%;
-        
-    
-    }
-    .lofo1 img{
-        display: none;
-        
-    
-    }
-    .lofo1 nav ul li{
-        list-style-type: none;
-    
-    }
-    .lofo1 nav ul a {
-        text-decoration: none;
-    }
-    .lofo1 nav ul{
-        display: flex;
-        gap: 15px;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    
-    }
     
     .retyu1 {
         padding-top: 150px;
@@ -136,14 +111,14 @@
     .retyu1 h1{
         font-size: 4rem;
     }
-    .retyu1 a{
+    /* .retyu1 a{
         padding: 15px 25px;
         background-color:  white;
         color: rgb(90, 7, 163);
         border-radius: 5px;
         border: 1px solid rgb(90, 7, 163)
-    }
-    .retyu1 a:hover{
+    } */
+    .retyu1 a{
         padding: 15px 25px;
         background-color: rgb(90, 7, 163);
         color: white;
@@ -169,7 +144,7 @@
     .hau2 {
         height: 70px;
         width: 100%;
-        background-color: rgb(90, 7, 163);
+        background-color: #5a07a3;
     }
     .footer {
         height: 100px;
@@ -224,48 +199,47 @@
 
 
 @media (max-width:1000px) {
+    .lofo {
+        width: 200px;
+        padding-left: 20px;
+        height: 100%;
+        background-color: white;
+        display: flex;
+        align-items: start;
+        justify-content: start;
+    }
+    .lofo1 {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 80%;
+        height: 100%;
+        background-color: white;
+    
+    }
     .lofo1 nav {
         display: none;
     }
-    .lofo1{
-        padding-right: 20px;
-        
-    }
+    
+    
     .lofo1 img{
         top: 0px;
         right: 0px;
         padding-right: 30px;
     }
-    .dfghj {
-        height: 500px;
-        width: 300px;
-        position: fixed;
-        display: flex;
-        align-items: end;
-        justify-content: end;
-        flex-direction: column;
-        right: 0px;
-        top: 30px;
-       
-        
-
-    }
+    
     #checkboxjh:checked ~ .zeyrze {
         visibility: visible;
         height: 500px;
         width: 300px;
-        
-        background-color: white;
-        margin-top: 15px;
+        margin-top: 30px;
         right: 0px;
         top: 10px;
+        background-color: white;
+        position: fixed;
+        top: 40px;
     }
-    .feukj {
-        width: 80%;
-        height: 80%;
-        background-color: aqua;
-       
-    }
+    
     .zeyrze {
         height: 500px;
         width: 300px;
@@ -274,7 +248,12 @@
         margin-top: 30px;
         right: 0px;
         top: 10px;
-        box-shadow: 2px 2px 5px 1px rgb(214, 214, 214);
+        background-color: white;
+        position: fixed;
+        top: 100px;
+        right: 10px;
+        box-shadow: 1px 1px 5px 1px rgba(128, 128, 128, 0.342);
+
 
     }
     .poqsd {
@@ -286,6 +265,15 @@
         align-items: center;
         justify-content: start;
     }
+   
+    .feukj {
+        width: 80%;
+        height: 80%;
+        background-color: aqua;
+       
+    }
+    
+    
 
 
 
@@ -319,65 +307,7 @@
         text-decoration: none;
         color: black;
     }
-    .fixe {
-        width: 100%;
-        height: 70px;
-        top: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: fixed;
-        background-color: white;
-    }
     
-    .lofo {
-        /* width: 200px;
-        padding-left: 20px;
-        height: 100%; */
-        width: 200px;
-        height: 100%;
-        padding-left: 20px;
-        padding-top: 15px;
-    }
-    .lofo1 nav {
-        display: none;
-    }
-    .lofo1 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 20%;
-        padding-right: 20px;
-        padding-top: 23px;
-        height: 100%;
-        
-    
-    }
-    /* .lofo1 {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        width: 70%;
-        padding-right: 100px;
-        height: 100%;
-        
-    
-    } */
-    .lofo1 nav ul li{
-        list-style-type: none;
-    
-    }
-    .lofo1 nav ul a {
-        text-decoration: none;
-    }
-    .lofo1 nav ul{
-        display: flex;
-        gap: 15px;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    
-    }
     
     .retyu1 {
         padding-top: 10px;
@@ -414,9 +344,22 @@
         height: 100%;
         width: 85%;
         background-color:white ;
+        border-radius: 50px 0px 0px 50px;
+        padding-left: 20px;
+
         border: none;
         outline: none;
     }
+    /* .te {
+        height: 100%;
+        width: 90%;
+        background-color: white;
+        outline: none;
+        border: none;
+        padding-left: 50px;
+        border-radius: 50px 0px 0px 50px;
+        box-shadow: 1px 1px 5px 1px rgb(214, 214, 214) inset;
+    } */
     .sr {
         height: 100%;
         width: 15%;
@@ -426,17 +369,17 @@
         background-position: center;    
         outline: none;
     }
-    .retyu1 a{
+    /* .retyu1 a{
         padding: 15px 25px;
         background-color:  white;
         color: rgb(90, 7, 163);
         border-radius: 5px;
         border: 1px solid rgb(90, 7, 163)
-    }
+    } */
     .retyu1 p{
        font-size: 0.8rem;
     }
-    .retyu1 a:hover{
+    .retyu1 a{
         padding: 15px 25px;
         background-color: rgb(90, 7, 163);
         color: white;

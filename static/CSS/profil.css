@@ -5,6 +5,117 @@
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
 }
+@media (min-width:10px) and (max-width:1080px) {
+    
+       
+    .lofo {
+        width: 200px;
+        padding-left: 20px;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+        display: flex;
+        align-items: start;
+        justify-content: start;
+    }
+    .lofo1 {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 80%;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+    
+    }
+    .lofo1 nav {
+        display: none;
+    }
+    
+    
+    .lofo1 img{
+        top: 0px;
+        right: 0px;
+        padding-right: 30px;
+    }
+    
+    #checkboxjh:checked ~ .zeyrze {
+        visibility: visible;
+        height: 500px;
+        width: 300px;
+        margin-top: 30px;
+        right: 0px;
+        top: 10px;
+        background-color: rgb(90, 7, 163);
+        position: fixed;
+        top: 40px;
+    }
+    
+    .zeyrze {
+        height: 500px;
+        width: 300px;
+        visibility: hidden;
+        /* display: none; */
+        margin-top: 30px;
+        right: 0px;
+        top: 10px;
+        background-color: rgb(90, 7, 163);
+        position: fixed;
+        top: 100px;
+        right: 10px;
+
+    }
+    .poqsd {
+        padding-left: 20px;
+        width: 100%;
+        height: 50px;
+        /* background-color: white; */
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+}
+@media (min-width:1080px) {
+    #checkboxjh , .lofo1 label , .zeyrze {
+        display: none;
+
+    }
+    .lofo {
+        width: 200px;
+        padding-left: 20px;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+        display: flex;
+        align-items: start;
+        justify-content: start;
+    }
+    .lofo1 {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 80%;
+        padding-right: 100px;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+    
+    }
+    #img{
+        display: none;        
+    }
+    .lofo1 nav ul li{
+        list-style-type: none;
+    
+    }
+    .lofo1 nav ul a {
+        text-decoration: none;
+    }
+    .lofo1 nav ul{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    
+    }
+}
 .formatte{
     display: none;
 }
@@ -78,7 +189,7 @@ tbody {
 }
 
 td {
-    padding: 10px 12px;
+    /* padding: 10px 12px; */
     text-align: center;
 }
 .hre {
@@ -126,44 +237,15 @@ a {
     width: 100%;
     height: 70px;
     top: 0;
-    overflow: hidden;
     display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    justify-content: space-between;
-    position: fixed;
-    background-color: rgb(90, 7, 163);}
+    /* flex-wrap: wrap; */
+    z-index: 9999;
 
-.lofo {
-    width: 200px;
-    padding-left: 20px;
-    height: 100%;
-    background-color: rgb(90, 7, 163);
-}
-.lofo1 {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    width: 50%;
-    padding-right: 100px;
-    height: 100%;
-    background-color: rgb(90, 7, 163);
-
-}
-.lofo1 nav ul li{
-    list-style-type: none;
-
-}
-.lofo1 nav ul a {
-    text-decoration: none;
-}
-.lofo1 nav ul{
-    display: flex;
-    gap: 15px;
     align-items: center;
     justify-content: center;
-    color: white;
-
+    justify-content: space-between;
+    position: fixed;
+    background-color: rgb(90, 7, 163);
 }
 
 .retyu1 {
@@ -223,67 +305,8 @@ a {
         place-items: center;
         
     }
-    .lofo1 nav {
-        display: none;
-    }
-    .lofo1{
-        padding-right: 20px;
-        
-    }
-    .lofo1 img{
-        top: 0px;
-        right: 0px;
-        padding-right: 30px;
-    }
-    .dfghj {
-        height: 500px;
-        width: 300px;
-        position: fixed;
-        display: flex;
-        align-items: end;
-        justify-content: end;
-        flex-direction: column;
-        right: 0px;
-        top: 18px;
-       
-        
-
-    }
-    #checkboxjh:checked ~ .zeyrze {
-        visibility: visible;
-        height: 500px;
-        width: 300px;
-        
-        background-color: rgb(90, 7, 163);
-        margin-top: 15px;
-        right: 0px;
-        top: 10px;
-    }
-    .feukj {
-        width: 80%;
-        height: 80%;
-       
-       
-    }
-    .zeyrze {
-        height: 500px;
-        width: 300px;
-        visibility: hidden;
-        /* display: none; */
-        margin-top: 30px;
-        right: 0px;
-        top: 10px;
-
-    }
-    .poqsd {
-        padding-left: 20px;
-        width: 100%;
-        height: 50px;
-        /* background-color: white; */
-        display: flex;
-        align-items: center;
-        justify-content: start;
-    }
+    
+    
     
     /* .zeyrze img {
         height: 15px;
@@ -301,30 +324,30 @@ a {
         font-size: 0.5rem;
     }
     
-    tbody .suppr::before{
+    /* tbody .suppr::before{
         height: 100%;
         width: 100%;
         background-color: #a31818;
         content: '';
 
     
-    }
-    .seer{
+    } */
+    /* .seer{
         background-color: #a31818;
 
     }
     .seer1{
         background-color: rgb(24, 163, 66);
 
-    }
+    } */
     
-    tbody .modif::before{
+    /* tbody .modif::before{
         height: 100%;
         width: 100%;
         background-color: rgb(24, 163, 66);
         content: '';
     
-    }
+    } */
     /* tbody .suppr::before{
         width: 100%;
         padding: 12px 35px;
@@ -354,7 +377,9 @@ a {
 }
 @media (min-width:1000px) {
     
-    
+    #nutr {
+        display: none;
+    }
     #noadm {
         font-size: 3rem;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgb(90, 7, 163);
@@ -368,38 +393,8 @@ a {
         place-items: center;
         
     }
-    .dfghj {
-        display: none;
-
-    }
-    .lofo1 {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        width: 80%;
-        padding-right: 100px;
-        height: 100%;
-        background-color: rgb(90, 7, 163);
     
-    }
-    #img{
-        display: none;        
-    }
-    .lofo1 nav ul li{
-        list-style-type: none;
     
-    }
-    .lofo1 nav ul a {
-        text-decoration: none;
-    }
-    .lofo1 nav ul{
-        display: flex;
-        gap: 15px;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    
-    }
     table {
         width: 80%;
         border: none;
@@ -430,6 +425,78 @@ a {
 }
 
 @media (max-width:350px) {
+       
+    .lofo {
+        width: 200px;
+        padding-left: 20px;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+        display: flex;
+        align-items: start;
+        justify-content: start;
+    }
+    .lofo1 {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 80%;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+    
+    }
+    .lofo1 nav {
+        display: none;
+    }
+    
+    
+    .lofo1 img{
+        top: 0px;
+        right: 0px;
+        padding-right: 30px;
+    }
+    
+    #checkboxjh:checked ~ .zeyrze {
+        visibility: visible;
+        height: 500px;
+        width: 300px;
+        margin-top: 30px;
+        right: 0px;
+        top: 10px;
+        background-color: rgb(90, 7, 163);
+        position: fixed;
+        top: 40px;
+    }
+    
+    .zeyrze {
+        height: 500px;
+        width: 300px;
+        visibility: hidden;
+        /* display: none; */
+        margin-top: 30px;
+        right: 0px;
+        top: 10px;
+        background-color: rgb(90, 7, 163);
+        position: fixed;
+        top: 100px;
+        right: 10px;
+
+    }
+    .poqsd {
+        padding-left: 20px;
+        width: 100%;
+        height: 50px;
+        /* background-color: white; */
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }    
+
+    .feukj {
+        width: 80%;
+        height: 80%;
+       
+       
+    }
     body {
         width: 100%;
         padding-top: 200px;
