@@ -342,8 +342,98 @@
 
         </div>
     </div>
+    <div class="recu">
+        <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(140, 58, 216);padding-bottom: 50px;">INFORMATIONS DE COMMANDE</h1>
+
+        <div class="images">
+            <img src="{{url_for('static', filename='IMAGES/detal.jpg')}}" width="250px" height="250px">
+        </div>
+        <p id="res">Ici sont les informations de votre commande</p>
+        <div class="carae">
+            <div class="pre">
+                <p style="font-weight: bolder">Nom du produit</p>
+            </div>
+            <div class="cat">
+                <p>Qté</p>
+
+            </div>
+            <div class="prix">
+                <p>Prix</p>
+
+            </div>
+        </div>
+        {% for i in user[1] %}
+        <form action="/suppanier" method="post"  id="article">
+            <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{i.nom}}">
+            <input style="opacity: 0;height: 0;width: 0;"  type="text" name="description" value="{{i.description}}">
+            <input style="opacity: 0;height: 0;width: 0;"  type="text" name="mail" value="{{i.mail}}">
+            <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{i.prix}}">
+            
+            <button type="submit" class="carae1" >
+                <div class="pre1">
+                    <img src="{{url_for('static', filename='uploads/' + i.image)}}" width="80px" height="80px" alt="">
     
-    <div class="hre">
+    
+                    <p style="text-align: start;padding-left: 20px;" >{{i.nom}}</p>
+                </div>
+                <div class="cat1">
+                    <p style="font-weight: bolder;color: black;">1</p>
+    
+                </div>
+                <div class="prix1">
+                    <p style="font-weight: bolder;color: rgb(245, 10, 10);">{{i.prix}} F</p>
+    
+                </div>
+            </button>
+            <!-- <a href="#" class="carae1" type="submit">
+                <div class="pre1">
+                    <img src="{{url_for('static', filename='uploads/' + i.image)}}" width="80px" height="80px" alt="">
+    
+    
+                    <p style="text-align: start;padding-left: 20px;" >{{i.nom}}</p>
+                </div>
+                <div class="cat1">
+                    <p style="font-weight: bolder;color: black;">1</p>
+    
+                </div>
+                <div class="prix1">
+                    <p style="font-weight: bolder;color: rgb(245, 10, 10);">{{i.prix}} F</p>
+    
+                </div>
+                
+            </a> -->
+            
+        </form>
+        
+        {% endfor %}
+        
+        
+        
+        
+        <div class="oiur" id="aze">
+            <p>TVA :</p>
+            
+            <p>{{user[3]}} FCFA</p>
+        </div>
+        <div class="oiur">
+            <p>Frais:</p>
+            <p>{{user[4]}} FCFA</p>
+        </div>
+        <div class="oiur">
+            <p>Dons :</p>
+            <p>{{user[5]}} FCFA</p>
+        </div>
+        {% if user %}
+        <div class="oiur">
+            <p style="font-weight: bolder;color: black;">Cout Total :</p>
+            <p style="font-weight: bolder;color: rgb(245, 10, 10);">{{user[2]}} FCFA</p>
+        </div>
+        {% endif %}
+    </div>
+    <div class="infor">
+        <a href="/Payement">Cliquez ici pour payer la commande </a>
+    </div>
+    <!-- <div class="hre">
         <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: rgb(140, 58, 216);padding-bottom: 50px;">MON PANIER</h1>
         {% for data in user[1] %}
         <div class="nkqekj">
@@ -367,27 +457,8 @@
                     <button type="submit" id="pansup"><img src="{{url_for('static', filename='IMAGES/poubelele.png')}}" alt="" ></button>
                     
                     
-                    <!-- <a  href="/Payement">ACHETER</a> -->
                 </form>
-                <!-- <form action="/suppanier" method="post">
-                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
-                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="description" value="{{data.description}}">
-                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="description" value="{{data.mail}}">
-                   
-                    <div class="bours" style="display: flex;width: 80%;padding-left: 20px;border-radius: 40px;">
-                        <a href="/Payement" class="achat" style="padding: 10px 25px; 
-                        color: white;
-                        text-decoration: none;
-                        background-color: rgb(139, 0, 252);">acheter</a>
-                        <button type="submit" style="background-color: red;border: none;color: white;padding: 5px 10px;display: flex;align-items: center;justify-content: start;width: 80%;gap: 15px;border: 2px solid red;"> 
-
-                            <img style="filter: invert()" src="{{url_for('static', filename='IMAGES/poubelele.png')}}" height="25px"   alt="">
-    
-                        </button>
-                    </div>
-                    
-                </form> -->
-                <!-- <a style="padding: 10px 10px;background-color: white;color: rgb(140, 58, 216);border-radius: 5px;border: 1px solid rgb(140, 58, 216);margin-bottom: 200px;" href="">PANIER</a> -->
+                
             </div>
            
         </div>
@@ -401,6 +472,6 @@
             </a>
 
         {% endif %}
-    </div>
+    </div> -->
 </body>
 </html>

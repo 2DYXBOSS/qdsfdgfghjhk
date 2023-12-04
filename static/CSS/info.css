@@ -1,268 +1,3 @@
-/* *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
-}
-.fixe {
-    width: 100%;
-    height: 70px;
-    top: 0;
-    display: flex;
-    z-index: 9999;
-
-    align-items: center;
-    justify-content: center;
-    justify-content: space-between;
-    position: fixed;
-    background-color: rgb(90, 7, 163);
-}
-#gh {
-    padding: 15px 25px;
-    color: white;
-    background-color: rgb(90, 7, 163);
-    color: #ae7ddb;
-}
-#gh:hover{
-    padding: 15px 25px;
-    color: rgb(90, 7, 163);
-    background-color: white;
-    border: 0.5px solid rgb(90, 7, 163);
-}
-#gh img{
-    margin-left: 10px;
-    filter: invert();
-}
-#gh:hover img{
-    filter: invert(24%) sepia(50%) saturate(3691%) hue-rotate(260deg) brightness(95%) contrast(92%);
-}
-@media (min-width:10px) and (max-width:1000px) {
-    
-    .lofo {
-        width: 200px;
-        padding-left: 20px;
-        height: 100%;
-        background-color: rgb(90, 7, 163);
-        display: flex;
-        align-items: start;
-        justify-content: start;
-    }
-    .lofo1 {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        width: 80%;
-        height: 100%;
-        background-color: rgb(90, 7, 163);
-    
-    }
-    .lofo1 nav {
-        display: none;
-    }
-    
-    
-    .lofo1 img{
-        top: 0px;
-        right: 0px;
-        padding-right: 30px;
-    }
-    
-    #checkboxjh:checked ~ .zeyrze {
-        visibility: visible;
-        height: 500px;
-        width: 300px;
-        margin-top: 30px;
-        right: 0px;
-        top: 10px;
-        background-color: rgb(90, 7, 163);
-        position: fixed;
-        top: 40px;
-    }
-    
-    .zeyrze {
-        height: 500px;
-        width: 300px;
-        visibility: hidden;
-        margin-top: 30px;
-        right: 0px;
-        top: 10px;
-        background-color: rgb(90, 7, 163);
-        position: fixed;
-        top: 100px;
-        right: 10px;
-
-    }
-    .poqsd {
-        padding-left: 20px;
-        width: 100%;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-    } 
-    .feukj {
-        width: 80%;
-        height: 80%;
-        background-color: aqua;
-       
-    }
-    
-    
-    
-}
-@media (min-width:1000px) {
-    #checkboxjh , .lofo1 label , .zeyrze {
-        display: none;
-
-    }
-    .lofo {
-        width: 200px;
-        padding-left: 20px;
-        height: 100%;
-        background-color: rgb(90, 7, 163);
-        display: flex;
-        align-items: start;
-        justify-content: start;
-    }
-    .lofo1 {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        width: 80%;
-        padding-right: 100px;
-        height: 100%;
-        background-color: rgb(90, 7, 163);
-    
-    }
-    #img{
-        display: none;        
-    }
-    .lofo1 nav ul li{
-        list-style-type: none;
-    
-    }
-    .lofo1 nav ul a {
-        text-decoration: none;
-    }
-    .lofo1 nav ul{
-        display: flex;
-        gap: 15px;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    
-    }
-    
-}
-
-body {
-    width: 100%;
-    padding-top: 100px;
-    background-color: rgb(248, 248, 248);
-    height: 1100px;
-   
-}
-.hre {
-padding-top: 100px;
-height: 100%;
-width: 100%;
-display: flex;
-align-items: center;
-flex-direction: column;
-
-}
-.nkqekj {
-width: 70%;
-margin-bottom: 20px;
-padding: 20px;
-padding-bottom: 20px;
-background-color: white;
-display: flex;
-align-items: center;
-flex-wrap: wrap;
-gap: 20px;
-justify-content: center;
-box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
-}
-.nkqekj a, button{
-    padding: 10px 10px;
-    background-color: white;
-    color: rgb(140, 58, 216);
-    border-radius: 5px;
-    border: 1px solid rgb(140, 58, 216);
-    margin-right: 10px;
-}
-.nkqekj button:hover {
-    padding: 10px 10px;
-    background-color: red;
-    color: white;
-    border-radius: 5px;
-    border: 1px solid red;
-}
-.nkqekj a:hover{
-    padding: 10px 10px;
-    background-color: rgb(140, 58, 216);
-    color: white;
-    border-radius: 5px;
-    border: 1px solid rgb(140, 58, 216);
-}
-
-li{
-    list-style-type: none;
-
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-
-
-.retyu1 {
-  
-    width: 400px;
- 
-    background-color: white;
-}
-.retyu1 h1{
-    font-size: 4rem;
-}
-
-.retyu2 {
-    
-    width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-}
-
-
-#pansup img{
-    filter: invert(28%) sepia(78%) saturate(7478%) hue-rotate(354deg) brightness(99%) contrast(123%);
-}
-#pansup:hover img{
-    filter: invert();
-}
-
-#pansup{
-    padding: 10px 10px;
-    background-color: white;
-    color: rgb(140, 58, 216);
-    border-radius: 5px;
-    border: 1px solid red;
-    margin-right: 10px;
-}
-#pansup:hover {
-    padding: 10px 10px;
-    background-color: red;
-    color: white;
-    border-radius: 5px;
-    border: 1px solid red;
-} */
-
 *{
     box-sizing: border-box;
     margin: 0;
@@ -270,10 +5,6 @@ a {
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
     
-}
-a {
-    text-decoration: none;
-    list-style-type: none;
 }
 .fixe {
     width: 100%;
@@ -444,7 +175,6 @@ body {
         align-items: center;
         justify-content: center;
         color: white;
-        margin-top: 30px;
     }
     .infor a{
         text-decoration: none;
@@ -452,12 +182,6 @@ body {
         color: white;
     }
     /* margin-bottom: 20px; */
-    .pre1 p {
-        font-size: 0.7rem;
-    }
-    .prix1 p {
-        font-size: 0.7rem;
-    }
 
 }
 @media (min-width : 1000px) {
@@ -468,7 +192,7 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 20px 30px;
+        padding: 10px 30px;
         margin-bottom: 20px;
     }
     .infor {
@@ -493,7 +217,7 @@ body {
 .images {
     width: 250px;
     height: 250px;
-    margin-top: 10px;
+    margin-top: 40px;
     margin-bottom: 40px;
 
 }
@@ -503,6 +227,7 @@ body {
     display: flex;
     align-items: center;
     margin-top: 20px;
+    padding-top: 10px;
     padding-left: 10px;
     background-color: rgb(235, 235, 235);
 
@@ -616,24 +341,4 @@ body {
 #aze {
     margin-top: 30px;
 }
-
-#article {
-    width: 100%;
-}
-
-.recu button {
-    border: none;
-}
-.recu button:hover {
-    border: none;
-    opacity: 9% ;
-    content: 'SUPPRIMER';
-}
-.recu button:hover form::before {
-    border: none;
-    opacity: 9% ;
-    content: 'SUPPRIMER';
-}
-
-
 

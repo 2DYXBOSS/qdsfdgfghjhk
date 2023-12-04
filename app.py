@@ -259,7 +259,37 @@ with app.app_context() :
 
 
 
-
+@app.route('/panieruser')
+def detail():
+    if 'utilisateur_id' in session:
+        useru = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    data = Userpaniere.query.all()
+    Panier = Boutiquez.query.all()
+    # zee = Connecter.query.get(1)
+    user = Userpaniere.query.filter_by(mail = useru.last_name).first()
+    
+    frr = []
+    imm = []
+    
+    for i in data : 
+        if i.mail == useru.last_name :
+            frr.append(i)
+    
+    
+    pri = 0
+    for i in frr :
+        pri += i.prix
+    tva = int(pri * 0.0002)
+    eta = int(pri * 0.0001)
+    mon = int(pri * 0.00005)
+    pri = int(pri) + int(tva) + int(eta) + int(mon)
+    az = len(frr)
+    er =[az,user,pri]
+    az = len(frr)
+    er =[az,frr,pri,tva,eta,mon]
+    return render_template('panieruser.html',user = er)
 
 # RECHERCHE DANS LA BASE DE DONNEE {}
 @app.route('/recherche',methods = ["POST"])
@@ -382,33 +412,33 @@ def Payement() :
    
 
 # PANIER {}
-@app.route('/panieruser')
-def panieruserk():
-    if 'utilisateur_id' in session:
-        useru = Profil.query.get(session['utilisateur_id'])
-    else:
-        return redirect('/pre')
-    data = Userpaniere.query.all()
-    Panier = Boutiquez.query.all()
-    # zee = Connecter.query.get(1)
-    user = Userpaniere.query.filter_by(mail = useru.last_name).first()
+# @app.route('/panieruser')
+# def panieruserk():
+#     if 'utilisateur_id' in session:
+#         useru = Profil.query.get(session['utilisateur_id'])
+#     else:
+#         return redirect('/pre')
+#     data = Userpaniere.query.all()
+#     Panier = Boutiquez.query.all()
+#     # zee = Connecter.query.get(1)
+#     user = Userpaniere.query.filter_by(mail = useru.last_name).first()
     
-    frr = []
-    imm = []
+#     frr = []
+#     imm = []
     
-    for i in data : 
-        if i.mail == useru.last_name :
-            frr.append(i)
+#     for i in data : 
+#         if i.mail == useru.last_name :
+#             frr.append(i)
     
     
-    pri = 0
-    for i in frr :
-        pri += i.prix
-    az = len(frr)
-    er =[az,user,pri]
-    az = len(frr)
-    er =[az,frr,pri]
-    return render_template('panieruser.html',user = er)
+#     pri = 0
+#     for i in frr :
+#         pri += i.prix
+#     az = len(frr)
+#     er =[az,user,pri]
+#     az = len(frr)
+#     er =[az,frr,pri]
+#     return render_template('panieruser.html',user = er)
     # return render_template('panieruser.html',user = [user])
 # FIN PANIER {}
 
