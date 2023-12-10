@@ -1239,6 +1239,7 @@ def new():
     desc = request.form.get("desc")
     image = request.form.get("image")
     prix = request.form.get("prix")
+    id = request.form.get("id")
     mail = user.last_name
     user = Userpaniere.query.filter_by(nom = nom, description = desc , prix = prix, mail = mail).first()
     if user:
@@ -1440,6 +1441,46 @@ def ecraseart(id) :
     db.session.commit()
     return redirect("/admining")
 # FIN SUPPRIMER ARTICLES{} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import subprocess
+# import phonenumbers
+
+# def make_phone_call(phone_number):
+#     # Vérifier si le numéro de téléphone est valide
+#     if not phonenumbers.is_valid_number(phonenumbers.parse(phone_number, "FR")):
+#         print("Numéro de téléphone invalide.")
+#         return
+
+#     # Former la commande d'appel téléphonique (exemple avec la commande 'echo')
+#     command = f'echo "Appel à {phone_number}"'
+
+#     # Exécuter la commande système
+#     try:
+#         subprocess.run(command, shell=True, check=True)
+#         print(f"Appel réussi vers {phone_number}")
+#     except subprocess.CalledProcessError as e:
+#         print(f"Erreur lors de l'appel : {e}")
+
+# # Remplacez le numéro de téléphone par celui que vous souhaitez appeler
+# phone_number_to_call = '+223XXXXXXXX'  # Remplacez par le numéro Moov
+
+# # Appeler la fonction pour lancer l'appel téléphonique
+# make_phone_call(phone_number_to_call)
+
 
 if __name__ == '__main__' :
     app.run(debug=True,port=5000)

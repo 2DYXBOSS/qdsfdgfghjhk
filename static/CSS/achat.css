@@ -6,20 +6,7 @@
     scroll-behavior: smooth;
     
 }
-.fixe {
-    width: 100%;
-    height: 70px;
-    top: 0;
-    display: flex;
-    /* flex-wrap: wrap; */
-    z-index: 9999;
 
-    align-items: center;
-    justify-content: center;
-    justify-content: space-between;
-    position: fixed;
-    background-color: rgb(90, 7, 163);
-}
 
 .reformee {
     width: 60%;
@@ -31,6 +18,9 @@
     padding: 1px 20px;
     border-radius: 40px;
     box-shadow: 1px 1px 5px 1px rgba(128, 128, 128, 0.342);
+    position: sticky;
+    top: 75px;
+    z-index: 999;
 }
 .lofrse {
     height: 100%;
@@ -171,13 +161,28 @@
     }
 } */
 @media (min-width:10px) and (max-width:1080px) {
+    #blay {
+        color: rgb(90, 7, 163)
+    }
+    .fixe {
+        width: 100%;
+        height: 70px;
+        top: 0;
+        display: flex;
+        /* flex-wrap: wrap; */
+        z-index: 9999;
     
-       
+        align-items: center;
+        justify-content: center;
+        justify-content: space-between;
+        position: fixed;
+        background-color: white;
+    }
     .lofo {
         width: 200px;
         padding-left: 20px;
         height: 100%;
-        background-color: rgb(90, 7, 163);
+        background-color: white;
         display: flex;
         align-items: start;
         justify-content: start;
@@ -188,7 +193,7 @@
         justify-content: end;
         width: 80%;
         height: 100%;
-        background-color: rgb(90, 7, 163);
+        background-color: white;
     
     }
     .lofo1 nav {
@@ -202,31 +207,55 @@
         padding-right: 30px;
     }
     
-    #checkboxjh:checked ~ .zeyrze {
+    /* #checkboxjh:checked ~ .zeyrze {
         visibility: visible;
         height: 500px;
-        width: 300px;
+        width: 100%;
         margin-top: 30px;
         right: 0px;
         top: 10px;
-        /* z-index: 50; */
-        background-color: rgb(90, 7, 163);
+        background-color: red;
         position: fixed;
+        display: flex;
+        justify-content: end;
         top: 40px;
     }
+    */
+    
     
     .zeyrze {
         height: 500px;
-        width: 300px;
-        visibility: hidden;
-        /* display: none; */
+        width: 100%;
+        /* visibility: hidden; */
+        display: none;
         margin-top: 30px;
         right: 0px;
         top: 10px;
-        background-color: rgb(90, 7, 163);
         position: fixed;
         top: 100px;
         right: 10px;
+
+    }
+    .zeyrze.active {
+        /* visibility: visible; */
+        height: 700px;
+        width: 100%;
+        margin-top: 30px;
+        right: 0px;
+        top: 10px;
+        position: fixed;
+        display: flex;
+        justify-content: end;
+        top: 40px;
+
+    }
+    .rempvae {
+        height: 500px;
+        width: 300px;
+        /* display: none; */
+        
+        background-color: rgb(90, 7, 163);
+        
 
     }
     .poqsd {
@@ -310,6 +339,26 @@
 }
 
 @media (min-width:1080px) {
+    #blay {
+        color: white;
+    }
+    .nu p,#gfghjh{
+        display: none;
+    }
+    .fixe {
+        width: 100%;
+        height: 70px;
+        top: 0;
+        display: flex;
+        /* flex-wrap: wrap; */
+        z-index: 9999;
+    
+        align-items: center;
+        justify-content: center;
+        justify-content: space-between;
+        position: fixed;
+        background-color: rgb(90, 7, 163);
+    }
     #checkboxjh , .lofo1 label , .zeyrze {
         display: none;
 
@@ -433,9 +482,9 @@ padding-top: 20px;
 justify-content: center;
 }
 .imoaeInfo {
-padding-left: 10px;
+padding-left: 8px;
 padding-top: 20px;
-padding-right: 10px;
+padding-right: 8px;
 height: 200px;
 width: 100%;
 background-color: white;
@@ -450,9 +499,24 @@ height: 50px;
 width: 100%;
 background-color: white;
 display: flex;
-align-items: center;
-padding-bottom: 30px;
-justify-content: end;
+align-items: end;
+
+justify-content: center;
+}
+.imoaeBout button {
+height: 30px;
+width: 100%;
+padding-left: 10px;
+padding-right: 10px;
+background-color: rgb(90, 7, 163);
+color: white;
+border-radius: 3px;
+margin-bottom: 10px;
+border-radius: 3px;
+border: none;
+box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
+
+
 }
 .nkqekj {
 /* height: 400px; */
@@ -483,29 +547,7 @@ box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
     border-radius: 5px;
     border: 1px solid rgb(90, 7, 163);
 }
-.imoaeBout button{
-    padding: 10px 15px;
-    background-color: white;
-    color: rgb(90, 7, 163);
-    margin-right: 10px;
-    border: none;
-}
-.imoaeBout img{
-    filter: invert(24%) sepia(50%) saturate(3691%) hue-rotate(260deg) brightness(95%) contrast(92%);
-    height: 30px;
-    width: 30px;
-}
-.imoaeBout button:hover{
-    padding: 10px 15px;
-    background-color: rgb(90, 7, 163);
-    color: rgb(90, 7, 163);
-    margin-right: 10px;
-    border-radius: 5px;
-    border: 1px solid rgb(90, 7, 163);
-}
-.imoaeBout button:hover img{
-    filter: invert();
-}
+
 
 li{
     list-style-type: none;
@@ -553,36 +595,15 @@ a {
 }
 
 .annima {
-    width: 80%;
-    height: 300px;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    padding: 1px 20px;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background: url(../IMAGES/acc.jpg) 50% no-repeat;
-    background-size: cover;
-    animation: annima 5s infinite;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 270px;
+   
+    margin: 0 auto;
+    background-color: white;
 }
 
-@keyframes annima {
-    10% {
-        
-        background: url(../IMAGES/acc.jpg) 50% no-repeat;
-        background-size: cover;
-    }
-    40% {
-        
-        background: url(../IMAGES/accc.jpg) 50% no-repeat;
-        background-size: cover;
-    }
-    70% {
-        
-        background: url(../IMAGES/acc.jpg) 50% no-repeat;
-        background-size: cover;
-    }
-}
 
 
