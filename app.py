@@ -338,7 +338,7 @@ def recherche() :
         recherche=fourniture
 
 
-    er =[az,recherche]
+    er =[az,recherche,mot]
     if len(recherche) <= 0 :
         flash("CET ARTICLE N'EST PAS DISPONIBLE POUR LE MOMENT !")
     return render_template('recherc.html',ae = er)
