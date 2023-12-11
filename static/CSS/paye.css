@@ -88,8 +88,59 @@
     background-color: white;
     border: 1px solid rgb(90, 7, 163);
 }
+.payem {
+    width: 300px;
+    height: 500px;
+    padding-bottom: 50px;
+    background-color: white;
+
+    display: flex;
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+    border-radius: 10px 0px 0px 10px;
+    box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
+
+}
+@media (max-width:700px) {
+    .payem1 {
+        width: 400px;
+        height: 600px;
+        padding-bottom: 50px;
+        background-color: white;
+        
+        /* display: flex; */
+        padding-top: 50px;
+        padding-right: 30px;
+        padding-left: 30px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: start;
+        box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
+    
+    }
+    .payem {
+        width: 400px;
+        height: 500px;
+        padding-bottom: 50px;
+        background-color: white;
+    
+        display: flex;
+        padding-top: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        text-align: center;
+        border-radius: 10px 10px 0px 0px;
+        box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
+    
+    }
+}
 @media (min-width:10px) and (max-width:1000px) {
-      
+    
     .lofo {
         width: 200px;
         padding-left: 20px;
@@ -163,6 +214,22 @@
     }
 }
 @media (min-width:1000px) {
+    .payem {
+        width: 300px;
+        height: 500px;
+        padding-bottom: 50px;
+        background-color: white;
+    
+        display: flex;
+        padding-top: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        text-align: center;
+        border-radius: 10px 0px 0px 10px;
+        box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
+    
+    }
     #checkboxjh , .lofo1 label , .zeyrze {
         display: none;
 
@@ -283,22 +350,7 @@ a {
     justify-content: center;
 }
 
-.payem {
-    width: 300px;
-    height: 500px;
-    padding-bottom: 50px;
-    background-color: white;
 
-    display: flex;
-    padding-top: 20px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    text-align: center;
-    border-radius: 10px 0px 0px 10px;
-    box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
-
-}
 .payem a:hover{
     padding: 15px 25px;
     background-color: rgb(90, 7, 163);

@@ -161,6 +161,22 @@
     }
 } */
 @media (min-width:10px) and (max-width:1080px) {
+    .nu {
+        position: fixed;
+        top: 15px;
+        right: 90px;
+        width: 20px;
+        height: 20px;
+        background-color: rgb(90, 7, 163);
+        z-index: 3;
+        text-align: center;
+        border-radius: 100%;
+        color: white;
+        font-size: 0.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     #blay {
         color: rgb(90, 7, 163)
     }
@@ -254,8 +270,9 @@
         width: 300px;
         /* display: none; */
         
-        background-color: rgb(90, 7, 163);
-        
+        background-color: white;
+        box-shadow: 1px 1px 5px 1px rgba(128, 128, 128, 0.342);
+
 
     }
     .poqsd {
@@ -339,10 +356,13 @@
 }
 
 @media (min-width:1080px) {
+    .nu {
+        background-color: white;
+    }
     #blay {
         color: white;
     }
-    .nu p,#gfghjh{
+    .nu p,#gfghjh,#commander,.nu{
         display: none;
     }
     .fixe {
@@ -357,7 +377,7 @@
         justify-content: center;
         justify-content: space-between;
         position: fixed;
-        background-color: rgb(90, 7, 163);
+        background-color: white;
     }
     #checkboxjh , .lofo1 label , .zeyrze {
         display: none;
@@ -367,7 +387,7 @@
         width: 200px;
         padding-left: 20px;
         height: 100%;
-        background-color: rgb(90, 7, 163);
+        background-color: white;
         display: flex;
         align-items: start;
         justify-content: start;
@@ -379,7 +399,7 @@
         width: 80%;
         padding-right: 100px;
         height: 100%;
-        background-color: rgb(90, 7, 163);
+        background-color: white;
     
     }
     
@@ -392,6 +412,9 @@
     }
     .lofo1 nav ul a {
         text-decoration: none;
+    }
+    .lofo1 nav ul a:hover{
+        font-weight: bolder;
     }
     .lofo1 nav ul{
         display: flex;
