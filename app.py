@@ -203,6 +203,49 @@ with app.app_context() :
         db.create_all()
     except Exception as e:
         print("error de creation de la table")
+class Userpanierezeze(db.Model):
+    
+    id = db.Column(db.Integer, primary_key = True)
+    nom = db.Column(db.String(100), unique = False , nullable = False)
+    description = db.Column(db.String(100), unique = False , nullable = False)
+    prix = db.Column(db.Integer,nullable = False)
+    mail = db.Column(db.String(100), unique = False , nullable = False)
+    image = db.Column(db.String(100), unique = False , nullable = False)
+    qutite = db.Column(db.Integer,nullable = False)
+    
+
+    
+    def __init__(self,nom,description,prix,mail,image,qutite):
+        self.nom = nom
+        self.description = description
+        self.prix = prix
+        self.mail = mail
+        self.image = image
+        self.qutite = qutite 
+        
+
+    # db.init_app(app)
+    # with app.app_context() :
+    #     db.create_all()
+    # def __str__(self):
+    #     # Renvoie une chaîne de caractères représentant l'objet
+    #     return f"Person(nom: {self.nom}, description: {self.description}, prix: {self.prix}, mail: {self.mail}, image: {self.image})"
+    def __repr__(self):
+        
+        return {
+            "nom": self.nom,
+            "description": self.description,
+            "prix": self.prix,
+            "mail": self.mail,
+            "image": self.image,
+            "qutite": self.qutite,
+            
+        }
+with app.app_context() :
+    try :
+        db.create_all()
+    except Exception as e:
+        print("error de creation de la table")
 class Userpaniere(db.Model):
     
     id = db.Column(db.Integer, primary_key = True)
@@ -265,22 +308,25 @@ def detail():
         useru = Profil.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
-    data = Userpaniere.query.all()
+    data = Userpanierezeze.query.all()
     Panier = Boutiquez.query.all()
     # zee = Connecter.query.get(1)
-    user = Userpaniere.query.filter_by(mail = useru.last_name).first()
+    user = Userpanierezeze.query.filter_by(mail = useru.last_name).first()
     
     frr = []
     imm = []
-    
+    mop = []
     for i in data : 
         if i.mail == useru.last_name :
-            frr.append(i)
+            frr.append(i.qutite)
+            mop.append(i)
     
-    
+    tableau_trié = sorted(mop, key=lambda x: x.nom)
+
+
     pri = 0
-    for i in frr :
-        pri += i.prix
+    for i in mop :
+        pri += i.prix*i.qutite
     tva = int(pri * 0.0002)
     eta = int(pri * 0.0001)
     mon = int(pri * 0.00005)
@@ -288,7 +334,7 @@ def detail():
     az = len(frr)
     er =[az,user,pri]
     az = len(frr)
-    er =[az,frr,pri,tva,eta,mon]
+    er =[sum(frr),tableau_trié,pri,tva,eta,mon]
     return render_template('panieruser.html',user = er)
 
 # RECHERCHE DANS LA BASE DE DONNEE {}
@@ -303,12 +349,12 @@ def recherche() :
         mots = request.form['textenter']
     mot = (mots.strip()).lower()
     aer = Boutiquez.query.all()
-    data = Userpaniere.query.all()
+    data = Userpanierezeze.query.all()
     frr = []
 
     for i in data : 
         if i.mail == user.last_name :
-            frr.append(i)
+            frr.append(i.qutite)
    
     
     az = len(frr)
@@ -338,7 +384,7 @@ def recherche() :
         recherche=fourniture
 
 
-    er =[az,recherche,mot]
+    er =[sum(frr),recherche,mot]
     if len(recherche) <= 0 :
         flash("CET ARTICLE N'EST PAS DISPONIBLE POUR LE MOMENT !")
     return render_template('recherc.html',ae = er)
@@ -353,30 +399,31 @@ def Payement() :
     else:
         return redirect('/pre')
     # user = Connecter.query.all()
-    data = Userpaniere.query.all()
+    data = Userpanierezeze.query.all()
     # zee = Connecter.query.get(1)   
     frr = []
     ut = []
     etr = []
-    
+    mop = []
     for i in data : 
         if i.mail == user.last_name :
-            frr.append(i)
+            frr.append(i.qutite)
+            mop.append(i)
             
-            ut.append([i.nom,i.prix])
+            ut.append([i.nom,i.prix*i.qutite])
     pri = 0
-    for i in frr :
-        pri += i.prix
+    for i in mop :
+        pri += i.prix*i.qutite
     
     az = len(frr)
-    for i in frr :
+    for i in mop :
         etr.append(i.image)
     po = 'a.jpeg'
-    premier = [frr[0]]
+    premier = [mop[0]]
     
-    image = frr[0:4:1]
+    image = mop[0:4:1]
     
-    er =[az,user,pri,ut,frr,premier,image]
+    er =[sum(frr),user,pri,ut,mop,premier,image]
  
     print(f"{etr[0]}")
     return render_template('payement.html',ae = er)
@@ -391,7 +438,7 @@ def Payement() :
 #     else:
 #         return redirect('/pre')
 #     # user = Connecter.query.all()
-#     data = Userpaniere.query.all()
+#     data = Userpanierezeze.query.all()
 #     # zee = Connecter.query.get(1)   
 #     frr = []
     
@@ -418,10 +465,10 @@ def Payement() :
 #         useru = Profil.query.get(session['utilisateur_id'])
 #     else:
 #         return redirect('/pre')
-#     data = Userpaniere.query.all()
+#     data = Userpanierezeze.query.all()
 #     Panier = Boutiquez.query.all()
 #     # zee = Connecter.query.get(1)
-#     user = Userpaniere.query.filter_by(mail = useru.last_name).first()
+#     user = Userpanierezeze.query.filter_by(mail = useru.last_name).first()
     
 #     frr = []
 #     imm = []
@@ -460,31 +507,30 @@ def achl():
     #             addsac.append(i)
     # for i in addsac :
     #     print(i)
-    data = Userpaniere.query.all()
+    data = Userpanierezeze.query.all()
     # zee = Connecter.query.get(1)   
     frr = []
 
     for i in data : 
         if i.mail == user.last_name :
-            frr.append(i)
+            frr.append(i.qutite)
    
     sac = []
     for i in aer:
         if i.categorie == "Sac" :
             sac.append(i)
-    az = len(frr)
+    
     vetement = []
     for i in aer:
         if i.categorie == "Vetement" :
             vetement.append(i)
-    az = len(frr)
     fourniture = []
     for i in aer:
         if i.categorie == "Fourniture" :
             fourniture.append(i)
-    az = len(frr)
-   
-    er =[az,aer,sac,vetement,fourniture]
+    az = sum(frr)
+    print(az)
+    er =[sum(frr),aer,sac,vetement,fourniture]
     
     return render_template('achat.html',ae = er)
 # FIN PUBLICATION {}
@@ -497,18 +543,20 @@ def useprid():
         user = Profil.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
-    data = Userpaniere.query.all()
+    data = Userpanierezeze.query.all()
     
        
     frr = []
+    mop = []
 
     
     for i in data : 
         if i.mail == user.last_name :
-            frr.append(i)
+            frr.append(i.qutite)
+            mop.append(i)
    
     
-    az = len(frr)
+    az = sum(frr)
 
     frrno = Notifica.query.all()
     notif = []
@@ -516,7 +564,7 @@ def useprid():
         if i.mail == user.last_name :
             notif.append(i)
 
-    er =[az,user,notif]
+    er =[az,user,notif,mop]
  
 
     return render_template('useprid.html',ae = er)
@@ -662,6 +710,68 @@ def recup():
 
 
 # ENVOYER MAIL
+@app.route('/envoyer_emailhom', methods=['POST'])
+def envoyer_emailhom():
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    if request.method == 'POST':
+        # destinataire = request.form['destinataire']
+        destinataire = "0streamblay@gmail.com"
+        # sujet = request.form['sujet']
+        # tre = Connecter.query.get(1)
+        if 'utilisateur_id' in session:
+            user = Profil.query.get(session['utilisateur_id'])
+        else:
+            return redirect('/pre')
+        dfggh = user.last_name
+        sujet = dfggh
+        contenu = request.form['contenu']
+
+        msg = Message(sujet, recipients=[destinataire])
+        msg.body = contenu
+       
+        try:
+            mail.send(msg)
+            
+        except Exception as e:
+            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+        return redirect("/useprid")
+# FIN ENVOYER MAIL
+# ENVOYER MAIL
+@app.route('/envoyer_emailcom', methods=['POST'])
+def envoyer_emailcom():
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    if request.method == 'POST':
+        # destinataire = request.form['destinataire']
+        destinataire = "0streamblay@gmail.com"
+        # sujet = request.form['sujet']
+        # tre = Connecter.query.get(1)
+        if 'utilisateur_id' in session:
+            user = Profil.query.get(session['utilisateur_id'])
+        else:
+            return redirect('/pre')
+        dfggh = user.last_name
+        sujet = dfggh
+        contenu = request.form['contenu']
+
+        msg = Message(sujet, recipients=[destinataire])
+        msg.body = contenu
+       
+        try:
+            mail.send(msg)
+            
+        except Exception as e:
+            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+
+        return redirect("/achat")
+# FIN ENVOYER MAIL
+# ENVOYER MAIL
 @app.route('/envoyer_email', methods=['POST'])
 def envoyer_email():
     if 'utilisateur_id' in session:
@@ -705,9 +815,23 @@ def commande():
     else:
         return redirect('/pre')
     if request.method == 'POST':
+        data = Userpanierezeze.query.all()
+        
+        frr = []
+        imm = []
+        mop = []
+        img = []
+        for i in data : 
+            if i.mail == oiuy.last_name :
+                frr.append(i.qutite)
+                mop.append(i)
+                img.append(i.image)
+        
+        tableau_trié = sorted(mop, key=lambda x: x.nom)
         prix = request.form['prix']
-        image = request.form['image']
-        quantite = request.form['quantite']
+        print(img)
+        image = ",".join(img)
+        quantite = sum(frr)
         mail = oiuy.last_name
         notif = Notifica(prix = prix, quantite = quantite, image = image, mail = mail)
         
@@ -733,7 +857,7 @@ def commande():
         
         # destinataire = "0streamblay@gmail.com"
         
-        # data = Userpaniere.query.all()
+        # data = Userpanierezeze.query.all()
         # frr = []
         # ut = []
         
@@ -871,7 +995,7 @@ def valcommande():
     dfggh = user.last_name
     sujet = dfggh
 
-    data = Userpaniere.query.all()
+    data = Userpanierezeze.query.all()
  
     
     frr = []
@@ -880,9 +1004,9 @@ def valcommande():
     calvo = 0
     for i in data : 
         if i.mail == user.last_name :
-            frr.append(i)
-            calvo += i.prix 
-            imm.append([str(i.nom),str(i.prix)+" FCFA"])
+            frr.append(i.qutite)
+            calvo += i.prix*i.qutite 
+            imm.append([str(i.nom),str(i.qutite),str(i.prix*i.qutite)+" FCFA"])
     
     for i in imm :
         pop.append(" -#- ".join(i))
@@ -917,7 +1041,7 @@ def procomm():
 
     sujet = "NOUVELLE COMMANDE SUR BLAY LIBRARY"
 
-    data = Userpaniere.query.all()
+    data = Userpanierezeze.query.all()
  
     
     frr = []
@@ -926,10 +1050,10 @@ def procomm():
     calvo = 0
     for i in data : 
         if i.mail == user.last_name :
-            frr.append(i)
-            calvo += i.prix 
+            frr.append(i.qutite)
+            calvo += i.prix*i.qutite 
 
-            imm.append([str(i.nom),str(i.prix)+" FCFA"])
+            imm.append([str(i.nom),str(i.qutite),str(i.prix*i.qutite)+" FCFA"])
     
     for i in imm :
         pop.append(" -#- ".join(i))
@@ -1007,7 +1131,7 @@ def usercommande():
 #             user = Profil.query.get(session['utilisateur_id'])
 #         else:
 #             return redirect('/pre')
-#         data = Userpaniere.query.all()
+#         data = Userpanierezeze.query.all()
 #         # zee = Connecter.query.get(1)   
 #         frr = []
 #         ut = []
@@ -1226,6 +1350,32 @@ def profile() :
 # FIN AJOUTER DES USER{} 
 
 
+# # AJOUTER DES PANIER DEPUIS RECHERC{}
+# @app.route('/newrec',methods = ["POST"])
+# def newrec():
+#     zee = Connecter.query.get(1)
+#     if 'utilisateur_id' in session:
+#         useru = Profil.query.get(session['utilisateur_id'])
+#     else:
+#         return redirect('/pre')
+#     user = Profil.query.filter_by(last_name = useru.last_name).first()
+#     nom = request.form.get("nom")
+#     desc = request.form.get("desc")
+#     image = request.form.get("image")
+#     prix = request.form.get("prix")
+#     id = request.form.get("id")
+#     mail = user.last_name
+#     user = Userpanierezeze.query.filter_by(nom = nom, description = desc , prix = prix, mail = mail).first()
+#     if user:
+#         bou = Userpanierezeze.query.get(user.id)
+#         bou.qutite = bou.qutite+1
+#         db.session.commit()
+#         return redirect("/recherche")
+#     prix = Userpanierezeze(nom = nom, description = desc , prix = prix, mail = mail,image=image,qutite=1)
+#     db.session.add(prix)
+#     db.session.commit()
+#     return redirect("/recherche")
+# # FIN AJOUTER DES PANIER{} 
 # AJOUTER DES PANIER{}
 @app.route('/new',methods = ["POST"])
 def new():
@@ -1241,11 +1391,13 @@ def new():
     prix = request.form.get("prix")
     id = request.form.get("id")
     mail = user.last_name
-    user = Userpaniere.query.filter_by(nom = nom, description = desc , prix = prix, mail = mail).first()
+    user = Userpanierezeze.query.filter_by(nom = nom, description = desc , prix = prix, mail = mail).first()
     if user:
-        
+        bou = Userpanierezeze.query.get(user.id)
+        bou.qutite = bou.qutite+1
+        db.session.commit()
         return redirect("/achat")
-    prix = Userpaniere(nom = nom, description = desc , prix = prix, mail = mail,image=image)
+    prix = Userpanierezeze(nom = nom, description = desc , prix = prix, mail = mail,image=image,qutite=1)
     db.session.add(prix)
     db.session.commit()
     return redirect("/achat")
@@ -1346,7 +1498,7 @@ def suppanier() :
     description = request.form.get("description")
     mail = request.form.get("mail")
     prix = request.form.get("prix")
-    zerr = Userpaniere.query.all()
+    zerr = Userpanierezeze.query.all()
     
     print(mail,nom,description,prix)
     recy =[]
@@ -1354,10 +1506,10 @@ def suppanier() :
         
         if i.mail == mail :
             if i.nom == nom and i.description == description :
-                user = Userpaniere.query.filter_by(nom = nom, description = description , prix = prix, mail = mail).first()
+                user = Userpanierezeze.query.filter_by(nom = nom, description = description , prix = prix, mail = mail).first()
 
                 print(i.description,i.id,i.mail,i.nom,i.prix)
-                zerre = Userpaniere.query.get(i.id)
+                zerre = Userpanierezeze.query.get(i.id)
                 db.session.delete(zerre)
                 db.session.commit()
                 return redirect("/panieruser")
@@ -1419,10 +1571,10 @@ def deletenotif(id) :
         
     #     if i.mail == mail :
     #         if i.nom == nom and i.description == description :
-    #             user = Userpaniere.query.filter_by(nom = nom, description = description , prix = prix, mail = mail).first()
+    #             user = Userpanierezeze.query.filter_by(nom = nom, description = description , prix = prix, mail = mail).first()
 
     #             print(i.description,i.id,i.mail,i.nom,i.prix)
-    #             zerre = Userpaniere.query.get(i.id)
+    #             zerre = Userpanierezeze.query.get(i.id)
     #             db.session.delete(zerre)
     #             db.session.commit()
     #             return redirect("/useprid")

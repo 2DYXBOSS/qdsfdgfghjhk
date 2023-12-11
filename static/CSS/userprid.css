@@ -6,6 +6,71 @@
     scroll-behavior: smooth;
     
 }
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    
+}
+body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.a {
+    width: 100%;
+    height: 500px;
+    background-color: aqua;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+.no {
+    width: 80%;
+    height: 200px;
+    background-color: red;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+.img {
+    width: 200px;
+    height: 100%;
+    background-color: blue;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.img {
+    width: 200px;
+    height: 100%;
+    background-color: blue;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.img1{
+    padding: 10px;
+
+    width: 80%;
+    height: 200px;
+    background-color: white;
+}
+
+.img::-webkit-scrollbar{
+    
+    height: 1px;
+    visibility: hidden;
+    background-color: white;
+}
+.img::-webkit-scrollbar-thumb{
+    
+    height: 1px;
+    width: 1px;
+    border-radius: 20px;
+    background-color: red;
+}
 .reformee {
     width: 60%;
     height: 50px;
@@ -155,50 +220,67 @@
         display: none;
     }
 } */
+.fixe {
+    width: 100%;
+    height: 70px;
+    top: 0;
+    display: flex;
+    /* flex-wrap: wrap; */
+    z-index: 9999;
+
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    position: fixed;
+    background-color: rgb(90, 7, 163);
+}
+
+
 @media (min-width:10px) and (max-width:1080px) {
+    
+       
+    .lofo {
+        width: 200px;
+        padding-left: 20px;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+        display: flex;
+        align-items: start;
+        justify-content: start;
+    }
+    .lofo1 {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 80%;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+    
+    }
     .lofo1 nav {
         display: none;
     }
-    .lofo1{
-        padding-right: 20px;
-        
-    }
+    
+    
     .lofo1 img{
         top: 0px;
         right: 0px;
         padding-right: 30px;
     }
-    .dfghj {
-        height: 500px;
-        width: 300px;
-        position: fixed;
-        z-index: 3;
-        display: flex;
-        align-items: end;
-        justify-content: end;
-        flex-direction: column;
-        right: 0px;
-        top: 18px;
-       
-        
-
-    }
+    
     #checkboxjh:checked ~ .zeyrze {
         visibility: visible;
         height: 500px;
         width: 300px;
-        
-        background-color: rgb(90, 7, 163);
-        margin-top: 15px;
+        margin-top: 30px;
         right: 0px;
         top: 10px;
+        /* z-index: 50; */
+        background-color: rgb(90, 7, 163);
+        position: fixed;
+        top: 40px;
     }
-    .feukj {
-        width: 80%;
-        height: 80%;
-       
-       
-    }
+    
     .zeyrze {
         height: 500px;
         width: 300px;
@@ -207,6 +289,10 @@
         margin-top: 30px;
         right: 0px;
         top: 10px;
+        background-color: rgb(90, 7, 163);
+        position: fixed;
+        top: 100px;
+        right: 10px;
 
     }
     .poqsd {
@@ -217,7 +303,16 @@
         display: flex;
         align-items: center;
         justify-content: start;
+    }    
+
+    .feukj {
+        width: 80%;
+        height: 80%;
+       
+       
     }
+
+
     .reformee {
         width: 90%;
         height: 50px;
@@ -251,13 +346,95 @@
         width: 15px;
         filter: invert();
     } */
+    .footer {
+        height: 70px;
+        width: 100%;
+        display: flex;
+        margin-top: 50px;
+        align-items: center;
+        justify-content: center;
+        background-color:rgb(90, 7, 163) ;
+        overflow: hidden;
+        animation: footer 2s ease;
 
+    }
+   
+    .imp {
+        height: 80%;
+        width: 90%;
+        display: flex;
+       
+        align-items: center;
+        justify-content: center;
+        background-color:rgb(90, 7, 163) ;
+        animation: imp 4s ease;
+
+    }
+    
+    @keyframes footer {
+        0% {
+            transform: translateX(-1000px);
+        }
+        100% {
+            transform: translateX(0px);
+        }
+    }
+   
+    @keyframes imp {
+        0% {
+            transform: translateY(100px);
+        }
+        30% {
+            transform: translateY(100px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    .te {
+        height: 100%;
+        width: 85%;
+        background-color:white ;
+        border-radius: 50px 0px 0px 50px;
+        padding-left: 20px;
+
+        border: none;
+        outline: none;
+    }
+    /* .te {
+        height: 100%;
+        width: 90%;
+        background-color: white;
+        outline: none;
+        border: none;
+        padding-left: 50px;
+        border-radius: 50px 0px 0px 50px;
+        box-shadow: 1px 1px 5px 1px rgb(214, 214, 214) inset;
+    } */
+    .sr {
+        height: 100%;
+        width: 15%;
+        border: none;
+        background: url(/static/IMAGES/mailz.png) no-repeat;
+        background-size: 50px;
+        background-position: center;    
+        outline: none;
+    }
 }
 
 @media (min-width:1080px) {
-    .dfghj {
+    #checkboxjh , .lofo1 label , .zeyrze {
         display: none;
 
+    }
+    .lofo {
+        width: 200px;
+        padding-left: 20px;
+        height: 100%;
+        background-color: rgb(90, 7, 163);
+        display: flex;
+        align-items: start;
+        justify-content: start;
     }
     .lofo1 {
         display: flex;
@@ -269,6 +446,7 @@
         background-color: rgb(90, 7, 163);
     
     }
+    
     #img{
         display: none;        
     }
@@ -287,7 +465,76 @@
         color: white;
     
     }
+    .footer {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        background-color: rgb(90, 7, 163);
+        /* display: none; */
+        overflow: hidden;
+        animation: footer 2s ease;
+
+
+    }
+    
+    @keyframes footer {
+        0% {
+            transform: translateX(-1000px);
+        }
+        100% {
+            transform: translateX(0px);
+        }
+    }
+    .imp {
+        height: 70px;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: imp 4s ease;
+
+    }
+    @keyframes imp {
+        0% {
+            transform: translateY(100px);
+        }
+        30% {
+            transform: translateY(100px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    .te {
+        height: 100%;
+        width: 90%;
+        background-color: white;
+        outline: none;
+        border: none;
+        padding-left: 50px;
+        border-radius: 50px 0px 0px 50px;
+        box-shadow: 1px 1px 5px 1px rgb(214, 214, 214) inset;
+    }
+    
+    .sr {
+        outline: none;
+        border: none;
+        height: 100%;
+        width: 10%;
+        /* background-color: white;
+        color: rgb(165, 35, 35); */
+        background: url(/static/IMAGES/mailz.png) no-repeat;
+        background-size: 50px;
+        background-position: center;
+        font-size: 1.2rem;
+        
+    }
+    
 }
+
 /* .paeh {
     position: fixed;
     width: 100px;
@@ -427,26 +674,14 @@ a {
     text-decoration: none;
     color: black;
 }
-.fixe {
-    width: 100%;
-    height: 70px;
-    top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    justify-content: space-between;
-    position: fixed;
-    z-index: 9999;
 
-    background-color: rgb(90, 7, 163);
-}
 
-.lofo {
+/* .lofo {
     width: 200px;
     padding-left: 20px;
     height: 100%;
     background-color: rgb(90, 7, 163);
-}
+} */
 
 
 
