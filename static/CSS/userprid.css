@@ -6,14 +6,13 @@
     scroll-behavior: smooth;
     
 }
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
-    
+h1,h2 {
+    text-shadow: -1px 1px 1px  rgba(153, 150, 150, 0.507);
 }
+.fixe p {
+    text-shadow: -1px 1px 1px  rgba(153, 150, 150, 0.507);
+}
+
 body {
     width: 100%;
     display: flex;
@@ -22,42 +21,43 @@ body {
 }
 .a {
     width: 100%;
-    height: 500px;
-    background-color: aqua;
     display: flex;
     align-items: start;
     justify-content: center;
 }
 .no {
-    width: 80%;
+    width: 100%;
     height: 200px;
-    background-color: red;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
     display: flex;
     align-items: start;
     justify-content: center;
 }
-.img {
+/* .img {
     width: 200px;
     height: 100%;
     background-color: blue;
     overflow-x: hidden;
     overflow-y: scroll;
-}
+} */
 .img {
-    width: 200px;
+    width: 250px;
     height: 100%;
-    background-color: blue;
+    background-color: white;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 .img1{
     padding: 10px;
-
     width: 80%;
     height: 200px;
     background-color: white;
 }
-
+.img1 p{
+    padding-bottom: 5px;
+}
 .img::-webkit-scrollbar{
     
     height: 1px;
@@ -69,7 +69,7 @@ body {
     height: 1px;
     width: 1px;
     border-radius: 20px;
-    background-color: red;
+    background-color: white;
 }
 .reformee {
     width: 60%;
@@ -146,24 +146,23 @@ body {
 }
 .notiffq {
     width: 80%;
-    height: 300px;
     border-radius: 10px;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 20px;
     box-shadow: 1px 0.5px 5px 0.1px rgb(235, 234, 234);
     background-color: rgb(250, 250, 250);
     /* min-width: 300px; */
 }
 @media (max-width:500px) {
     .notiffq {
-        width: 80%;
+        width: 95%;
         height: 100%;
         border-radius: 10px;
         margin: 0 auto;
-        margin-top: 50px;
+        margin-top: 20px;
         box-shadow: 1px 0.5px 5px 0.1px rgb(235, 234, 234);
         background-color: rgb(250, 250, 250);
-        margin-bottom: 100px;
+        margin-bottom: 30px;
         /* min-width: 300px; */
     }
     .supeyujd1 {
@@ -176,8 +175,33 @@ body {
         height: 500px;
         width: 100%;
     }
-
+    .img1 p{
+        font-size: 0.5rem;
+    }
+    #syud{
+        font-size: 0.5rem;
+        padding: 5px 10px;
+        background-color: red;
+        text-decoration: none;
+        color: white;
+        box-shadow: 1px 1px 5px 1px rgba(128, 128, 128, 0.342);
+        border-radius: 5px;
+    }
     
+}
+@media (min-width:500px) and (max-width:1080px) {
+    .img1 p{
+        font-size: 0.7rem;
+    }
+    #syud{
+        font-size: 0.5rem;
+        padding: 5px 10px;
+        background-color: red;
+        text-decoration: none;
+        color: white;
+        box-shadow: 1px 1px 5px 1px rgba(128, 128, 128, 0.342);
+        border-radius: 5px;
+    }
 }
 .supeyujd {
     width: 100%;
@@ -420,6 +444,7 @@ body {
         background-position: center;    
         outline: none;
     }
+   
 }
 
 @media (min-width:1080px) {
@@ -532,7 +557,28 @@ body {
         font-size: 1.2rem;
         
     }
-    
+    .notiffq {
+        width: 1000px;
+        border-radius: 10px;
+        margin: 0 auto;
+        margin-top: 20px;
+        box-shadow: 1px 0.5px 5px 0.1px rgb(235, 234, 234);
+        background-color: rgb(250, 250, 250);
+        /* min-width: 300px; */
+       
+    }
+    .img1 p{
+        font-size: 1rem;
+    }
+    #syud{
+        font-size: 0.7rem;
+        padding: 5px 50px;
+        background-color: red;
+        text-decoration: none;
+        color: white;
+        box-shadow: 1px 1px 5px 1px rgba(128, 128, 128, 0.342);
+        border-radius: 10px;
+    }
 }
 
 /* .paeh {

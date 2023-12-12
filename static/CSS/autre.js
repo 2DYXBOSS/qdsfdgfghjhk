@@ -13,6 +13,8 @@
 // })
 
 
+const infosurart = document.querySelector('.infosurart')
+const imoer1 = document.querySelector('.imoer1')
 const commander = document.querySelector('#commander')
 const codrq = document.querySelector('.zeyrze')
 const autr = document.querySelector('.maile')
@@ -21,6 +23,15 @@ const vrae = document.querySelector('#vete')
 
 
 
+imoer1.addEventListener('click', ()=> {
+    infosurart.classList.add('active');
+    // menu_ordi2.classList.remove('active');
+    
+})
+infosurart.addEventListener('click', ()=> {
+    infosurart.classList.remove('active');
+
+})
 commander.addEventListener('click', ()=> {
     codrq.classList.add('active');
     // menu_ordi2.classList.remove('active');
