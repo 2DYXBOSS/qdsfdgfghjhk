@@ -15,13 +15,13 @@ h1,h2 {
 .maile {
     width: 50px;
     height: 50px;
-    background-color: red;
+    /* background-color: red; */
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     bottom: 40px;
-    right: 30px;
+    left: 30px;
     border-radius: 100% 100% 0 100%;
     box-shadow: 2px 2px 5px 2px rgba(199, 197, 197, 0.342);
 
@@ -178,6 +178,20 @@ h1,h2 {
         display: none;
     }
 } */
+.fixe {
+    width: 100%;
+    height: 70px;
+    top: 0;
+    display: flex;
+    /* flex-wrap: wrap; */
+    z-index: 9999;
+
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    position: fixed;
+    background-color: white;
+}
 @media (min-width:10px) and (max-width:1080px) {
    
     .nu {
@@ -198,20 +212,6 @@ h1,h2 {
     }
     #blay {
         color: rgb(90, 7, 163)
-    }
-    .fixe {
-        width: 100%;
-        height: 70px;
-        top: 0;
-        display: flex;
-        /* flex-wrap: wrap; */
-        z-index: 9999;
-    
-        align-items: center;
-        justify-content: center;
-        justify-content: space-between;
-        position: fixed;
-        background-color: white;
     }
     .lofo {
         width: 200px;
@@ -242,48 +242,51 @@ h1,h2 {
         padding-right: 30px;
     }
     
-    /* #checkboxjh:checked ~ .zeyrze {
+    #checkboxjh:checked ~ .zeyrze {
         visibility: visible;
         height: 500px;
-        width: 100%;
+        width: 300px;
         margin-top: 30px;
         right: 0px;
         top: 10px;
-        background-color: red;
+        background-color: white;
         position: fixed;
-        display: flex;
-        justify-content: end;
         top: 40px;
     }
-    */
-    
     
     .zeyrze {
         height: 500px;
-        width: 100%;
-        /* visibility: hidden; */
-        display: none;
+        width: 300px;
+        visibility: hidden;
+        /* display: none; */
         margin-top: 30px;
         right: 0px;
         top: 10px;
+        background-color: white;
         position: fixed;
         top: 100px;
         right: 10px;
+        box-shadow: 1px 1px 5px 1px rgba(128, 128, 128, 0.342);
+
 
     }
-    .zeyrze.active {
-        /* visibility: visible; */
-        height: 700px;
+    .poqsd {
+        padding-left: 20px;
         width: 100%;
-        margin-top: 30px;
-        right: 0px;
-        top: 10px;
-        position: fixed;
+        height: 50px;
+        /* background-color: white; */
         display: flex;
-        justify-content: end;
-        top: 40px;
-
+        align-items: center;
+        justify-content: start;
     }
+   
+    .feukj {
+        width: 80%;
+        height: 80%;
+        background-color: aqua;
+       
+    }
+    
     .rempvae {
         height: 500px;
         width: 300px;
@@ -464,23 +467,6 @@ h1,h2 {
     }
     #blay {
         color: white;
-    }
-    .nu p,#gfghjh,#commander,.nu{
-        display: none;
-    }
-    .fixe {
-        width: 100%;
-        height: 70px;
-        top: 0;
-        display: flex;
-        /* flex-wrap: wrap; */
-        z-index: 9999;
-    
-        align-items: center;
-        justify-content: center;
-        justify-content: space-between;
-        position: fixed;
-        background-color: white;
     }
     #checkboxjh , .lofo1 label , .zeyrze {
         display: none;
