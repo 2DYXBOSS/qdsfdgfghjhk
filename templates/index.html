@@ -78,7 +78,25 @@
         </div>
     </div>
     <h1 id="noadm" >ESPACE DE L'ADMINISTRATEUR</h1>
+    
+    <!-- <div class="admpsl">
+        <div class="azio3">
 
+        </div>
+        <div class="azio1">
+            
+        </div>
+        <div class="azio2">
+
+        </div>
+        <div class="azio4">
+
+        </div>
+        <div class="azio3">
+
+        </div>
+        
+    </div> -->
    <div class="ajoutons" >
         
         <!-- <div class="sys">
@@ -116,8 +134,8 @@
             <td><p>{{data.first_name}}</p></td>
             <td><p>{{data.last_name}}</p> </td>
             <td><p>{{data.age}}</p></td>
-            <td class="seer"><a href="/delete/{{data.id}}" class="suppr" ><p id="nutr" style="background-color: red;">.....</p></a></td>
-            <td class="seer1"><a href="/update/{{data.id}}" class="modif" ><p id="nutr" style="background-color: green;">.....</p></a></td>
+            <td class="seer"><a href="/delete/{{data.id}}" class="suppr" ><p id="nutr" style="background-color: red;"><img src="{{url_for('static', filename='IMAGES/poubelele.png')}}" alt="" style="filter: invert(100%) sepia(0%) saturate(751%) hue-rotate(178deg) brightness(112%) contrast(105%);" width="10px" height="10px"></p></a></td>
+            <td class="seer1"><a href="/update/{{data.id}}" class="modif" ><p id="nutr" style="background-color: green;"><img src="{{url_for('static', filename='IMAGES/modi.png')}}" alt="" style="filter: invert(100%) sepia(0%) saturate(751%) hue-rotate(178deg) brightness(112%) contrast(105%);" width="10px" height="10px"></p></a></td>
            
             
         </tbody>
@@ -145,7 +163,7 @@
             <td><p>{{data.nom}}</p></td>
             <td><p>{{data.description}}</p> </td>
             <td><p>{{data.prix}}</p></td>
-            <td class="seer"><a href="/deletearticles/{{data.id}}" class="suppr" ><p id="nutr" style="background-color: red;">.....</p></a></td>
+            <td class="seer"><a href="/deletearticles/{{data.id}}" class="suppr" ><p id="nutr" style="background-color: red;"><img src="{{url_for('static', filename='IMAGES/poubelele.png')}}" alt="" style="filter: invert(100%) sepia(0%) saturate(751%) hue-rotate(178deg) brightness(112%) contrast(105%);" width="10px" height="10px"></p></a></td>
             <!-- <td ><a href="/update/{{data.id}}" class="modif">MODIFIER</a></td> -->
             
         </tbody>

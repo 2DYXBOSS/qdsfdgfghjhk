@@ -326,7 +326,7 @@ def detail():
 
     pri = 0
     for i in mop :
-        pri += i.prix*i.qutite
+        pri += i.prix*int(i.qutite)
     tva = int(pri * 0.0002)
     eta = int(pri * 0.0001)
     mon = int(pri * 0.00005)
@@ -410,10 +410,10 @@ def Payement() :
             frr.append(i.qutite)
             mop.append(i)
             
-            ut.append([i.nom,i.prix*i.qutite])
+            ut.append([i.nom,int(i.prix)*int(i.qutite)])
     pri = 0
     for i in mop :
-        pri += i.prix*i.qutite
+        pri += int(i.prix)*int(i.qutite)
     
     az = len(frr)
     for i in mop :
@@ -1005,7 +1005,7 @@ def valcommande():
     for i in data : 
         if i.mail == user.last_name :
             frr.append(i.qutite)
-            calvo += i.prix*i.qutite 
+            calvo += int(i.prix)*int(i.qutite)
             imm.append([str(i.nom),str(i.qutite),str(i.prix*i.qutite)+" FCFA"])
     
     for i in imm :
@@ -1051,7 +1051,7 @@ def procomm():
     for i in data : 
         if i.mail == user.last_name :
             frr.append(i.qutite)
-            calvo += i.prix*i.qutite 
+            calvo += int(i.prix)*int(i.qutite)
 
             imm.append([str(i.nom),str(i.qutite),str(i.prix*i.qutite)+" FCFA"])
     
@@ -1384,14 +1384,17 @@ def new():
         useru = Profil.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
+    zert = Userpanierezeze.query.all()
     user = Profil.query.filter_by(last_name = useru.last_name).first()
-    nom = request.form.get("nom")
-    desc = request.form.get("desc")
-    image = request.form.get("image")
-    prix = request.form.get("prix")
+    nom = (request.form.get("nom").upper()).strip()
+    desc = request.form.get("desc").strip()
+    image = request.form.get("image").strip()
+    prix = request.form.get("prix").strip()
     id = request.form.get("id")
     mail = user.last_name
-    user = Userpanierezeze.query.filter_by(nom = nom, description = desc , prix = prix, mail = mail).first()
+    print(f"{nom},{desc},{image},{prix},{id},{mail}")
+    user = Userpanierezeze.query.filter_by(nom=nom,description = desc , prix = prix, mail = mail).first()
+    
     if user:
         bou = Userpanierezeze.query.get(user.id)
         bou.qutite = bou.qutite+1
