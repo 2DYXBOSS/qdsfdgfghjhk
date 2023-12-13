@@ -370,9 +370,8 @@ h1,h2 {
     }
     .te {
         height: 200px;
-        width: 85%;
+        width: 90%;
         background-color:white ;
-        border-radius: 50px 0px 0px 50px;
         padding-left: 20px;
 
         border: none;
