@@ -7,6 +7,17 @@ from flask_mail import Mail, Message
 import os
 
 
+from flask import Flask, request, render_template, redirect, url_for,send_file
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+
+
+
+# Configurations pour le serveur SMTP
+
+
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads/'
 app.debug = True
@@ -27,6 +38,12 @@ app.config['MAIL_USERNAME'] = '0streamblay@gmail.com'
 app.config['MAIL_PASSWORD'] = 'vgux fpjq qyqr nxem'
 app.config['MAIL_DEFAULT_SENDER'] = '0streamblay@gmail.com'
 
+
+
+SMTP_SERVER = 'smtp.googlemail.com'  # Remplacez par l'adresse de votre serveur SMTP
+SMTP_PORT = 587  # Port SMTP (généralement 587 pour TLS)
+SMTP_USERNAME = 'pythonanywhere225@gmail.com'
+SMTP_PASSWORD = 'tdqn cklm uvjd aonn'
 # Clé secrète pour sécuriser l'application
 app.secret_key = os.urandom(24)
 mail = Mail(app)
@@ -772,37 +789,100 @@ def envoyer_emailcom():
         return redirect("/achat")
 # FIN ENVOYER MAIL
 # ENVOYER MAIL
-@app.route('/envoyer_email', methods=['POST'])
-def envoyer_email():
-    if 'utilisateur_id' in session:
-        user = Profil.query.get(session['utilisateur_id'])
-    else:
-        return redirect('/pre')
-    if request.method == 'POST':
-        # destinataire = request.form['destinataire']
-        destinataire = "0streamblay@gmail.com"
-        # sujet = request.form['sujet']
-        # tre = Connecter.query.get(1)
-        if 'utilisateur_id' in session:
-            user = Profil.query.get(session['utilisateur_id'])
-        else:
-            return redirect('/pre')
-        dfggh = user.last_name
-        sujet = dfggh
-        contenu = request.form['contenu']
+# @app.route('/envoyer_email', methods=['POST'])
+# def envoyer_email():
+#     if 'utilisateur_id' in session:
+#         user = Profil.query.get(session['utilisateur_id'])
+#     else:
+#         return redirect('/pre')
+#     if request.method == 'POST':
+#         # destinataire = request.form['destinataire']
+#         destinataire = "0streamblay@gmail.com"
+#         # sujet = request.form['sujet']
+#         # tre = Connecter.query.get(1)
+#         if 'utilisateur_id' in session:
+#             user = Profil.query.get(session['utilisateur_id'])
+#         else:
+#             return redirect('/pre')
+#         dfggh = user.last_name
+#         sujet = dfggh
+#         contenu = request.form['contenu']
 
-        msg = Message(sujet, recipients=[destinataire])
-        msg.body = contenu
+#         msg = Message(sujet, recipients=[destinataire])
+#         msg.body = contenu
        
-        try:
-            mail.send(msg)
+#         try:
+#             mail.send(msg)
             
-        except Exception as e:
-            flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
+#         except Exception as e:
+#             flash("Une erreur s'est produite lors de l'envoi de l'e-mail", 'danger')
 
-        return redirect("/home")
+#         return redirect("/home")
 # FIN ENVOYER MAIL
 
+
+
+
+# app.config['SECRET_KEY'] = 'sdfgghjklhkj'
+# app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+# app.config['MAIL_PORT'] = 587
+# app.config['MAIL_USE_TLS'] = True
+# app.config['MAIL_USERNAME'] = 'pythonanywhere225@gmail.com'
+# app.config['MAIL_PASSWORD'] = 'tdqn cklm uvjd aonn'
+# app.config['MAIL_DEFAULT_SENDER'] = 'pythonanywhere225@gmail.com'
+
+# Clé secrète pour sécuriser l'application
+
+
+@app.route('/image/<nom_fichier>')
+def recuperer_image(nom_fichier):
+    try:
+        # Spécifiez le chemin complet vers le fichier image
+        chemin_image = f'static\image\{nom_fichier}'
+        az = send_file(chemin_image, mimetype='image/jpeg')
+        # Récupérez l'image à partir du fichier
+        return az  # Spécifiez le type MIME approprié pour votre image
+
+    except Exception as e:
+        return str(e), 404  # Gérez les erreurs appropriées
+
+
+@app.route('/envoyer_email', methods=['POST'])
+def envoyer_email():
+    if 'photo' not in request.files:
+        return "Aucun fichier n'a été téléchargé."
+
+    fichier = request.files['photo']
+    # image = MIMEImage(fichier.read(), name=fichier.filename)
+    # print(image)
+    # if fichier.filename == '':
+    #     return "Aucun fichier n'a été sélectionné."
+    
+    # return render_template('connexion.html')
+    if fichier:
+        # Construire le message
+        msg = MIMEMultipart()
+        msg['From'] = SMTP_USERNAME
+        msg['To'] = "0streamblay@gmail.com"
+        msg['Subject'] = "0streamblay@gmail.com"
+
+        message_texte = MIMEText(request.form['contenu'])
+        msg.attach(message_texte)
+
+        # Ajouter l'image au message
+        image = MIMEImage(fichier.read(), name=fichier.filename)
+        msg.attach(image)
+
+        # Connexion au serveur SMTP et envoi du courrier électronique
+        try:
+            server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+            server.starttls()
+            server.login(SMTP_USERNAME, SMTP_PASSWORD)
+            server.sendmail(SMTP_USERNAME, "0streamblay@gmail.com", msg.as_string())
+            server.quit()
+            return redirect('/home')
+        except Exception as e:
+            return "Erreur lors de l'envoi de l'e-mail : " + str(e)
 
 # COMMANDER
 @app.route('/commande', methods=['POST'])

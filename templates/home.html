@@ -172,11 +172,12 @@
     </div>
     <div class="footer" id="Contactez">
      
-        <form action="/envoyer_email" method="post" class="imp">
+        <form action="/envoyer_email" enctype="multipart/form-data" method="post" class="imp">
             <input type="text" class="te" name="contenu" placeholder="Ecrivez - nous maintenant si vous avez un probleme!">
-            <input type="submit" class="sr" value="">
+            <input type="file" name="photo" accept="image/*" value="a.jpg" class="file-input"  placeholder="♀" ><br>
+            <input type="submit" class="te" name="contenu" placeholder="Envoyer le formulaire" style="width: 200px;height: 50px;background-color: white;border-radius: 10px;">
         </form>
-      
+        
     </div>
 </body>
 </html>
