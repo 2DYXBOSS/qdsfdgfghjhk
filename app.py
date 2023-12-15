@@ -547,7 +547,14 @@ def achl():
             fourniture.append(i)
     az = sum(frr)
     print(az)
-    er =[sum(frr),aer,sac,vetement,fourniture]
+    frrnoz = Notifica.query.all()
+    notifm = []
+    for i in frrnoz : 
+        if i.mail == user.last_name :
+            notifm.append(i)
+    tail = len(notifm)
+   
+    er =[sum(frr),aer,sac,vetement,fourniture,tail]
     
     return render_template('achat.html',ae = er)
 # FIN PUBLICATION {}
@@ -864,7 +871,7 @@ def envoyer_email():
         msg = MIMEMultipart()
         msg['From'] = SMTP_USERNAME
         msg['To'] = "0streamblay@gmail.com"
-        msg['Subject'] = "0streamblay@gmail.com"
+        msg['Subject'] = request.form['sujet']
 
         message_texte = MIMEText(request.form['contenu'])
         msg.attach(message_texte)

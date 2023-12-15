@@ -8,7 +8,11 @@
 h1,h2 {
     text-shadow: -1px 1px 1px  rgba(153, 150, 150, 0.507);
 }
-
+.vradout {
+    width: 100%;
+    height: 100px;
+    background-color: #5a07a3;
+}
 /* .maile {
     width: 50px;
     height: 50px;
@@ -170,23 +174,83 @@ h1,h2 {
         background-color: #5a07a3;
     }
     .footer {
-        height: 100px;
+        height: 500px;
         width: 100%;
         display: flex;
+        margin-top: 50px;
         align-items: center;
         justify-content: center;
-        background-color: rgba(69, 14, 121, 0.938);
+        background-color:white ;
+    }
+    
+    .imp2 {
+        height: 80%;
+        width: 85%;
+        
+        gap: 10px;
+        padding-top: 20px;
+        background-color:white ;
+        max-width: 500px;
+        padding-right: 50px;
+        border-radius: 15px;
     }
     .imp {
-        height: 70px;
-        width: 90%;
+        height: 80%;
+        width: 85%;
         display: flex;
-        
+        flex-direction: column;
         align-items: center;
+        gap: 10px;
+        padding-top: 20px;
         justify-content: center;
-        
+        box-shadow: 1px 1px 5px 1px rgba(128, 128, 128, 0.342);
+        background-color:white ;
+        max-width: 500px;
+        border-radius: 15px;
+    }
+    .file-input {
+        height: 150px;
+    }
+    .pslfe {
+        margin-bottom: 10px;
+        width:  90%;
+        height: 100px;
+        background-color: white;
     }
     .te {
+        height: 50px;
+        width: 100%;
+        background-color: rgba(128, 128, 128, 0.123);
+        padding-left: 20px;
+        border-radius: 10px;
+        color: #5a07a3;
+        display: flex;
+        
+        border: none;
+        outline: none;
+    }
+    .tee {
+        height: 50px;
+        width: 100%;
+        background-color: #5a07a3;
+        padding-left: 20px;
+        border-radius: 10px;
+        color: white;
+        display: flex;
+        justify-content:center ;
+        border: none;
+        outline: none;
+    }
+    /* .te {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.363);
+        border-radius: 10px;
+        color: white;
+        padding: 10px 10px;
+    } */
+
+
+    /* .te {
         height: 100%;
         width: 90%;
         background-color: white;
@@ -195,20 +259,15 @@ h1,h2 {
         padding-left: 50px;
         border-radius: 50px 0px 0px 50px;
         box-shadow: 1px 1px 5px 1px rgb(214, 214, 214) inset;
-    }
-    
+    } */
     .sr {
-        outline: none;
-        border: none;
         height: 100%;
-        width: 10%;
-        /* background-color: white;
-        color: rgb(165, 35, 35); */
+        width: 15%;
+        border: none;
         background: url(/static/IMAGES/mailz.png) no-repeat;
         background-size: 50px;
-        background-position: center;
-        font-size: 1.2rem;
-        
+        background-position: center;    
+        outline: none;
     }
     
     
@@ -343,40 +402,76 @@ h1,h2 {
     .retyu1 h1{
         font-size: 2rem;
     }
-    /* .retyu2 {
+    .imp2 {
         display: none;
-    } */
+    }
     .footer {
-        height: 250px;
+        height: 500px;
         width: 100%;
         display: flex;
         margin-top: 50px;
         align-items: center;
         justify-content: center;
-        background-color:rgb(90, 7, 163) ;
+        background-color:white ;
     }
+    
     .imp {
         height: 80%;
-        width: 90%;
+        width: 85%;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 10px;
+        padding-top: 20px;
         justify-content: center;
-        background-color:rgb(90, 7, 163) ;
+        box-shadow: 1px 1px 5px 1px rgba(128, 128, 128, 0.342);
+        background-color:white ;
+        max-width: 500px;
+        border-radius: 15px;
     }
     .file-input {
         height: 150px;
     }
-    .te {
-        height: 200px;
-        width: 90%;
-        background-color:white ;
-        padding-left: 20px;
+    .pslfe {
+        width:  90%;
+        height: 100px;
+        margin-bottom: 10px;
 
+        background-color: white;
+    }
+    .te {
+        height: 50px;
+        width: 100%;
+        background-color: rgba(128, 128, 128, 0.123);
+        padding-left: 20px;
+        border-radius: 10px;
+        color: #5a07a3;
+        display: flex;
+        
         border: none;
         outline: none;
     }
+    .tee {
+        height: 50px;
+        width: 100%;
+        background-color: #5a07a3;
+        padding-left: 20px;
+        border-radius: 10px;
+        color: white;
+        display: flex;
+        justify-content:center ;
+        border: none;
+        outline: none;
+    }
+    /* .te {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.363);
+        border-radius: 10px;
+        color: white;
+        padding: 10px 10px;
+    } */
+
+
     /* .te {
         height: 100%;
         width: 90%;

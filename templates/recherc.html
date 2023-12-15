@@ -10,10 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/CSS/recherc.css">
+    <script defer src="static/CSS/autre.js"></script>
 
 </head>
 <body>
-    
+    <div class="infosurart">
+        
+        
+       
+    </div>
     <a href="/achat#Contactez">
         <div class="maile" >
             <img src="static/IMAGES/back.png
@@ -155,6 +160,40 @@
             </div>
             <div class="imoaeInfo">
                 
+                <h1 class="nomzp" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 0.8rem;text-transform: uppercase;">{{data.nom}}</h1>
+                
+                <p class="despzp"  style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
+
+                <h1  style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;"><span class="pistzp">{{data.prix}}</span> FCFA</h1>
+            </div>
+            <div class="imoaeBout" id="sac">
+                <form action="/new" method="post" >
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom"  value="{{data.nom}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
+                    <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
+                    <input id="bysrd" style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{data.image}}">
+                    <!-- <button type="submit" id="addpa" ><img src="{{url_for('static', filename='IMAGES/charrete.png')}}"  alt="" >
+                    </button> -->
+                    <button type="submit" id="addpa" ><p style="font-size: 0.7rem;">AJOUTER AU PANIER</p>
+                    </button>
+                    
+                </form>
+                <!-- <img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px" id="addpa"> -->
+                <!-- <a style="padding: 15px 20px;background-color: rgb(90, 7, 163);color: rgb(31, 255, 31);border-radius: 10px;" href="/panieruser"><img src="{{url_for('static', filename='IMAGES/charrete.png')}}" style="filter: invert();" alt="" height="30px" width="30px" id="addpa">
+                    {% if ae%}
+                    <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 2rem;">{{ae[0]}}</span>
+                    {% endif %}
+                </a> -->
+            </div> 
+        </div>
+        {% endfor %}
+        <!-- {% for data in ae[1] %}
+        <div class="imoer1">
+            <div class="imoaeImage">
+                <img src="{{url_for('static', filename='uploads/' + data.image)}}" height="130px" width="150px" alt="">
+            </div>
+            <div class="imoaeInfo">
+                
                 <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1rem;text-transform: uppercase;">{{data.nom}}</h1>
                 
                 <p style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
@@ -179,7 +218,7 @@
                 </a> -->
             </div> 
         </div>
-        {% endfor %}
+        {% endfor %} -->
         
         
        
