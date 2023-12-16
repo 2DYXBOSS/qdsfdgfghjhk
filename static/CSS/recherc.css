@@ -695,8 +695,8 @@ h1,h2 {
 }
 
 @media (min-width:1080px) {
-    .nu {
-        background-color: white;
+    .nu , #gfghjh{
+        display: none;
     }
     #blay {
         color: white;

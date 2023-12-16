@@ -264,7 +264,7 @@
 
     <form action="/recherche" method="post" class="reformee">
         
-        <input type="text" id="recherobjet" name="textenter" placeholder="Rechercher des articles dans la Boutique">
+        <input required type="text" id="recherobjet" name="textenter" placeholder="Rechercher des articles dans la Boutique">
         <button type="submit"><img src="{{url_for('static', filename='IMAGES/loupe.png')}}" height="20px" width="20px" alt="" ></button>
     </form>
     <div class="annima">
@@ -317,6 +317,17 @@
                 <p class="despzp"  style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
 
                 <h1  style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;"><span class="pistzp">{{data.prix}}</span> FCFA</h1>
+                <form action="/like/{{data.id}}" method="post">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom"  value="{{data.nom}}">
+                    {% if data.like == 0 %}
+                    <button type="submit" style="border: none;background-color: white;"><img src="{{url_for('static', filename='IMAGES/like.png')}}" height="20px" width="20px"></button>
+                    {% endif %}
+                    {% if data.like >= 1 %}
+                    <button type="submit" style="border: none;background-color: white;"><img src="{{url_for('static', filename='IMAGES/likz.png')}}" height="20px" width="20px">{{data.like}}</button>
+                    {% endif %}
+                </form>  
+                    
+                
             </div>
             <div class="imoaeBout" id="sac">
                 <form action="/new" method="post" >
@@ -326,6 +337,7 @@
                     <input id="bysrd" style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{data.image}}">
                     <!-- <button type="submit" id="addpa" ><img src="{{url_for('static', filename='IMAGES/charrete.png')}}"  alt="" >
                     </button> -->
+                    
                     <button type="submit" id="addpa" ><p style="font-size: 0.7rem;">AJOUTER AU PANIER</p>
                     </button>
                     
@@ -369,6 +381,28 @@
                 <p class="despzp"  style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
 
                 <h1  style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;"><span class="pistzp">{{data.prix}}</span> FCFA</h1>
+                <form action="/like/{{data.id}}" method="post">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom"  value="{{data.nom}}">
+                    {% if data.like == 0 %}
+                    <button type="submit" style="border: none;background-color: white;"><img src="{{url_for('static', filename='IMAGES/like.png')}}" height="20px" width="20px"></button>
+                    {% endif %}
+                    {% if data.like >= 1 %}
+                    <button type="submit" style="border: none;background-color: white;"><img src="{{url_for('static', filename='IMAGES/likz.png')}}" height="20px" width="20px">{{data.like}}</button>
+                    {% endif %}
+                </form> 
+                <!-- if not clique -->
+                <!-- <form action="/like" method="post">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="tpelike"  value="like">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="image"  value="{{data.image}}">
+                    <button type="submit" style="border: none;background-color: white;"><img src="{{url_for('static', filename='IMAGES/like.png')}}" height="20px" width="20px"></button>
+                </form> -->
+                <!-- if not clique -->
+                <!-- if clique -->
+                <!-- <form action="/likerouge" method="post">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom"  value="like">
+                    <button type="submit" style="border: none;background-color: white;"><img src="{{url_for('static', filename='IMAGES/like.png')}}" height="20px" width="20px"></button>
+                </form> -->
+                <!-- if clique -->
             </div>
             <div class="imoaeBout" id="sac">
                 <form action="/new" method="post" >
@@ -421,6 +455,16 @@
                 <p class="despzp"  style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
 
                 <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;"><span class="pistzp">{{data.prix}}</span> FCFA</h1>
+                <form action="/like/{{data.id}}" method="post">
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom"  value="{{data.nom}}">
+                    {% if data.like == 0 %}
+                    <button type="submit" style="border: none;background-color: white;"><img src="{{url_for('static', filename='IMAGES/like.png')}}" height="20px" width="20px"></button>
+                    {% endif %}
+                    {% if data.like >= 1 %}
+                    <button type="submit" style="border: none;background-color: white;"><img src="{{url_for('static', filename='IMAGES/likz.png')}}" height="20px" width="20px">{{data.like}}</button>
+                    {% endif %}
+                </form> 
+                
             </div>
             <div class="imoaeBout" id="sac">
                 <form action="/new" method="post" >
@@ -428,8 +472,9 @@
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
                     <input id="bysrd" style="opacity: 0;height: 0;width: 0;"  type="text" name="image" value="{{data.image}}">
-                    <!-- <button type="submit" id="addpa" ><img src="{{url_for('static', filename='IMAGES/charrete.png')}}"  alt="" >
+                    <!-- <button type="submit" id="addpa" ><img src="{{ url_for('static', filename='IMAGES/charrete.png') }}"  alt="" >
                     </button> -->
+                    
                     <button type="submit" id="addpa" ><p style="font-size: 0.7rem;">AJOUTER AU PANIER</p>
                     </button>
                     
@@ -480,7 +525,7 @@
     <div class="footer" id="Contactez">
      
         <form action="/envoyer_emailcom" method="post" class="imp">
-            <input type="text" class="te" name="contenu" placeholder="Ecrivez - nous maintenant si vous avez un probleme!">
+            <input required type="text" class="te" name="contenu" placeholder="Ecrivez - nous maintenant si vous avez un probleme!">
             <input type="submit" class="sr" value="">
         </form>
       

@@ -181,7 +181,7 @@ with app.app_context() :
     except Exception as e:
         print("error de creation de la table")
 
-class Boutiquez(db.Model):
+class Maboutik(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     nom = db.Column(db.String(100), unique = False , nullable = False)
@@ -189,13 +189,15 @@ class Boutiquez(db.Model):
     prix = db.Column(db.Integer,nullable = False)
     image = db.Column(db.String(100), unique = True , nullable = False)
     categorie = db.Column(db.String(100), unique = False , nullable = False)
+    like = db.Column(db.Integer, unique = False , nullable = False)
    
-    def __init__(self,nom,description,prix,image,categorie):
+    def __init__(self,nom,description,prix,image,categorie,like):
         self.nom = nom
         self.description = description
         self.prix = prix
         self.image = image
         self.categorie = categorie
+        self.like = like
 
 
     # db.init_app(app)
@@ -211,7 +213,8 @@ class Boutiquez(db.Model):
             "description": self.description,
             "prix": self.prix,
             "image": self.image,
-            "categorie": self.categorie
+            "categorie": self.categorie,
+            "like": self.like
         }
     
 
@@ -319,6 +322,9 @@ with app.app_context() :
 
 
 
+
+
+
 @app.route('/panieruser')
 def detail():
     if 'utilisateur_id' in session:
@@ -326,7 +332,7 @@ def detail():
     else:
         return redirect('/pre')
     data = Userpanierezeze.query.all()
-    Panier = Boutiquez.query.all()
+    Panier = Maboutik.query.all()
     # zee = Connecter.query.get(1)
     user = Userpanierezeze.query.filter_by(mail = useru.last_name).first()
     
@@ -365,7 +371,7 @@ def recherche() :
     if request.method == 'POST':
         mots = request.form['textenter']
     mot = (mots.strip()).lower()
-    aer = Boutiquez.query.all()
+    aer = Maboutik.query.all()
     data = Userpanierezeze.query.all()
     frr = []
 
@@ -483,7 +489,7 @@ def Payement() :
 #     else:
 #         return redirect('/pre')
 #     data = Userpanierezeze.query.all()
-#     Panier = Boutiquez.query.all()
+#     Panier = Maboutik.query.all()
 #     # zee = Connecter.query.get(1)
 #     user = Userpanierezeze.query.filter_by(mail = useru.last_name).first()
     
@@ -514,7 +520,8 @@ def achl():
         user = Profil.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
-    aer = Boutiquez.query.all()
+    aer = Maboutik.query.all()
+   
     # addsac = []
     # for i in aer :
     #     print(i.nom)
@@ -532,6 +539,7 @@ def achl():
         if i.mail == user.last_name :
             frr.append(i.qutite)
    
+   
     sac = []
     for i in aer:
         if i.categorie == "Sac" :
@@ -541,6 +549,8 @@ def achl():
     for i in aer:
         if i.categorie == "Vetement" :
             vetement.append(i)
+    
+    
     fourniture = []
     for i in aer:
         if i.categorie == "Fourniture" :
@@ -641,7 +651,7 @@ def pree():
 def sprome() :
     compte = 0
     eudeu = Profil.query.all()
-    profilp = Boutiquez.query.all()
+    profilp = Maboutik.query.all()
     eude = [eudeu,profilp]
     user = Profil.query.filter_by(last_name = request.form.get("last_name"),age = request.form.get("age")).first()
     userr = Connecter.query.filter_by(last_name = request.form.get("last_name"),age = request.form.get("age")).first()
@@ -680,7 +690,7 @@ def index() :
  
         
         
-    profil = Boutiquez.query.all()
+    profil = Maboutik.query.all()
     profile = Profil.query.all()
     
     profiles = [profil , profile]
@@ -856,6 +866,10 @@ def recuperer_image(nom_fichier):
 
 @app.route('/envoyer_email', methods=['POST'])
 def envoyer_email():
+    if 'utilisateur_id' in session:
+        user = Profil.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     if 'photo' not in request.files:
         return "Aucun fichier n'a été téléchargé."
 
@@ -872,8 +886,8 @@ def envoyer_email():
         msg['From'] = SMTP_USERNAME
         msg['To'] = "0streamblay@gmail.com"
         msg['Subject'] = request.form['sujet']
-
-        message_texte = MIMEText(request.form['contenu'])
+        masz = user.last_name + "    " + request.form['contenu']
+        message_texte = MIMEText(masz)
         msg.attach(message_texte)
 
         # Ajouter l'image au message
@@ -1319,8 +1333,39 @@ def usercommande():
 
 
 # PARTIE AJOUTER
+# @app.route('/like',methods = ["POST"])
+# def like():
+#     if 'utilisateur_id' in session:
+#         useru = Profil.query.get(session['utilisateur_id'])
+#     else:
+#         return redirect('/pre')
+    
+#     if request.method == 'POST' :
+#         likere = Maboutik.query.all()
+#         nom = request.form.get("nom")
+#         description = request.form.get("description")
+#         prix = request.form.get("prix")
+#         image = request.form.get("image")
+        
+        
+#         recpo = Maboutik.query.filter_by(nom = nom,description = description, prix = prix,image=image )
+        
+#         recpo.like += 1
+#         db.session.commit()
+#         return redirect("/achat")
 
+@app.route('/like/<int:post_id>', methods=['GET', 'POST'])
+def like(post_id):
+    
+    post = Maboutik.query.get(post_id)  # Load the post object
 
+    if post:
+        post.like += 1
+        db.session.commit()
+        return redirect("/achat")  # Redirect to the index or wherever you want
+    else:
+        print("Post not found.")
+        return redirect("/achat")
 # PARTIE AJOUTER DES ARTICLES{}
 @app.route('/objet',methods = ["POST"])
 def objet(): 
@@ -1330,11 +1375,13 @@ def objet():
         description = request.form.get("description")
         prix = request.form.get("prix")
         image = request.form.get("image") 
+        like = 0 
+        
         print('recu1')      
         categorie = request.form.get('selectOptione')
         print('recu2',categorie)      
 
-        pani = Boutiquez(nom = nom, description = description , prix = prix, image = image, categorie = categorie)
+        pani = Maboutik(nom = nom, description = description , prix = prix, image = image, categorie = categorie ,like=like)
         # pani = Panier(nom = nom, description = description , prix = prix)
         
         db.session.add(pani)
@@ -1678,7 +1725,7 @@ def deletenotif(id) :
 def ecraseart(id) :
 
 
-    data = Boutiquez.query.get(id)
+    data = Maboutik.query.get(id)
     db.session.delete(data)
     db.session.commit()
     return redirect("/admining")
