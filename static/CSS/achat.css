@@ -16,6 +16,20 @@ h1,h2 {
 .fixe a {
     text-shadow: -1px 1px 1px  rgba(153, 150, 150, 0.507);
 }
+.mailez {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 120px;
+    right: 30px;
+    border-radius: 100% 100% 100% 0;
+    box-shadow: 2px 2px 5px 2px rgba(199, 197, 197, 0.342);
+
+}
 .maile {
     width: 50px;
     height: 50px;
@@ -655,7 +669,7 @@ h1,h2 {
     top: 100px;
     right: 50px;
 } */
-@media (min-width:350px) {
+@media (min-width:650px) {
     .infosurart {
     
         height: 100%;
@@ -703,15 +717,31 @@ h1,h2 {
         }
     .mslkjhy {
     height: 500px;
-    width: 400px;
+    width: 250px;
     background-color: white;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     border-radius: 5px;
-    box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
     margin-bottom: 30px;
+    
+    
+    }
+    #zakj {
+        display: none;
+    }
+    .autre {
+    height: 500px;
+    width: 400px;
+    background-color: white;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    padding-left: 30px;
+    
     
     
     }
@@ -768,7 +798,7 @@ h1,h2 {
         justify-content: end;
     }
 }
-@media (max-width:350px) {
+@media (max-width:650px) {
     .anuezol {
         width: 200px;
         height: 20px;
@@ -787,7 +817,7 @@ h1,h2 {
         flex-wrap: wrap;
         top: 150px;
         position: fixed;
-        top: 100px;
+      
         gap: 20px;
         display: none;
     
@@ -802,10 +832,10 @@ h1,h2 {
         align-items: start;
         padding-top: 100px;
         flex-wrap: wrap;
-        top: 150px;
-        position: fixed;
         top: 100px;
-        gap: 20px;
+        position: fixed;
+        
+     
     
         justify-content: center;
     
@@ -825,8 +855,8 @@ h1,h2 {
         }
     .mslkjhy {
     padding-top: 10px ;
-    height: 300px;
-    width: 200px;
+   
+    width: 400px;
     background-color: white;
     display: flex;
     align-items: center;
@@ -834,11 +864,17 @@ h1,h2 {
     justify-content: center;
     border-radius: 5px;
     box-shadow: 0.5px 0.5px 5px 0.5px rgb(232, 223, 241);
-    margin-bottom: 30px;
+  
     
     
     }
     
+    .autre {
+       display: none;
+  
+    
+    
+    }
 
 
 

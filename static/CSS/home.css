@@ -5,6 +5,32 @@
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
 }
+.mailez {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 50px;
+    right: 30px;
+    border-radius: 100% 100% 100% 0;
+    box-shadow: 2px 2px 5px 2px rgba(199, 197, 197, 0.342);
+
+}
+.pslfe textarea::-webkit-scrollbar{
+    
+    height: 1px;
+    visibility: hidden;
+    background-color: white;
+}
+.pslfe textarea::-webkit-scrollbar-thumb{
+    
+    height: 1px;
+    width: 1px;
+    border-radius: 20px;
+}
 h1,h2 {
     text-shadow: -1px 1px 1px  rgba(153, 150, 150, 0.507);
 }
@@ -78,6 +104,9 @@ h1,h2 {
         text-decoration: none;
     }
     .lofo1 nav ul a:hover{
+        font-weight: bolder;
+    }
+    .lofo1 nav ul a.active{
         font-weight: bolder;
     }
     .lofo1 nav ul{
@@ -210,6 +239,7 @@ h1,h2 {
     }
     .file-input {
         height: 150px;
+        margin-top: 20px;
     }
     .pslfe {
         margin-bottom: 10px;
@@ -234,6 +264,7 @@ h1,h2 {
         width: 100%;
         background-color: #5a07a3;
         padding-left: 20px;
+        margin-bottom: 10px;
         border-radius: 10px;
         color: white;
         display: flex;
@@ -431,6 +462,7 @@ h1,h2 {
     }
     .file-input {
         height: 150px;
+        margin-top: 20px;
     }
     .pslfe {
         width:  90%;
@@ -438,6 +470,18 @@ h1,h2 {
         margin-bottom: 10px;
 
         background-color: white;
+    }
+    .te:focus{
+        height: 50px;
+        width: 100%;
+        background-color: rgba(128, 128, 128, 0.123);
+        padding-left: 20px;
+        border-radius: 10px;
+        color: #5a07a3;
+        display: flex;
+        
+        box-shadow:0.5px 0.5px 1px 1px #a39fa73a inset;
+        outline: none;
     }
     .te {
         height: 50px;
@@ -451,6 +495,7 @@ h1,h2 {
         border: none;
         outline: none;
     }
+    
     .tee {
         height: 50px;
         width: 100%;
@@ -461,6 +506,7 @@ h1,h2 {
         display: flex;
         justify-content:center ;
         border: none;
+        margin-bottom: 10px;
         outline: none;
     }
     /* .te {

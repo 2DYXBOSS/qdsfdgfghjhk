@@ -5,7 +5,12 @@ from flask import render_template , redirect , request,url_for,flash,session ,Re
 from werkzeug.utils import secure_filename
 from flask_mail import Mail, Message
 import os
+import datetime
 
+data = datetime.date.today()
+dataheure = datetime.datetime.now()
+
+print(dataheure)
 
 from flask import Flask, request, render_template, redirect, url_for,send_file
 import smtplib
@@ -72,7 +77,7 @@ with app.app_context() :
         db.create_all()
     except Exception as e:
         print("error de creation de la table")
-class Notifica(db.Model):
+class Notificap(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     
@@ -80,15 +85,17 @@ class Notifica(db.Model):
     prix = db.Column(db.Integer,nullable = False)
     image = db.Column(db.String(100), unique = False , nullable = False)
     mail = db.Column(db.String(100), unique = False , nullable = False)
+    dataheure = db.Column(db.String(100), unique = False , nullable = False)
     
 
    
-    def __init__(self,prix,quantite,image,mail):
+    def __init__(self,prix,quantite,image,mail,dataheure):
         
         self.prix = prix
         self.quantite = quantite
         self.image = image
         self.mail = mail
+        self.dataheure = dataheure
         
 
     # db.init_app(app)
@@ -104,7 +111,8 @@ class Notifica(db.Model):
             "prix": self.prix,
             "quantite": self.quantite,
             "image": self.image,
-            "mail": self.mail
+            "mail": self.mail,
+            "dataheure": self.dataheure
             
         }
 # creation de ma table dans la base de donnée 
@@ -557,7 +565,7 @@ def achl():
             fourniture.append(i)
     az = sum(frr)
     print(az)
-    frrnoz = Notifica.query.all()
+    frrnoz = Notificap.query.all()
     notifm = []
     for i in frrnoz : 
         if i.mail == user.last_name :
@@ -592,7 +600,7 @@ def useprid():
     
     az = sum(frr)
 
-    frrno = Notifica.query.all()
+    frrno = Notificap.query.all()
     notif = []
     for i in frrno : 
         if i.mail == user.last_name :
@@ -934,7 +942,8 @@ def commande():
         image = ",".join(img)
         quantite = sum(frr)
         mail = oiuy.last_name
-        notif = Notifica(prix = prix, quantite = quantite, image = image, mail = mail)
+        a = dataheure
+        notif = Notificap(prix = prix, quantite = quantite, image = image, mail = mail , dataheure=dataheure )
         
         db.session.add(notif)
         db.session.commit()
@@ -1032,7 +1041,7 @@ def commande():
         # quantite = request.form['quantite']
         # mail = request.form['maill']
         
-        # notif = Notifica(prix = prix, image = image, quantite = quantite, mail = mail)
+        # notif = Notificap(prix = prix, image = image, quantite = quantite, mail = mail)
         # db.session.add(notif)
         # db.session.commit()
         # return redirect("/home")
@@ -1111,10 +1120,13 @@ def valcommande():
     
     for i in imm :
         pop.append(" -#- ".join(i))
-             
+    data = datetime.date.today()
+    dataheure = datetime.datetime.now()
+
+    print(dataheure)         
 
     mepo = " /---/ ".join(pop)
-    contenu = f"COMMANDE DE {user.last_name} \n\n\n{mepo} \n\n\nCOUT TOTAL : {calvo} FCFA"
+    contenu = f"Aujourd'hui {dataheure} \n\nNouvelle Commande de {user.last_name} \n\n\n{mepo} \n\n\nCOUT TOTAL : {calvo} FCFA "
     # contenu = f"bonjour , {user.last_name} \Commnde {envo}"
 
     msg = Message(sujet, recipients=[destinataire])
@@ -1158,9 +1170,12 @@ def procomm():
     
     for i in imm :
         pop.append(" -#- ".join(i))
+    data = datetime.date.today()
+    dataheure = datetime.datetime.now()
 
+    print(dataheure) 
     mepo = " /---/ ".join(pop)
-    contenu = f"VOTRE COMMANDE SUR BLAY LIBRARY \n\n\n{mepo} \n\n\nCOUT TOTAL : {calvo} FCFA"
+    contenu = f"Aujourd'hui {dataheure} \n\nVous avez valider une nouvelle Commande sur BLAY LIBRARY \n\n\n{mepo} \n\n\nCOUT TOTAL : {calvo} FCFA \n\n\nJOUR/HEURES{dataheure}"
     # contenu = f"bonjour , {user.last_name} \Commnde {envo}"
 
     msg = Message(sujet, recipients=[destinataire])
@@ -1354,18 +1369,45 @@ def usercommande():
 #         db.session.commit()
 #         return redirect("/achat")
 
-@app.route('/like/<int:post_id>', methods=['GET', 'POST'])
-def like(post_id):
+# @app.route('/like/<int:post_id>', methods=['GET', 'POST'])
+# def like(post_id):
     
-    post = Maboutik.query.get(post_id)  # Load the post object
+#     post = Maboutik.query.get(post_id)  # Load the post object
 
-    if post:
-        post.like += 1
-        db.session.commit()
-        return redirect("/achat")  # Redirect to the index or wherever you want
-    else:
-        print("Post not found.")
-        return redirect("/achat")
+#     if post:
+#         post.like += 1
+#         db.session.commit()
+#         return redirect("/achat#{post_id}")  # Redirect to the index or wherever you want
+#     else:
+#         print("Post not found.")
+#         return redirect("/achat")
+# from flask import redirect, url_for
+
+# @app.route('/like/<int:article_id>', methods=['POST'])
+# def like_article(article_id):
+#     article = Article.query.get_or_404(article_id)
+#     article.likes += 1
+#     db.session.commit()
+#     return redirect(url_for('article_detail', article_id=article.id))
+
+@app.route('/like/<int:post_id>', methods=['POST'])
+def like(post_id):
+    try:
+        post = Maboutik.query.get(post_id)  # Load the post object
+
+        if post:
+            post.like += 1
+            db.session.commit()
+           
+            return redirect(url_for("achl", _anchor=f"{post_id}"))  # Redirect to the index or wherever you want
+        else:
+            print("Post not found.")
+            return redirect(url_for("achl"))
+    except Exception as e:
+        print(f"Error liking post: {e}")
+        db.session.rollback()  # Rollback changes in case of an error
+        return redirect(url_for("achl"))
+
 # PARTIE AJOUTER DES ARTICLES{}
 @app.route('/objet',methods = ["POST"])
 def objet(): 
@@ -1511,33 +1553,44 @@ def profile() :
 #     return redirect("/recherche")
 # # FIN AJOUTER DES PANIER{} 
 # AJOUTER DES PANIER{}
+
+
 @app.route('/new',methods = ["POST"])
 def new():
-    zee = Connecter.query.get(1)
-    if 'utilisateur_id' in session:
-        useru = Profil.query.get(session['utilisateur_id'])
-    else:
-        return redirect('/pre')
-    zert = Userpanierezeze.query.all()
-    user = Profil.query.filter_by(last_name = useru.last_name).first()
-    nom = (request.form.get("nom").upper()).strip()
-    desc = request.form.get("desc").strip()
-    image = request.form.get("image").strip()
-    prix = request.form.get("prix").strip()
-    id = request.form.get("id")
-    mail = user.last_name
-    print(f"{nom},{desc},{image},{prix},{id},{mail}")
-    user = Userpanierezeze.query.filter_by(nom=nom,description = desc , prix = prix, mail = mail).first()
-    
-    if user:
-        bou = Userpanierezeze.query.get(user.id)
-        bou.qutite = bou.qutite+1
+    try :
+        zee = Connecter.query.get(1)
+        if 'utilisateur_id' in session:
+            useru = Profil.query.get(session['utilisateur_id'])
+        else:
+            return redirect('/pre')
+        zert = Userpanierezeze.query.all()
+        user = Profil.query.filter_by(last_name = useru.last_name).first()
+        nom = (request.form.get("nom").upper()).strip()
+        desc = request.form.get("desc").strip()
+        image = request.form.get("image").strip()
+        prix = request.form.get("prix").strip()
+        id = request.form.get("id")
+        aid = request.form.get("aid")
+        mail = user.last_name
+        print(f"{nom},{desc},{image},{prix},{id},{mail}")
+        user = Userpanierezeze.query.filter_by(nom=nom,description = desc , prix = prix, mail = mail).first()
+        
+        if user:
+            bou = Userpanierezeze.query.get(user.id)
+            
+            bou.qutite = bou.qutite+1
+            db.session.commit()
+            return redirect(url_for("achl", _anchor=f"{aid}"))
+
+            # return redirect(url_for("achl", _anchor=f"{ze}")) 
+        prix = Userpanierezeze(nom = nom, description = desc , prix = prix, mail = mail,image=image,qutite=1)
+        db.session.add(prix)
         db.session.commit()
-        return redirect("/achat")
-    prix = Userpanierezeze(nom = nom, description = desc , prix = prix, mail = mail,image=image,qutite=1)
-    db.session.add(prix)
-    db.session.commit()
-    return redirect("/achat")
+        return redirect(url_for("achl", _anchor=f"{aid}")) 
+    
+    except :
+        return redirect("achat")
+    # return redirect(url_for("achl", _anchor=f"{ze}")) 
 # FIN AJOUTER DES PANIER{} 
 
 
@@ -1667,7 +1720,7 @@ def erase(id) :
 
 # FIN SUPPRIMER USER{} 
 
-# SUPPRIMER TOUTES LES  NOTIFICATIONS{} 
+# SUPPRIMER TOUTES LES  NotificapTIONS{} 
 @app.route('/toutsu')
 def toutsu() :
 
@@ -1675,7 +1728,7 @@ def toutsu() :
         useru = Profil.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
-    data = Notifica.query.all()
+    data = Notificap.query.all()
     for i in range(len(data)):
         if data[i].mail == useru.last_name :
             db.session.delete(data[i])
@@ -1684,13 +1737,13 @@ def toutsu() :
     
             
     return redirect("/useprid")
-# FIN SUPPRIMER NotificaATION{} 
-# SUPPRIMER NotificaATION{} 
+# FIN SUPPRIMER NotificapATION{} 
+# SUPPRIMER NotificapATION{} 
 @app.route('/deletenotif/<int:id>')
 def deletenotif(id) :
 
 
-    data = Notifica.query.get(id)
+    data = Notificap.query.get(id)
     db.session.delete(data)
     db.session.commit()
     
@@ -1700,7 +1753,7 @@ def deletenotif(id) :
     # description = request.form.get("description")
     # mail = request.form.get("mail")
     # prix = request.form.get("prix")
-    # zerr = Notifica.query.all()
+    # zerr = Notificap.query.all()
     
     # print(mail,nom,description,prix)
     # recy =[]
@@ -1718,7 +1771,7 @@ def deletenotif(id) :
 
             
     return redirect("/useprid")
-# FIN SUPPRIMER NotificaATION{} 
+# FIN SUPPRIMER NotificapATION{} 
 
 # SUPPRIMER ARTICLES{} 
 @app.route('/deletearticles/<int:id>')

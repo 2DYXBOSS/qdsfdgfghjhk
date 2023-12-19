@@ -154,6 +154,7 @@
             <th> <p>NOM</p></th>
             <th><p>DESCRIPTION</p></th>
             <th><p>PRIX</p></th>
+            <th><p>♥</p></th>
             
         </thead>
         {% for data in profiles[0] %}
@@ -163,7 +164,8 @@
             <td><p>{{data.nom}}</p></td>
             <td><p>{{data.description}}</p> </td>
             <td><p>{{data.prix}}</p></td>
-            <td class="seer"><a href="/deletearticles/{{data.id}}" class="suppr" ><p id="nutr" style="background-color: red;"><img src="{{url_for('static', filename='IMAGES/poubelele.png')}}" alt="" style="filter: invert(100%) sepia(0%) saturate(751%) hue-rotate(178deg) brightness(112%) contrast(105%);" width="10px" height="10px"></p></a></td>
+            <td><p>{{data.like}}</p></td>
+            <td class="seer" ><a href="/deletearticles/{{data.id}}" class="suppr" ><p id="nutr" style="background-color: red;"><img src="{{url_for('static', filename='IMAGES/poubelele.png')}}" alt="" style="filter: invert(100%) sepia(0%) saturate(751%) hue-rotate(178deg) brightness(112%) contrast(105%);" width="10px" height="10px"></p></a></td>
             <!-- <td ><a href="/update/{{data.id}}" class="modif">MODIFIER</a></td> -->
             
         </tbody>

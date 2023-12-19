@@ -42,10 +42,21 @@ imoer1Elements.forEach(element => {
         infosurart.classList.add('active');
 
         let gdsh = `
+        <div class="autre">
+          
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1.2rem;text-align: start;padding-bottom: 50px;color: rgb(90, 7, 163);">Plus de details sur le produit</h1>
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1.2rem;text-transform: uppercase;text-align: start;">DESCRIPTION DU PRODUIT</h1>
+                <p style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 1rem;">${des}</p>
+                
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1.2rem;text-transform: uppercase;text-align: start;">PRIX DU PRODUIT</h1>
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-bottom: 10px;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 2rem;text-transform: uppercase;font-weight: bolder;">${passwordid} FCFA</h1>
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1.2rem;text-transform: uppercase;text-align: start;">DERNIERE FOIS VUE</h1>
+                <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1rem;text-transform: uppercase;text-align: start;color: rgb(90, 7, 163);">Ajourd'hui</h1>
+           
+        </div>
         <div class="mslkjhy">
             <div class="anuezol" id="vetedsqs">
-            <img src="static/IMAGES/crit.png
-            " alt="" height="30px" width="30px" >
+            
             </div>
             <div class="imoaeImagee">
                 <img src="static/uploads/${imgzs}"  alt="">
@@ -53,7 +64,7 @@ imoer1Elements.forEach(element => {
             <div class="imoaeInfo">
                 <div class="imoaeInfomp">
                     <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 0.8rem;text-transform: uppercase;">${nom}</h1>
-                    <p style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">${des}</p>
+                    <p style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;" id="zakj">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, atque assumenda! Aspernatur repellendus quis, soluta numquam veritatis, explicabo tenetur repellat corrupti vitae laudantium accusamus, omnis consequuntur delectus. Hic, nostrum veniam!</p>
                     <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;">${passwordid} FCFA</h1>
                 </div>
                 <div class="imoaeBoute" id="sac">

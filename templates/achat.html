@@ -114,6 +114,10 @@
     <script defer src="static/CSS/autre.js"></script>
 </head>
 <body>
+    <a href="https://api.whatsapp.com/send/?phone=2250102330470&text&type=phone_number&app_absent=0"><div class="mailez" >
+        <img src="static/IMAGES/zsaga.png
+        " alt="" height="50%" width="50%" style="filter: invert();" id="vete">
+    </div></a>
     
     <div class="maile" >
         <img src="static/IMAGES/admmi-removebg-preview.png
@@ -172,21 +176,13 @@
     
                         <img src="static/IMAGES/modi.png" style="filter: invert(13%) sepia(93%) saturate(5402%) hue-rotate(273deg) brightness(64%) contrast(109%);;height: 20px;;height: 20px;"  alt="">
                         <a href="/achat">
-                            <p style="color: rgb(156, 9, 224);padding-left: 5px;font-weight: bolder;">Nos publications</p>
+                            <p style="color: rgb(156, 9, 224);padding-left: 5px;font-weight: bolder;">Boutique</p>
                         </a>
                         
     
                     </div>
                     
-                    <div class="poqsd" >
-    
-                        <img src="static/IMAGES/contac-removebg-preview.png" style="filter: invert(13%) sepia(93%) saturate(5402%) hue-rotate(273deg) brightness(64%) contrast(109%);;height: 20px;;height: 20px;"  alt="">
-                        <a href="/home#apeo">
-                            <p style="color: rgb(90, 7, 163);padding-left: 5px;">À propos de nous</p>
-                        </a>
-                        
-    
-                    </div>
+                    
                     <div class="poqsd" >
     
                         <img src="static/IMAGES/charrete.png" style="filter: invert(13%) sepia(93%) saturate(5402%) hue-rotate(273deg) brightness(64%) contrast(109%);;height: 20px;;height: 20px;"  alt="">
@@ -195,6 +191,25 @@
                                     <span style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 1rem;color: rgb(31, 255, 31);width: 20px;width: 20px;border-radius: 100%;">{{ae[0]}}</span>
                                     {% endif %}</p>
                             </a>
+                        
+    
+                    </div>
+                    
+                    <div class="poqsd" >
+    
+                        <img src="static/IMAGES/admmi-removebg-preview.png" style="filter: invert(13%) sepia(93%) saturate(5402%) hue-rotate(273deg) brightness(64%) contrast(109%);;height: 20px;;height: 20px;"  alt="">
+                        <a href="/home#apeo">
+                            <p style="color: rgb(90, 7, 163);padding-left: 5px;">A propos de nous</p>
+                        </a>
+                        
+    
+                    </div>
+                    <div class="poqsd" >
+    
+                        <img src="static/IMAGES/contac-removebg-preview.png" style="filter: invert(13%) sepia(93%) saturate(5402%) hue-rotate(273deg) brightness(64%) contrast(109%);;height: 20px;;height: 20px;"  alt="">
+                        <a href="/home#apeo">
+                            <p style="color: rgb(90, 7, 163);padding-left: 5px;">Contactez - nous</p>
+                        </a>
                         
     
                     </div>
@@ -221,11 +236,12 @@
             </div>
             <nav>
                 <ul>
+                    
                     <li>
                         <a href="/home" style="color: rgb(90, 7, 163);">Acceuil</a>
                     </li>
                     <li>
-                        <a href="/achat" style="padding: 15px 20px;background-color: white;color: rgb(156, 9, 224);border-radius: 10px;color: rgb(90, 7, 163);font-weight: bolder;">Nos publications</a>
+                        <a href="/achat" style="padding: 15px 20px;background-color: white;color: rgb(156, 9, 224);border-radius: 10px;color: rgb(90, 7, 163);font-weight: bolder;">Boutique</a>
                     </li>
                     <li>
                         <a href="/home#apeo" style="color: rgb(90, 7, 163);">À propos de nous</a>
@@ -304,9 +320,12 @@
         
     </div>
     {% endif %}
+
+    
+
     <div class="hre">
         {% for data in ae[3] %}
-        <div class="imoer1">
+        <div class="imoer1" id="{{data.id}}">
             <div class="imoaeImage">
                 <img src="{{url_for('static', filename='uploads/' + data.image)}}" height="130px" width="150px" alt="">
             </div>
@@ -314,7 +333,8 @@
                 
                 <h1 class="nomzp" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 0.8rem;text-transform: uppercase;">{{data.nom}}</h1>
                 
-                <p class="despzp"  style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
+                <p style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;"> {{data.nom}} article recommandé</p>
+                <p class="despzp"  style="font-size: 0;">{{data.description}}</p>
 
                 <h1  style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;"><span class="pistzp">{{data.prix}}</span> FCFA</h1>
                 <form action="/like/{{data.id}}" method="post">
@@ -331,6 +351,7 @@
             </div>
             <div class="imoaeBout" id="sac">
                 <form action="/new" method="post" >
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="aid" value="{{data.id}}">
                     <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom"  value="{{data.nom}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
@@ -370,7 +391,7 @@
     {% endif %}
     <div class="hre">
         {% for data in ae[2] %}
-        <div class="imoer1">
+        <div class="imoer1" id="{{data.id}}">
             <div class="imoaeImage">
                 <img src="{{url_for('static', filename='uploads/' + data.image)}}" height="130px" width="150px" alt="">
             </div>
@@ -378,7 +399,8 @@
                 
                 <h1 class="nomzp" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 0.8rem;text-transform: uppercase;">{{data.nom}}</h1>
                 
-                <p class="despzp"  style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
+                <p style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;"> {{data.nom}} article recommandé</p>
+                <p class="despzp"  style="font-size: 0;">{{data.description}}</p>
 
                 <h1  style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;"><span class="pistzp">{{data.prix}}</span> FCFA</h1>
                 <form action="/like/{{data.id}}" method="post">
@@ -406,6 +428,7 @@
             </div>
             <div class="imoaeBout" id="sac">
                 <form action="/new" method="post" >
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="aid" value="{{data.id}}">
                     <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">
@@ -444,7 +467,7 @@
     {% endif %}
     <div class="hre">
         {% for data in ae[4] %}
-        <div class="imoer1">
+        <div class="imoer1" id="{{data.id}}">
             <div class="imoaeImage">
                 <img src="{{url_for('static', filename='uploads/' + data.image)}}" height="130px" width="150px" alt="">
             </div>
@@ -452,7 +475,8 @@
                 
                 <h1 class="nomzp" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;font-size: 0.8rem;text-transform: uppercase;">{{data.nom}}</h1>
                 
-                <p class="despzp"  style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;">{{data.description}}</p>
+                <p style="margin-bottom: 10px;color: rgb(146, 143, 143);font-size: 0.7rem;"> {{data.nom}} article recommandé</p>
+                <p class="despzp"  style="font-size: 0;">{{data.description}}</p>
 
                 <h1 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-weight: bolder;color: rgb(90, 7, 163);padding-bottom: 20px;font-size: 1rem;text-transform: uppercase;"><span class="pistzp">{{data.prix}}</span> FCFA</h1>
                 <form action="/like/{{data.id}}" method="post">
@@ -468,6 +492,7 @@
             </div>
             <div class="imoaeBout" id="sac">
                 <form action="/new" method="post" >
+                    <input style="opacity: 0;height: 0;width: 0;" type="text" name="aid" value="{{data.id}}">
                     <input style="opacity: 0;height: 0;width: 0;" type="text" name="nom" value="{{data.nom}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="desc" value="{{data.description}}">
                     <input style="opacity: 0;height: 0;width: 0;"  type="text" name="prix" value="{{data.prix}}">

@@ -34,6 +34,16 @@
                 <div class="hea2">
                     <strong><p style="color: rgba(162, 117, 204, 0.555);"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 3rem;color: blueviolet;">B</span>lay Library</p></strong>
                 </div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul style="text-align: center;">
+                        {% for message in messages %}
+                        <li style="color: red;list-style-type: none;font-size: 0.5rem;">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    
+                    {% endif %}
+                    {% endwith %}
                 <div class="hea2">
                     <h2 style="color: blueviolet;font-size: 1.3rem;margin-bottom: 10px;">Ajouter des articles</h2>
                 </div>
@@ -54,7 +64,7 @@
                         </p>
                     </dl>
                     <p>
-                        <input required  style="padding: 1px 15px;background-color: rgb(90, 7, 163);color: white;border: none;" type="submit" value="valider l'image choisir" class="btn btn-info">
+                        <input required  style="padding: 1px 15px;background-color: rgb(90, 7, 163);color: white;border: none;border-radius: 5px;" type="submit" value="valider l'image choisir" class="btn btn-info">
                     </p>
                 </form>
 
@@ -71,12 +81,12 @@
                     <input  required type="text" name="prix" id="">
                     
 
-                    <label for="selectOption">Choisissez une option :</label>
+                    <label for="selectOption">Choisissez la categorie :</label>
             
                     <select id="selectOption" name="selectOptione">
                         <option value="Sac">Sac</option>
                         <option value="Vetement">Vetement</option>
-                        <option value="Fourniture">Fourniture</option>
+                        <option value="Fourniture">Livre</option>
                     </select>
             
                 
